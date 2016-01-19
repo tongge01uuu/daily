@@ -15,6 +15,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/daily.spring" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/daily_spring_mq" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/daily_mybatis" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/daily.web" type="4"/>
 </workingSet>
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1430321288097_10" label="CXF" name="CXF">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cxf-client" type="4"/>
