@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:saf="http://code.360buy.com/schema/saf"
+	xmlns:mq="http://code.360buy.com/schema/mq"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://code.360buy.com/schema/saf 
+	http://code.360buy.com/schema/saf/saf.xsd
+	http://code.360buy.com/schema/mq 
+	http://code.360buy.com/schema/mq/mq-1.0.xsd
+	">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:conf/mq.properties</value>
+			</list>
+		</property>
+	</bean>
+
+    <!-- 同一个应用里，只需配置一份retryService和 retryContainer-->
+	<saf:reference id="retryService"
+		interface="com.jd.activemq.retry.service.RetryService" version="1.0.0"
+		group="MQ" timeout="10000" check="false" url="${saf.url}" lazy="true" />
+
+	<mq:retryContainer id="retryContainer" retryService="retryService" />
+
+
+	<!-- 同一个systemId，生产者共用一个connectionFactory -->
+	<mq:connectionFactory id="connectionFactory" user="${mq.userName}"
+		password="${mq.password}" address="${zk.url}" systemId="${mq.consumer.systemId}" maxReconnectAttempts="2"
+		prefetch="100" maximumRedeliveries="2" alwaysSyncSend="true" />
+
+	<bean id="messageListener" class="com.jd.activemq.sample.MessageHandler" />
+
+    <!-- 同一个systemId要消费多个消息，增加listener即可 -->
+	<mq:consumerListener id="consumer"
+		connectionFactory="connectionFactory" concurrency="${mq.consumer.concurrency}"
+		exceptionListener="retryContainer" autoStart="true">
+		<mq:listener destination="${mq.consumer.destination}"
+			messageListener="messageListener"/>
+	</mq:consumerListener>
+</beans>

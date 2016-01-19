@@ -1,0 +1,874 @@
+2012-11-08 09:18:06,117 [main] INFO  t.support.ClassPathXmlApplicationContext -Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a340e: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2a340e]; startup date [Thu Nov 08 09:18:06 CST 2012]; root of context hierarchy
+2012-11-08 09:18:06,179 [main] INFO  eans.factory.xml.XmlBeanDefinitionReader -Loading XML bean definitions from class path resource [service-consumer.xml]
+2012-11-08 09:18:06,313 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:18:06,352 [main] INFO  t.support.ClassPathXmlApplicationContext -Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2a340e]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1543c88
+2012-11-08 09:18:06,466 [main] INFO  ctory.support.DefaultListableBeanFactory -Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1543c88: defining beans [com.alibaba.dubbo.config.ConsumerConfig,FZProject-Service-Consumer,com.alibaba.dubbo.config.RegistryConfig,com.alibaba.dubbo.config.spring.AnnotationBean,dubboAction,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor]; root of factory hierarchy
+2012-11-08 09:18:06,528 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:18:06,817 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Load registry store file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, data: {*/com.fzservice.service.iface.DemoService:*=hessian://192.168.222.1:80/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6764&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352268855628&version=DemoServiceImpl empty://192.168.222.1/com.fzservice.service.iface.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.fzservice.service.iface.DemoService&version=*, com.alibaba.dubbo.demo.DemoService=dubbo://192.168.74.1:20880/com.alibaba.dubbo.demo.DemoService?anyhost=true&application=hello-world-app&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=4300&side=provider&timestamp=1352187581594 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=configurators&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=routers&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672, com.fzservice.service.iface.DemoService:DemoServiceImpl=dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2224&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352337284727&version=DemoServiceImpl override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400 override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3656&revision=fzservice&side=consumer&timestamp=1352337272903&version=DemoServiceImpl, */com.alibaba.dubbo.demo.DemoService:*=empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=providers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=* empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=*, com.alibaba.dubbo.monitor.MonitorService=empty://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&category=configurators&check=false&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904, */com.alibaba.dubbo.monitor.MonitorService:*=dubbo://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904 empty://192.168.222.1/com.alibaba.dubbo.monitor.MonitorService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.monitor.MonitorService&version=*}, dubbo version: 2.5.3, current host: 127.0.0.1
+2012-11-08 09:18:06,834 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  org.I0Itec.zkclient.ZkEventThread        -Starting ZkClient event thread.
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:host.name=Goliath-PC-VC
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.version=1.6.0_33
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.vendor=Sun Microsystems Inc.
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.home=D:\Java\jdk1.6.0_33\jre
+2012-11-08 09:18:06,843 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.class.path=E:\workSpace3.7_J2EE\DubboConsumerNode1\bin;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\bsf-api-3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cache-api-0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cglib-nodep-2.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils-1.8.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-codec-1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-collections-3.2.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-fileupload-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-httpclient-3.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-io-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-lang-2.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-net-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-pool-1.5.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-client-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-framework-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-api-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-bindings-soap-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-core-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-databinding-jaxb-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-frontend-simple-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-transports-http-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dom4j-1.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dubbo-2.5.3.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dwr-src.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\ejb3-persistence-1.0.2.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fastjson-1.1.8.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fzservice.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\geronimo-javamail_1.4_spec-1.7.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\gmbal-api-only-3.0.0-b023.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-core-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-framework-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-portunif-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-rcm-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\guava-11.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\hessian-4.0.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpclient-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpcore-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\javassist-3.15.0-GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jaxb-impl-2.1.13.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jedis-2.0.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-util-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jline-0.9.94.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jsr305-1.3.9.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jta-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\libthrift-0.8.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\log4j-1.2.16.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\management-api-3.0.0-b012.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\mina-core-1.1.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\module.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.5.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.7.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\slf4j-api-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-2.5.6.SEC03.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-webmvc.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\stax2-api-3.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\testBean.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\validation-api-1.0.0.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\woodstox-core-asl-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\wsdl4j-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmemcached-1.3.6.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlpull-1.1.3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlschema-core-2.0.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xpp3_min-1.1.4c.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xstream-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zkclient-0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zookeeper-3.3.3.jar
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.library.path=D:\Java\jdk1.6.0_33\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Java/jdk1.6.0_33/bin/../jre/bin/client;D:/Java/jdk1.6.0_33/bin/../jre/bin;D:/Java/jdk1.6.0_33/bin/../jre/lib/i386;d:\oracle\product\10.2.0\db_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;D:\Program Files\TortoiseSVN\bin;D:\Program Files (x86)\Windows7Master;D:\Java\jdk1.6.0_33\bin;D:\Rational\common;D:\eclipse-3.7-jee;;.
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.io.tmpdir=C:\Users\Goliath\AppData\Local\Temp\
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.compiler=<NA>
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.name=Windows 7
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.arch=x86
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.version=6.1
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.name=Goliath
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.home=C:\Users\Goliath
+2012-11-08 09:18:06,847 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.dir=E:\workSpace3.7_J2EE\DubboConsumerNode1
+2012-11-08 09:18:06,849 [main] INFO  org.apache.zookeeper.ZooKeeper           -Initiating client connection, connectString=127.0.0.1:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@9934d4
+2012-11-08 09:18:06,880 [main-SendThread()] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server /127.0.0.1:2181
+2012-11-08 09:18:06,883 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Socket connection established to 127.0.0.1/127.0.0.1:2181, initiating session
+2012-11-08 09:18:06,960 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Session establishment complete on server 127.0.0.1/127.0.0.1:2181, sessionid = 0x13add9060d10007, negotiated timeout = 30000
+2012-11-08 09:18:06,962 [main-EventThread] INFO  org.I0Itec.zkclient.ZkClient             -zookeeper state changed (SyncConnected)
+2012-11-08 09:18:06,988 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Register: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=consumers&check=false&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1072&revision=fzservice&side=consumer&timestamp=1352337486734&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:18:07,470 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Subscribe: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1072&revision=fzservice&side=consumer&timestamp=1352337486734&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:18:07,950 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1072&revision=fzservice&side=consumer&timestamp=1352337486734&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2224&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352337284727&version=DemoServiceImpl, dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2120&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352337479549&version=DemoServiceImpl, override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl, override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400, override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1072&revision=fzservice&side=consumer&timestamp=1352337486734&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:18:08,143 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20880 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x011d2572, /192.168.222.1:50048 => /192.168.222.1:20880]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:18:08,143 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20880, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:18:08,221 [main] INFO  com.alibaba.dubbo.config.AbstractConfig  - [DUBBO] Refer dubbo service com.fzservice.service.iface.DemoService from url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=FZProject-Service-Consumer&check=false&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1072&revision=fzservice&side=consumer&timeout=3000&timestamp=1352337486734&version=DemoServiceImpl&weight=400, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:55,779 [main] INFO  t.support.ClassPathXmlApplicationContext -Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0: display name [org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0]; startup date [Thu Nov 08 09:29:55 CST 2012]; root of context hierarchy
+2012-11-08 09:29:55,848 [main] INFO  eans.factory.xml.XmlBeanDefinitionReader -Loading XML bean definitions from class path resource [service-consumer.xml]
+2012-11-08 09:29:55,986 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:29:56,024 [main] INFO  t.support.ClassPathXmlApplicationContext -Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1543c88
+2012-11-08 09:29:56,140 [main] INFO  ctory.support.DefaultListableBeanFactory -Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1543c88: defining beans [com.alibaba.dubbo.config.ConsumerConfig,FZProject-Service-Consumer,com.alibaba.dubbo.config.RegistryConfig,com.alibaba.dubbo.config.spring.AnnotationBean,dubboAction,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor]; root of factory hierarchy
+2012-11-08 09:29:56,202 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:29:56,490 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Load registry store file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, data: {*/com.fzservice.service.iface.DemoService:*=hessian://192.168.222.1:80/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6764&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352268855628&version=DemoServiceImpl empty://192.168.222.1/com.fzservice.service.iface.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.fzservice.service.iface.DemoService&version=*, com.alibaba.dubbo.demo.DemoService=dubbo://192.168.74.1:20880/com.alibaba.dubbo.demo.DemoService?anyhost=true&application=hello-world-app&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=4300&side=provider&timestamp=1352187581594 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=configurators&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=routers&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672, com.fzservice.service.iface.DemoService:DemoServiceImpl=dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2428&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338168490&version=DemoServiceImpl dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4692&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338180112&version=DemoServiceImpl dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4384&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338174099&version=DemoServiceImpl override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400 override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4236&revision=fzservice&side=consumer&timestamp=1352338189369&version=DemoServiceImpl, */com.alibaba.dubbo.demo.DemoService:*=empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=providers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=* empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=*, com.alibaba.dubbo.monitor.MonitorService=empty://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&category=configurators&check=false&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904, */com.alibaba.dubbo.monitor.MonitorService:*=dubbo://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904 empty://192.168.222.1/com.alibaba.dubbo.monitor.MonitorService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.monitor.MonitorService&version=*}, dubbo version: 2.5.3, current host: 127.0.0.1
+2012-11-08 09:29:56,506 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  org.I0Itec.zkclient.ZkEventThread        -Starting ZkClient event thread.
+2012-11-08 09:29:56,514 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2012-11-08 09:29:56,514 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:host.name=Goliath-PC-VC
+2012-11-08 09:29:56,514 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.version=1.6.0_33
+2012-11-08 09:29:56,514 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.vendor=Sun Microsystems Inc.
+2012-11-08 09:29:56,514 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.home=D:\Java\jdk1.6.0_33\jre
+2012-11-08 09:29:56,517 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.class.path=E:\workSpace3.7_J2EE\DubboConsumerNode1\bin;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\bsf-api-3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cache-api-0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cglib-nodep-2.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils-1.8.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-codec-1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-collections-3.2.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-fileupload-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-httpclient-3.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-io-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-lang-2.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-net-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-pool-1.5.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-client-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-framework-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-api-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-bindings-soap-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-core-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-databinding-jaxb-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-frontend-simple-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-transports-http-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dom4j-1.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dubbo-2.5.3.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dwr-src.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\ejb3-persistence-1.0.2.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fastjson-1.1.8.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fzservice.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\geronimo-javamail_1.4_spec-1.7.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\gmbal-api-only-3.0.0-b023.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-core-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-framework-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-portunif-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-rcm-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\guava-11.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\hessian-4.0.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpclient-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpcore-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\javassist-3.15.0-GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jaxb-impl-2.1.13.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jedis-2.0.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-util-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jline-0.9.94.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jsr305-1.3.9.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jta-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\libthrift-0.8.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\log4j-1.2.16.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\management-api-3.0.0-b012.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\mina-core-1.1.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\module.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.5.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.7.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\slf4j-api-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-2.5.6.SEC03.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-webmvc.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\stax2-api-3.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\testBean.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\validation-api-1.0.0.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\woodstox-core-asl-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\wsdl4j-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmemcached-1.3.6.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlpull-1.1.3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlschema-core-2.0.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xpp3_min-1.1.4c.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xstream-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zkclient-0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zookeeper-3.3.3.jar
+2012-11-08 09:29:56,517 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.library.path=D:\Java\jdk1.6.0_33\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Java/jdk1.6.0_33/bin/../jre/bin/client;D:/Java/jdk1.6.0_33/bin/../jre/bin;D:/Java/jdk1.6.0_33/bin/../jre/lib/i386;d:\oracle\product\10.2.0\db_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;D:\Program Files\TortoiseSVN\bin;D:\Program Files (x86)\Windows7Master;D:\Java\jdk1.6.0_33\bin;D:\Rational\common;D:\eclipse-3.7-jee;;.
+2012-11-08 09:29:56,517 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.io.tmpdir=C:\Users\Goliath\AppData\Local\Temp\
+2012-11-08 09:29:56,517 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.compiler=<NA>
+2012-11-08 09:29:56,517 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.name=Windows 7
+2012-11-08 09:29:56,518 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.arch=x86
+2012-11-08 09:29:56,518 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.version=6.1
+2012-11-08 09:29:56,518 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.name=Goliath
+2012-11-08 09:29:56,518 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.home=C:\Users\Goliath
+2012-11-08 09:29:56,518 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.dir=E:\workSpace3.7_J2EE\DubboConsumerNode1
+2012-11-08 09:29:56,519 [main] INFO  org.apache.zookeeper.ZooKeeper           -Initiating client connection, connectString=127.0.0.1:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@9934d4
+2012-11-08 09:29:56,550 [main-SendThread()] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server /127.0.0.1:2181
+2012-11-08 09:29:56,552 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Socket connection established to 127.0.0.1/127.0.0.1:2181, initiating session
+2012-11-08 09:29:56,621 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Session establishment complete on server 127.0.0.1/127.0.0.1:2181, sessionid = 0x13add9060d1000d, negotiated timeout = 30000
+2012-11-08 09:29:56,621 [main-EventThread] INFO  org.I0Itec.zkclient.ZkClient             -zookeeper state changed (SyncConnected)
+2012-11-08 09:29:56,660 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Register: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=consumers&check=false&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:56,873 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Subscribe: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,361 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2428&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338168490&version=DemoServiceImpl, dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4692&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338180112&version=DemoServiceImpl, dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4384&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338174099&version=DemoServiceImpl, override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl, override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400, override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,533 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20882 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x00e53220, /192.168.222.1:50125 => /192.168.222.1:20882]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,533 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20882, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,594 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20880 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x0131c89c, /192.168.222.1:50132 => /192.168.222.1:20880]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,594 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20880, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,598 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20881 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x00082751, /192.168.222.1:50137 => /192.168.222.1:20881]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,599 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20881, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:29:57,610 [main] INFO  com.alibaba.dubbo.config.AbstractConfig  - [DUBBO] Refer dubbo service com.fzservice.service.iface.DemoService from url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=FZProject-Service-Consumer&check=false&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338196407&version=DemoServiceImpl&weight=400, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:31:28,557 [DubboClientHandler-192.168.222.1:20880-thread-1] INFO  a.dubbo.rpc.protocol.dubbo.DubboProtocol - [DUBBO] disconected from /192.168.222.1:20880,url:dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Consumer&check=false&codec=dubbo&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&heartbeat=60000&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338196407&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:31:30,625 [DubboClientReconnectTimer-thread-1] WARN  .dubbo.remoting.transport.AbstractClient - [DUBBO] client reconnect to 192.168.222.1:20880 find error . url: dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Consumer&check=false&codec=dubbo&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&heartbeat=60000&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338196407&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+com.alibaba.dubbo.remoting.RemotingException: client(url: dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Consumer&check=false&codec=dubbo&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&heartbeat=60000&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338196407&version=DemoServiceImpl) failed to connect to server /192.168.222.1:20880, error message is:Connection refused: no further information
+	at com.alibaba.dubbo.remoting.transport.netty.NettyClient.doConnect(NettyClient.java:124)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient.connect(AbstractClient.java:280)
+	at com.alibaba.dubbo.remoting.transport.AbstractClient$1.run(AbstractClient.java:145)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(FutureTask.java:317)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:150)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(ScheduledThreadPoolExecutor.java:98)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:204)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:662)
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.connect(NioClientSocketPipelineSink.java:384)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.processSelectedKeys(NioClientSocketPipelineSink.java:354)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink$Boss.run(NioClientSocketPipelineSink.java:276)
+	... 3 more
+2012-11-08 09:31:52,143 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2428&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338168490&version=DemoServiceImpl, dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4384&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338174099&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:31:52,152 [DubboSaveRegistryCache-thread-1] WARN  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Failed to save registry store file, cause: Can not lock the registry cache file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, ignore and retry later, maybe multi java process use the file, please config: dubbo.registry.file=xxx.properties, dubbo version: 2.5.3, current host: 192.168.222.1
+java.io.IOException: Can not lock the registry cache file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, ignore and retry later, maybe multi java process use the file, please config: dubbo.registry.file=xxx.properties
+	at com.alibaba.dubbo.registry.support.AbstractRegistry.doSaveProperties(AbstractRegistry.java:193)
+	at com.alibaba.dubbo.registry.support.AbstractRegistry$SaveProperties.run(AbstractRegistry.java:150)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:662)
+2012-11-08 09:32:01,142 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timestamp=1352338196407&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=3568&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338320433&version=DemoServiceImpl, dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=2428&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338168490&version=DemoServiceImpl, dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4384&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338174099&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:32:01,155 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20880 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x01353249, /192.168.222.1:50245 => /192.168.222.1:20880]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:32:01,155 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20880, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:35:13,977 [DubboClientHandler-192.168.222.1:20880-thread-2] INFO  a.dubbo.rpc.protocol.dubbo.DubboProtocol - [DUBBO] disconected from /192.168.222.1:20880,url:dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Consumer&check=false&codec=dubbo&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&heartbeat=60000&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=4312&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338196407&version=DemoServiceImpl&weight=400, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:09,794 [main] INFO  t.support.ClassPathXmlApplicationContext -Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0: display name [org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0]; startup date [Thu Nov 08 09:36:09 CST 2012]; root of context hierarchy
+2012-11-08 09:36:09,859 [main] INFO  eans.factory.xml.XmlBeanDefinitionReader -Loading XML bean definitions from class path resource [service-consumer.xml]
+2012-11-08 09:36:10,001 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:36:10,038 [main] INFO  t.support.ClassPathXmlApplicationContext -Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@bfbdb0]: org.springframework.beans.factory.support.DefaultListableBeanFactory@15212bc
+2012-11-08 09:36:10,160 [main] INFO  ctory.support.DefaultListableBeanFactory -Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15212bc: defining beans [com.alibaba.dubbo.config.ConsumerConfig,FZProject-Service-Consumer,com.alibaba.dubbo.config.RegistryConfig,com.alibaba.dubbo.config.spring.AnnotationBean,dubboAction,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor]; root of factory hierarchy
+2012-11-08 09:36:10,226 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 09:36:10,518 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Load registry store file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, data: {com.alibaba.dubbo.demo.DemoService=dubbo://192.168.74.1:20880/com.alibaba.dubbo.demo.DemoService?anyhost=true&application=hello-world-app&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=4300&side=provider&timestamp=1352187581594 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=configurators&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=routers&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672, */com.fzservice.service.iface.DemoService:*=hessian://192.168.222.1:80/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6764&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352268855628&version=DemoServiceImpl empty://192.168.222.1/com.fzservice.service.iface.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.fzservice.service.iface.DemoService&version=*, com.fzservice.service.iface.DemoService:DemoServiceImpl=dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6556&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338549110&version=DemoServiceImpl dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=7156&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338535496&version=DemoServiceImpl dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=3588&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338543919&version=DemoServiceImpl override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400 override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=5584&revision=fzservice&side=consumer&timestamp=1352338562187&version=DemoServiceImpl, */com.alibaba.dubbo.demo.DemoService:*=empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=providers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=* empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=*, com.alibaba.dubbo.monitor.MonitorService=empty://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&category=configurators&check=false&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904, */com.alibaba.dubbo.monitor.MonitorService:*=dubbo://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904 empty://192.168.222.1/com.alibaba.dubbo.monitor.MonitorService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.monitor.MonitorService&version=*}, dubbo version: 2.5.3, current host: 127.0.0.1
+2012-11-08 09:36:10,534 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  org.I0Itec.zkclient.ZkEventThread        -Starting ZkClient event thread.
+2012-11-08 09:36:10,542 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2012-11-08 09:36:10,542 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:host.name=Goliath-PC-VC
+2012-11-08 09:36:10,542 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.version=1.6.0_33
+2012-11-08 09:36:10,543 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.vendor=Sun Microsystems Inc.
+2012-11-08 09:36:10,543 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.home=D:\Java\jdk1.6.0_33\jre
+2012-11-08 09:36:10,543 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.class.path=E:\workSpace3.7_J2EE\DubboConsumerNode1\bin;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\bsf-api-3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cache-api-0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cglib-nodep-2.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils-1.8.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-beanutils.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-codec-1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-collections-3.2.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-fileupload-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-httpclient-3.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-io-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-lang-2.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.0.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-logging-1.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-net-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\commons-pool-1.5.5.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-client-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\curator-framework-1.1.10.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-api-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-bindings-soap-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-core-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-databinding-jaxb-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-frontend-simple-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\cxf-rt-transports-http-2.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dom4j-1.6.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dubbo-2.5.3.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\dwr-src.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\ejb3-persistence-1.0.2.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fastjson-1.1.8.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\fzservice.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\geronimo-javamail_1.4_spec-1.7.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\gmbal-api-only-3.0.0-b023.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-core-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-framework-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-portunif-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\grizzly-rcm-2.1.4.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\guava-11.0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\hessian-4.0.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpclient-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\httpcore-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\javassist-3.15.0-GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jaxb-impl-2.1.13.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jedis-2.0.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jetty-util-6.1.26.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jline-0.9.94.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jsr305-1.3.9.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\jta-1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\libthrift-0.8.0.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\log4j-1.2.16.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\management-api-3.0.0-b012.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\mina-core-1.1.7.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\module.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.5.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\netty-3.2.7.Final.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\slf4j-api-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-2.5.6.SEC03.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\spring-webmvc.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\stax2-api-3.1.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\testBean.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\validation-api-1.0.0.GA.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\woodstox-core-asl-4.1.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\wsdl4j-1.6.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmemcached-1.3.6.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlpull-1.1.3.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xmlschema-core-2.0.2.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xpp3_min-1.1.4c.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\xstream-1.4.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zkclient-0.1.jar;E:\workSpace3.7_J2EE\DubboConsumerNode1\lib\zookeeper-3.3.3.jar
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.library.path=D:\Java\jdk1.6.0_33\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Java/jdk1.6.0_33/bin/../jre/bin/client;D:/Java/jdk1.6.0_33/bin/../jre/bin;D:/Java/jdk1.6.0_33/bin/../jre/lib/i386;d:\oracle\product\10.2.0\db_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;D:\Program Files\TortoiseSVN\bin;D:\Program Files (x86)\Windows7Master;D:\Java\jdk1.6.0_33\bin;D:\Rational\common;D:\eclipse-3.7-jee;;.
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.io.tmpdir=C:\Users\Goliath\AppData\Local\Temp\
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.compiler=<NA>
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.name=Windows 7
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.arch=x86
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.version=6.1
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.name=Goliath
+2012-11-08 09:36:10,547 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.home=C:\Users\Goliath
+2012-11-08 09:36:10,548 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.dir=E:\workSpace3.7_J2EE\DubboConsumerNode1
+2012-11-08 09:36:10,549 [main] INFO  org.apache.zookeeper.ZooKeeper           -Initiating client connection, connectString=127.0.0.1:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@5b8827
+2012-11-08 09:36:10,579 [main-SendThread()] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server /127.0.0.1:2181
+2012-11-08 09:36:10,581 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Socket connection established to 127.0.0.1/127.0.0.1:2181, initiating session
+2012-11-08 09:36:10,652 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Session establishment complete on server 127.0.0.1/127.0.0.1:2181, sessionid = 0x13add9060d10015, negotiated timeout = 30000
+2012-11-08 09:36:10,654 [main-EventThread] INFO  org.I0Itec.zkclient.ZkClient             -zookeeper state changed (SyncConnected)
+2012-11-08 09:36:10,680 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Register: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=consumers&check=false&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timestamp=1352338570436&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:10,897 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Subscribe: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timestamp=1352338570436&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,429 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timestamp=1352338570436&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6556&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338549110&version=DemoServiceImpl, dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=7156&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338535496&version=DemoServiceImpl, dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=3588&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338543919&version=DemoServiceImpl, override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl, override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400, override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200, empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timestamp=1352338570436&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,590 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20881 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x003257b8, /192.168.222.1:50325 => /192.168.222.1:20881]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,590 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20881, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,652 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20882 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x0024c4a3, /192.168.222.1:50332 => /192.168.222.1:20882]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,652 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20882, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,659 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20880 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x00082751, /192.168.222.1:50337 => /192.168.222.1:20880]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,659 [main] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20880, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 09:36:11,672 [main] INFO  com.alibaba.dubbo.config.AbstractConfig  - [DUBBO] Refer dubbo service com.fzservice.service.iface.DemoService from url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?anyhost=true&application=FZProject-Service-Consumer&check=false&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timeout=3000&timestamp=1352338570436&version=DemoServiceImpl&weight=400, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:55:48,830 [main] INFO  t.support.ClassPathXmlApplicationContext -Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a340e: display name [org.springframework.context.support.ClassPathXmlApplicationContext@2a340e]; startup date [Thu Nov 08 10:55:48 CST 2012]; root of context hierarchy
+2012-11-08 10:55:48,894 [main] INFO  eans.factory.xml.XmlBeanDefinitionReader -Loading XML bean definitions from class path resource [service-consumer.xml]
+2012-11-08 10:55:49,030 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 10:55:49,066 [main] INFO  t.support.ClassPathXmlApplicationContext -Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@2a340e]: org.springframework.beans.factory.support.DefaultListableBeanFactory@1479feb
+2012-11-08 10:55:49,182 [main] INFO  ctory.support.DefaultListableBeanFactory -Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1479feb: defining beans [com.alibaba.dubbo.config.ConsumerConfig,FZProject-Service-Consumer,com.alibaba.dubbo.config.RegistryConfig,com.alibaba.dubbo.config.spring.AnnotationBean,dubboAction,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor]; root of factory hierarchy
+2012-11-08 10:55:49,245 [main] INFO  libaba.dubbo.common.logger.LoggerFactory -using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2012-11-08 10:55:49,544 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Load registry store file C:\Users\Goliath\.dubbo\dubbo-registry-127.0.0.1.cache, data: {*/com.fzservice.service.iface.DemoService:*=hessian://192.168.222.1:80/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6764&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352268855628&version=DemoServiceImpl empty://192.168.222.1/com.fzservice.service.iface.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.fzservice.service.iface.DemoService&version=*, com.alibaba.dubbo.demo.DemoService=dubbo://192.168.74.1:20880/com.alibaba.dubbo.demo.DemoService?anyhost=true&application=hello-world-app&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=4300&side=provider&timestamp=1352187581594 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=configurators&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672 empty://192.168.74.1/com.alibaba.dubbo.demo.DemoService?application=consumer-of-helloworld-app&category=routers&default.check=false&dubbo=2.5&interface=com.alibaba.dubbo.demo.DemoService&methods=sayHello&pid=3552&revision=DubboDemoProvider&side=consumer&timeout=1000000&timestamp=1352187695672, com.fzservice.service.iface.DemoService:DemoServiceImpl=dubbo://192.168.222.1:20881/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=6556&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338549110&version=DemoServiceImpl dubbo://192.168.222.1:20882/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=7156&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338535496&version=DemoServiceImpl dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=3588&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352338543919&version=DemoServiceImpl override://192.168.222.1:80/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 override://192.168.74.1/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&mock=fail%3Areturn+null&version=DemoServiceImpl override://192.168.222.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=400 override://192.168.74.1:20880/com.fzservice.service.iface.DemoService?category=configurators&dynamic=false&enabled=true&version=DemoServiceImpl&weight=200 empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=1960&revision=fzservice&side=consumer&timestamp=1352338570436&version=DemoServiceImpl, */com.alibaba.dubbo.demo.DemoService:*=empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=providers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=* empty://192.168.222.1/com.alibaba.dubbo.demo.DemoService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.demo.DemoService&version=*, com.alibaba.dubbo.monitor.MonitorService=empty://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&category=configurators&check=false&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904, */com.alibaba.dubbo.monitor.MonitorService:*=dubbo://192.168.222.1:7070/com.alibaba.dubbo.monitor.MonitorService?anyhost=true&application=simple-monitor&delay=-1&dubbo=2.5.3&interface=com.alibaba.dubbo.monitor.MonitorService&methods=lookup,collect&pid=2928&revision=2.5.3&side=provider&timestamp=1352266209904 empty://192.168.222.1/com.alibaba.dubbo.monitor.MonitorService?category=consumers&check=false&classifier=*&group=*&interface=com.alibaba.dubbo.monitor.MonitorService&version=*}, dubbo version: 2.5.3, current host: 127.0.0.1
+2012-11-08 10:55:49,560 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  org.I0Itec.zkclient.ZkEventThread        -Starting ZkClient event thread.
+2012-11-08 10:55:49,568 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:zookeeper.version=3.3.3-1073969, built on 02/23/2011 22:27 GMT
+2012-11-08 10:55:49,568 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:host.name=Goliath-PC-VC
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.version=1.6.0_33
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.vendor=Sun Microsystems Inc.
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.home=D:\Java\jdk1.6.0_33\jre
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.class.path=E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\bin;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\bsf-api-3.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cache-api-0.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cglib-nodep-2.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-beanutils-1.8.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-beanutils.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-codec-1.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-collections-3.2.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-fileupload-1.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-httpclient-3.0.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-io-1.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-lang-2.5.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-logging-1.0.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-logging-1.1.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-net-1.4.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\commons-pool-1.5.5.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\curator-client-1.1.10.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\curator-framework-1.1.10.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-api-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-rt-bindings-soap-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-rt-core-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-rt-databinding-jaxb-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-rt-frontend-simple-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\cxf-rt-transports-http-2.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\dom4j-1.6.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\dubbo-2.5.3.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\dwr-src.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\ejb3-persistence-1.0.2.GA.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\fastjson-1.1.8.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\fzservice.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\geronimo-javamail_1.4_spec-1.7.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\gmbal-api-only-3.0.0-b023.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\grizzly-core-2.1.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\grizzly-framework-2.1.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\grizzly-portunif-2.1.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\grizzly-rcm-2.1.4.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\guava-11.0.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\hessian-4.0.7.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\httpclient-4.1.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\httpcore-4.1.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\javassist-3.15.0-GA.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jaxb-impl-2.1.13.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jedis-2.0.0.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jetty-6.1.26.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jetty-util-6.1.26.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jline-0.9.94.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jsr305-1.3.9.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\jta-1.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\libthrift-0.8.0.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\log4j-1.2.16.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\management-api-3.0.0-b012.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\mina-core-1.1.7.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\module.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\netty-3.2.5.Final.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\netty-3.2.7.Final.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\slf4j-api-1.6.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\spring-2.5.6.SEC03.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\spring-webmvc.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\stax2-api-3.1.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\testBean.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\validation-api-1.0.0.GA.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\woodstox-core-asl-4.1.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\wsdl4j-1.6.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\xmemcached-1.3.6.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\xmlpull-1.1.3.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\xmlschema-core-2.0.2.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\xpp3_min-1.1.4c.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\xstream-1.4.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\zkclient-0.1.jar;E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1\lib\zookeeper-3.3.3.jar
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.library.path=D:\Java\jdk1.6.0_33\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/Java/jdk1.6.0_33/bin/../jre/bin/client;D:/Java/jdk1.6.0_33/bin/../jre/bin;D:/Java/jdk1.6.0_33/bin/../jre/lib/i386;d:\oracle\product\10.2.0\db_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;D:\Program Files\TortoiseSVN\bin;D:\Program Files (x86)\Windows7Master;D:\Java\jdk1.6.0_33\bin;D:\Rational\common;D:\eclipse-3.7-jee;;.
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.io.tmpdir=C:\Users\Goliath\AppData\Local\Temp\
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:java.compiler=<NA>
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.name=Windows 7
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.arch=x86
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:os.version=6.1
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.name=Goliath
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.home=C:\Users\Goliath
+2012-11-08 10:55:49,569 [main] INFO  org.apache.zookeeper.ZooKeeper           -Client environment:user.dir=E:\workSpace3.7_J2EE\DubboZooKeeperInCluster\DubboConsumerNode1
+2012-11-08 10:55:49,570 [main] INFO  org.apache.zookeeper.ZooKeeper           -Initiating client connection, connectString=127.0.0.1:2181 sessionTimeout=30000 watcher=org.I0Itec.zkclient.ZkClient@f6ac0b
+2012-11-08 10:55:49,601 [main-SendThread()] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server /127.0.0.1:2181
+2012-11-08 10:55:49,603 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Socket connection established to 127.0.0.1/127.0.0.1:2181, initiating session
+2012-11-08 10:55:49,741 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Session establishment complete on server 127.0.0.1/127.0.0.1:2181, sessionid = 0x13addf195a80000, negotiated timeout = 30000
+2012-11-08 10:55:49,748 [main-EventThread] INFO  org.I0Itec.zkclient.ZkClient             -zookeeper state changed (SyncConnected)
+2012-11-08 10:55:49,788 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Register: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=consumers&check=false&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:55:50,248 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Subscribe: consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:55:50,802 [main] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, urls: [empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=configurators&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, empty://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:55:50,816 [main] INFO  com.alibaba.dubbo.config.AbstractConfig  - [DUBBO] Refer dubbo service com.fzservice.service.iface.DemoService from url zookeeper://127.0.0.1:2181/com.alibaba.dubbo.registry.RegistryService?application=FZProject-Service-Consumer&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:56:04,824 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  bbo.registry.zookeeper.ZookeeperRegistry - [DUBBO] Notify urls for subscribe url consumer://192.168.222.1/com.fzservice.service.iface.DemoService?application=FZProject-Service-Consumer&category=providers,configurators,routers&default.check=false&dubbo=2.5.3&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timestamp=1352343349460&version=DemoServiceImpl, urls: [dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Provider&default.retries=0&default.timeout=1000&dubbo=2.5.3&interface=com.fzservice.service.iface.DemoService&methods=getEntity,insertEntity,sayHello&pid=4464&revision=DemoServiceImpl&side=provider&timeout=3000&timestamp=1352343363861&version=DemoServiceImpl], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:56:04,996 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Successed connect to server /192.168.222.1:20880 from NettyClient 192.168.222.1 using dubbo version 2.5.3, channel is NettyChannel [channel=[id: 0x00e35bb7, /192.168.222.1:51388 => /192.168.222.1:20880]], dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 10:56:04,996 [ZkClient-EventThread-10-127.0.0.1:2181] INFO  .dubbo.remoting.transport.AbstractClient - [DUBBO] Start NettyClient Goliath-PC-VC/192.168.222.1 connect to the server /192.168.222.1:20880, dubbo version: 2.5.3, current host: 192.168.222.1
+2012-11-08 12:59:55,040 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server 127.0.0.1/127.0.0.1:2181, unexpected error, closing socket connection and attempting reconnect
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:25)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:198)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:166)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:245)
+	at org.apache.zookeeper.ClientCnxn$SendThread.doIO(ClientCnxn.java:858)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1130)
+2012-11-08 12:59:55,142 [main-EventThread] INFO  org.I0Itec.zkclient.ZkClient             -zookeeper state changed (Disconnected)
+2012-11-08 12:59:56,591 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 12:59:57,591 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 12:59:59,562 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:00,564 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:02,267 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:03,272 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:04,578 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:05,578 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:07,617 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:08,620 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:10,260 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:11,261 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:12,558 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:13,562 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:15,222 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:16,222 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:17,555 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:18,556 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:19,923 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:20,940 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:22,467 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:23,468 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:25,408 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:26,410 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:28,059 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:29,059 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:30,764 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:31,775 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:33,014 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:34,011 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:35,265 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:36,275 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:37,572 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:38,573 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:39,704 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:40,705 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:42,139 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:43,149 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:45,127 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:46,133 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:47,913 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:48,914 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:50,540 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:51,544 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:52,682 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:53,683 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:55,053 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:56,055 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:00:57,322 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:00:58,323 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:00,097 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:01,097 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:02,334 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:03,335 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:05,182 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:06,184 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:08,019 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:09,021 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:10,938 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:11,944 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:13,808 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:14,811 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:16,609 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:17,620 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:19,070 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:20,071 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:21,681 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:22,693 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:23,825 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:24,825 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:26,842 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:27,838 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:29,203 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:30,204 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:31,496 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:32,489 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:34,470 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:35,477 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:37,160 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:38,160 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:39,541 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:40,540 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:42,576 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:43,591 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:45,503 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:46,504 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:48,118 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:49,126 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:50,336 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:51,346 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:53,074 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:54,072 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:55,492 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:56,496 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:01:57,959 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:01:58,960 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:00,466 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:01,461 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:03,525 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:04,526 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:06,220 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:07,220 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:08,931 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:09,931 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:11,771 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:12,771 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:14,769 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:15,773 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:17,190 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:18,191 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:19,690 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:20,690 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:21,989 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:22,990 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:24,894 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:25,894 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:27,247 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:28,249 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:29,568 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:30,569 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:32,502 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:33,502 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:34,898 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:35,898 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:37,747 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:38,747 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:40,757 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:41,757 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:43,269 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:44,268 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:45,594 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:46,590 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:48,533 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:49,534 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:51,022 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:52,018 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:53,423 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:54,425 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:56,287 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:57,287 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:02:58,877 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:02:59,884 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:01,882 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:02,880 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:04,550 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:05,553 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:07,301 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:08,301 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:09,693 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:10,701 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:12,431 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:13,433 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:15,476 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:16,486 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:18,547 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:19,548 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:21,257 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:22,268 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:23,422 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:24,419 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:25,943 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:26,943 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:28,656 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:29,658 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:31,333 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:32,331 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:34,123 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:35,126 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:36,556 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:37,556 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:38,805 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:39,805 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:41,618 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:42,619 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:44,215 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:45,226 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:47,247 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:48,258 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:49,778 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:50,778 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:52,197 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:53,198 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:54,457 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:55,467 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:56,844 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:03:57,844 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:03:59,714 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:00,710 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:02,090 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:03,089 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:04,763 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:05,765 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:07,663 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:08,658 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:10,703 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:11,704 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:12,846 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:13,857 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:15,120 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:16,131 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:17,948 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:18,951 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:20,812 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:21,813 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:23,205 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:24,206 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:25,986 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:26,987 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:28,711 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:29,711 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:31,615 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:32,625 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:34,636 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:35,647 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:37,552 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:38,553 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:40,299 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:41,299 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:43,308 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:44,308 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:46,354 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:47,354 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:49,279 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:50,279 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:51,532 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:52,532 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:53,731 [main-SendThread(127.0.0.1:2181)] INFO  org.apache.zookeeper.ClientCnxn          -Opening socket connection to server 127.0.0.1/127.0.0.1:2181
+2012-11-08 13:04:54,731 [main-SendThread(127.0.0.1:2181)] WARN  org.apache.zookeeper.ClientCnxn          -Session 0x13addf195a80000 for server null, unexpected error, closing socket connection and attempting reconnect
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:599)
+	at org.apache.zookeeper.ClientCnxn$SendThread.run(ClientCnxn.java:1119)
+2012-11-08 13:04:56,441 [DubboClientHandler-192.168.222.1:20880-thread-2] INFO  a.dubbo.rpc.protocol.dubbo.DubboProtocol - [DUBBO] disconected from /192.168.222.1:20880,url:dubbo://192.168.222.1:20880/com.fzservice.service.iface.DemoService?anyhost=true&application=FZProject-Service-Consumer&check=false&codec=dubbo&default.check=false&default.retries=0&default.timeout=1000&dubbo=2.5.3&heartbeat=60000&init=true&interface=com.fzservice.service.iface.DemoService&logger=log4j&methods=getEntity,insertEntity,sayHello&pid=3860&revision=fzservice&side=consumer&timeout=3000&timestamp=1352343349460&version=DemoServiceImpl, dubbo version: 2.5.3, current host: 192.168.222.1

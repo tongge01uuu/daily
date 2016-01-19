@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mq="http://code.360buy.com/schema/mq"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://code.360buy.com/schema/mq 
+	http://code.360buy.com/schema/mq/mq-1.0.xsd
+	">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:conf/mq.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 同一个systemId，消费者共用一个connectionFactory -->
+	<mq:connectionFactory id="connectionFactory" user="${mq.userName}"
+		password="${mq.password}" address="${zk.url}" systemId="${mq.producer.systemId}" maxReconnectAttempts="2"
+		prefetch="100" maximumRedeliveries="2" alwaysSyncSend="true" />
+
+	<mq:jmsTemplate id="producer" connectionFactory="connectionFactory"
+		destination="${mq.producer.destination}" />
+</beans>

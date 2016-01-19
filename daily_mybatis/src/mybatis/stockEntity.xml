@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 此处的namespace 对应的是dao层接口的全名 -->
+<mapper namespace="com.daily.dao.StockDao">
+    <select id="get" parameterType="int" resultType="stockEntity">
+        select * from T_STOCK_BASE where id = #{id}
+    </select>
+</mapper>
