@@ -1,6 +1,0 @@
-package com.daily.spring.service;
-
-public class SpringAopPointcut
-{
-
-}

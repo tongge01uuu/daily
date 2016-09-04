@@ -1,6 +1,0 @@
-package daily.jave.se.construct;
-
-public class Child extends Father
-{
-
-}

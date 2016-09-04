@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;local.java.io.DataOutputStream&apos; to &apos;DataOutputStreamTest&apos;&#x0A;- Original project: &apos;daily_tool&apos;&#x0A;- Original element: &apos;local.java.io.DataOutputStream&apos;&#x0A;- Renamed element: &apos;local.java.io.DataOutputStreamTest&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DataOutputStream&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;local.java.io{DataOutputStream.java[DataOutputStream" matchStrategy="1" name="DataOutputStreamTest" qualified="false" references="true" similarDeclarations="false" stamp="1424747906663" textual="false" version="1.0"/>
-</session>

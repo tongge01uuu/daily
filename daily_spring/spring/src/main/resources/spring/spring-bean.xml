@@ -8,8 +8,17 @@
 		<property name="businessNum" value="5"></property>
 	</bean>
 	
-	<bean id="userService" class="daily.account.service.impl.UserServiceImpl" ></bean>
+	<bean id="userService" class="daily.account.service.impl.UserServiceImpl" >
+		<property name="userMapper" ref="userMapper"></property>
+	</bean>
 	
 	<bean id="userDao" class="daily.account.dao.impl.UserDaoImpl" ></bean>
+	<!-- 
+	<bean id="userMapper" class="daily.account.dao.mapper.UserMapper" ></bean>
+	
+	<bean id="roleMapper" class="daily.account.dao.mapper.RoleMapper" ></bean>
+	 -->
+	
+	
 	
 </beans>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;TopicReceiver2.java&apos; to &apos;org.xdemo.example.SpringActivemq.mq.consumer.topic.TopicReceiver2.java&apos;&#x0A;- Original project: &apos;SpringActivemq&apos;&#x0A;- Destination element: &apos;org.xdemo.example.SpringActivemq.mq.consumer.topic.TopicReceiver2.java&apos;&#x0A;- Original element: &apos;org.xdemo.example.SpringActivemq.mq.consumer.topic.TopicReceiver2.java&apos;" description="Copy compilation unit" destination="/src\/main\/java&lt;org.xdemo.example.SpringActivemq.mq.consumer.topic{TopicReceiver2.java" element1="/src\/main\/java&lt;org.xdemo.example.SpringActivemq.mq.consumer.topic{TopicReceiver2.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1429199708674" units="1" version="1.0"/>
-</session>

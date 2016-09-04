@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;daily_spring&apos; to &apos;daily_spring_mq&apos;" description="Rename resource &apos;daily_spring&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/daily_spring" name="daily_spring_mq" stamp="1452699365606" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;spring&apos; to &apos;daily.spring&apos;" description="Rename resource &apos;spring&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/spring" name="daily.spring" stamp="1452701474393" updateReferences="true"/>
-</session>

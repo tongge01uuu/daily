@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server auto-publish-setting="3" auto-publish-time="1" configuration-id="/Servers/Tomcat v7.0 Server at localhost-config" deployDir="/Users/phantom/DEV/SERVER/apache-tomcat-7.0.57/webapps" hostname="localhost" id="Tomcat v7.0 Server at localhost" name="Tomcat v7.0 Server at localhost" runtime-id="Apache Tomcat v7.0" saveSeparateContextFiles="true" serveModulesWithoutPublish="false" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="45" stop-timeout="15" testEnvironment="false" timestamp="20">
+  <list key="modules" value0="daily.spring::org.eclipse.jst.jee.server:daily.spring::jst.web::2.5"/>
+</server>
