@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="we-schedule-center" />
+
+	<!-- 使用zookeeper注册中心暴露发现服务地址 -->
+	<dubbo:registry address="zookeeper://172.16.3.121:2181" />
+
+	<!-- 生成远程服务代理 -->
+	<dubbo:reference id="exchangeOrderService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeOrderService"/>
+		
+	<dubbo:reference id="exchangeProductService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeProductService"/>
+		
+	<dubbo:reference id="exchangeUserStatService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeUserStatService"/>
+		
+	<dubbo:reference id="exchangeUserProductService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeUserProductService"/>
+		
+	<dubbo:reference id="exchangeRepayPlanService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeRepayPlanService"/>
+		
+	<dubbo:reference id="exchangeRefundTaskService" retries="0" timeout="500" async="true"
+		interface="com.we.exchange.service.ExchangeRefundTaskService"/>
+
+	<dubbo:reference id="paymentBillService" retries="0" timeout="500" async="true"
+					 interface="com.we.exchange.service.PaymentBillService"/>
+
+	<dubbo:reference id="cashDrawJobService" retries="0" timeout="500" async="true"
+					 interface="com.we.paycenter.service.CashDrawJobService"/>
+
+</beans>
