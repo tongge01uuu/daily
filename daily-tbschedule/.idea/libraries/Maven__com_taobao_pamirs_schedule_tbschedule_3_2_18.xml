@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: com.taobao.pamirs.schedule:tbschedule:3.2.18">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/taobao/pamirs/schedule/tbschedule/3.2.18/tbschedule-3.2.18.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/taobao/pamirs/schedule/tbschedule/3.2.18/tbschedule-3.2.18-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/taobao/pamirs/schedule/tbschedule/3.2.18/tbschedule-3.2.18-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../技术/tbschedule/trunk/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../../../技术/tbschedule/trunk/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

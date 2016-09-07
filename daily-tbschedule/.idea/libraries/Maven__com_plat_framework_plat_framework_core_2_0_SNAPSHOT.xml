@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.plat.framework:plat-framework-core:2.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/plat/framework/plat-framework-core/2.0-SNAPSHOT/plat-framework-core-2.0-20160427.082650-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/plat/framework/plat-framework-core/2.0-SNAPSHOT/plat-framework-core-2.0-20160427.082650-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/plat/framework/plat-framework-core/2.0-SNAPSHOT/plat-framework-core-2.0-20160427.082650-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
