@@ -11,9 +11,11 @@
     <modules>
         <module>eureka-server</module>
         <module>compute-service</module>
+        <module>config-server</module>
         <module>user-service</module>
         <module>ribbon-consumer</module>
         <module>feign-server</module>
+        <module>config-client</module>
     </modules>
 
     <parent>
