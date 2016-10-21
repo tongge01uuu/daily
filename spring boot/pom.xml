@@ -17,6 +17,8 @@
         <module>feign-server</module>
         <module>config-client</module>
         <module>zuul-server</module>
+        <module>config-client-eureka</module>
+        <module>config-server-eureka</module>
     </modules>
 
     <parent>
