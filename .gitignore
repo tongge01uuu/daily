@@ -26,3 +26,6 @@ bin
 *.log.*
 *.log
 
+#eclipse
+RemoteSystemsTempFiles/
+jeecms/src/com/jeecms/cms/entity/main/hbm/.#Content.hbm.xml.1.2
