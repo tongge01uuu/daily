@@ -8,11 +8,11 @@ import java.util.concurrent.*;
  */
 
 /**
- * CountDownLatch这个类能够使一个线程等待其他线程完成各自的工作后再执行
+ * CountDownLatch这个类能够使一个/多个线程等待其他一个/多个线程完成各自的工作后再执行
  *
  */
 public class CountDownLatchDemo {
-    static final int size = 100;
+    static final int size = 101;
 
     public static void main(String[] args) {
         //CountDownLatch是通过一个计数器来实现的，计数器的初始值为线程的数量
@@ -38,6 +38,7 @@ class TaskWork implements Runnable {
     private final CountDownLatch countDownLatch;
     private static int count = 0;
     private final int id = count++;
+    private static int i=0;
     private static Random random = new Random(47);
 
     public TaskWork(CountDownLatch countDownLatch) {
@@ -57,7 +58,17 @@ class TaskWork implements Runnable {
     }
 
     public void doWork() throws Exception {
-        TimeUnit.MILLISECONDS.sleep(random.nextInt(2000));
+        /**
+         * 并发问题复现
+            i++;
+            Thread.yield();
+            i++;
+            if (i%2!=0)
+            {
+                System.out.println("------------------"+i);
+            }
+         */
+
         System.out.println(this + " task completed " + countDownLatch.getCount());
     }
 
