@@ -1,0 +1,3 @@
+[submodule "spring boot config/config-server"]
+	path = spring boot config/config-server
+	url = https://git.oschina.net/martini/config-server.git
