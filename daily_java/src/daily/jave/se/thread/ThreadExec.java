@@ -4,15 +4,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadExec {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		Thread thread1=new MyThread();
-//		Thread thread2=new MyThread();
+//		ThreadStateTest thread2=new MyThread();
 		Thread thread3=new Thread(new MyRunnable());
 		ExecutorService service=Executors.newFixedThreadPool(2);
 		service.submit(new MyCallable());
 		thread1.start();
 //		thread2.start();
 		ThreadExec.deamonRun();
+		Thread.currentThread().sleep(2000);
 		thread3.start();
 		service.shutdown();
 		
@@ -26,7 +27,7 @@ public class ThreadExec {
 				for (int i = 0; i < 10; i++) {
 					System.out.println(Thread.currentThread().getName()+"---deamon---"+i);
 					try {
-						Thread.currentThread().sleep(1000);
+						Thread.currentThread().sleep(10);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

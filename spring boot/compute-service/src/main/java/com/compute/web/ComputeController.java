@@ -38,7 +38,7 @@ public class ComputeController {
      */
     @ApiOperation(value="获取compute对象", notes="根据入参获取compute")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "参数id", required = true, paramType = "query",dataType = "Integer"),
+            @ApiImplicitParam(name = "id", value = "参数id", required = true, paramType = "path",dataType = "Integer"),
             @ApiImplicitParam(name = "computeVoParam", value = "参数ComputeVo", required = true,paramType = "body",dataType = "ComputeVo")
     })
     @RequestMapping(value = "/add/{id}" ,method = RequestMethod.POST)
