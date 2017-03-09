@@ -53,8 +53,9 @@ public class CalculatorFork extends RecursiveTask<Integer>{
         Long endTime=System.currentTimeMillis();
         System.out.println("common interval:"+(endTime-beginTime));
         System.out.println(common);
+
         beginTime= System.currentTimeMillis();
-        Future<Integer> result=forkJoinPool.submit(new CalculatorFork(0,1000000));
+        Future<Integer> result=forkJoinPool.submit(new CalculatorFork(1,1000001));
         endTime=System.currentTimeMillis();
         System.out.println("fork interval:"+(endTime-beginTime));
         try {
