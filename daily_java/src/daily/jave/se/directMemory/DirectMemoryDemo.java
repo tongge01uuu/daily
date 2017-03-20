@@ -14,6 +14,7 @@ import java.nio.file.WatchEvent;
 public class DirectMemoryDemo {
     public static void main(String[] args) throws Exception{
         unsafeTest();
+        System.out.println("-----------------------");
         byteBufferTest();
     }
 
@@ -44,20 +45,44 @@ public class DirectMemoryDemo {
     {
         Unsafe unsafe=getUnsafeInstance();
         unsafe.allocateMemory(400*1024*1024);
-        Field[] fields=DirectMemoryVo.class.getDeclaredFields();
+
+        System.out.println("获取操作系统位数");
+        //  返回4或8,代表是32位还是64位操作系统。
+        System.out.println(unsafe.addressSize());
+        // 返回32或64,获取操作系统是32位还是64位
+        System.out.println(System.getProperty("sun.arch.data.model"));
+        System.out.println("获取内存地址变量偏移");
+        Field[] fields=DirectMemoryVo.class.getDeclaredFields(); //此处注意与getFields的区别
         System.out.println(fields.length);
+        String fieldName="";
+        String fieldType="";
+        long instanceOffset=0;
+        long staticOffset=0;
+        long base=0;
+        DirectMemoryVo directMemoryVo=new DirectMemoryVo(99,"unsafe");
+        directMemoryVo.setIntValStatic(1000);
+        directMemoryVo.setStrStatic("static unsafe");
         for(Field field:fields)
         {
             field.setAccessible(true);
             if (!Modifier.isStatic(field.getModifiers()))
             {
+                fieldName=field.getName();
+                fieldType=field.getType().getName();
+                //DirectMemoryVo.class.getDeclaredField(fieldName)
+                instanceOffset=unsafe.objectFieldOffset(field);
                 //非静态变量/成员变量
-                System.out.println(unsafe.objectFieldOffset(DirectMemoryVo.class.getDeclaredField(field.getName())));
+                Object obj=unsafe.getObject(directMemoryVo,instanceOffset);
+                System.out.println(String.format("实例变量:%s 内存偏移量：%d 值：%s",fieldName,instanceOffset,fieldType.equals("int")?Integer.parseInt(String.valueOf(obj)):obj));
             }else {
                 //非静态变量/成员变量
                 System.out.println(unsafe.staticFieldOffset(DirectMemoryVo.class.getDeclaredField(field.getName())));
             }
         }
+
+//        System.out.println("获取实例变量的值");
+
+
     }
     public static Unsafe getUnsafeInstance() throws Exception
     {
@@ -72,7 +97,28 @@ public class DirectMemoryDemo {
 class DirectMemoryVo
 {
     private int intVal;
-    static int intValStatic;
+    private static int intValStatic;
     public String str;
-    static String strStatic;
+    private static String strStatic;
+    public DirectMemoryVo(int intVal,String str)
+    {
+        this.intVal=intVal;
+        this.str=str;
+    }
+
+    public static String getStrStatic() {
+        return strStatic;
+    }
+
+    public static void setStrStatic(String strStatic) {
+        DirectMemoryVo.strStatic = strStatic;
+    }
+
+    public static int getIntValStatic() {
+        return intValStatic;
+    }
+
+    public static void setIntValStatic(int intValStatic) {
+        DirectMemoryVo.intValStatic = intValStatic;
+    }
 }
