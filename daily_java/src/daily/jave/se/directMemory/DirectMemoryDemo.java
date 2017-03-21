@@ -1,8 +1,10 @@
 package daily.jave.se.directMemory;
 
+import sun.management.Agent;
 import sun.misc.Unsafe;
 import sun.nio.ch.DirectBuffer;
 
+import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.nio.ByteBuffer;
@@ -12,8 +14,14 @@ import java.nio.file.WatchEvent;
  * Created by yukai on 2017/3/20.
  */
 public class DirectMemoryDemo {
-    public static void main(String[] args) throws Exception{
-        unsafeTest();
+    public static void main(String[] args){
+        Unsafe unsafe=null;
+        try {
+            unsafe=getUnsafeInstance();
+            unsafeTest(unsafe);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("-----------------------");
         byteBufferTest();
     }
@@ -27,7 +35,7 @@ public class DirectMemoryDemo {
             System.out.println(i++);
             //分配直接内存（堆外内存）
             byteBuffer=ByteBuffer.allocateDirect(10*1024*1024);
-
+            System.out.println(byteBuffer);
             /*
              -verbose:gc
              -XX:+PrintGCDetails
@@ -41,10 +49,9 @@ public class DirectMemoryDemo {
             */
         }
     }
-    public static void unsafeTest()throws Exception
+    public static void unsafeTest(Unsafe unsafe)throws Exception
     {
-        Unsafe unsafe=getUnsafeInstance();
-        unsafe.allocateMemory(400*1024*1024);
+        unsafe.allocateMemory(40*1024*1024);
 
         System.out.println("获取操作系统位数");
         //  返回4或8,代表是32位还是64位操作系统。
@@ -58,26 +65,48 @@ public class DirectMemoryDemo {
         String fieldType="";
         long instanceOffset=0;
         long staticOffset=0;
-        long base=0;
         DirectMemoryVo directMemoryVo=new DirectMemoryVo(99,"unsafe");
         directMemoryVo.setIntValStatic(1000);
         directMemoryVo.setStrStatic("static unsafe");
         for(Field field:fields)
         {
             field.setAccessible(true);
-            if (!Modifier.isStatic(field.getModifiers()))
+            fieldName=field.getName();
+            fieldType=field.getType().getName();
+            DirectMemoryVo.class.getDeclaredField(fieldName);
+            Object obj=null;
+            int val=0;
+            boolean isStatic=Modifier.isStatic(field.getModifiers());
+            if (!isStatic)
             {
-                fieldName=field.getName();
-                fieldType=field.getType().getName();
-                //DirectMemoryVo.class.getDeclaredField(fieldName)
+                //非静态变量/成员变量
                 instanceOffset=unsafe.objectFieldOffset(field);
-                //非静态变量/成员变量
-                Object obj=unsafe.getObject(directMemoryVo,instanceOffset);
-                System.out.println(String.format("实例变量:%s 内存偏移量：%d 值：%s",fieldName,instanceOffset,fieldType.equals("int")?Integer.parseInt(String.valueOf(obj)):obj));
+                if (fieldType.equals("int"))
+                {
+//                    unsafe.putInt(instanceOffset,999);
+                    val=unsafe.getInt(directMemoryVo,instanceOffset);
+                }else {
+                    obj=unsafe.getObject(directMemoryVo,instanceOffset);
+                }
             }else {
-                //非静态变量/成员变量
-                System.out.println(unsafe.staticFieldOffset(DirectMemoryVo.class.getDeclaredField(field.getName())));
+                //静态变量
+                instanceOffset=unsafe.staticFieldOffset(field);
+                Object base=unsafe.staticFieldBase(field);
+                if (fieldType.equals("int"))
+                {
+                    val=unsafe.getInt(base,instanceOffset);
+                }else {
+                    obj=unsafe.getObject(base,instanceOffset);
+                }
             }
+
+            System.out.println(String.format("%s变量:%s 内存偏移量：%d 值：%s",
+                    isStatic?"静态":"实例",fieldName,instanceOffset,fieldType.equals("int")?val:obj));
+
+//            System.out.println(String.format("%s变量:%s 内存偏移量：%d 值：%s",
+//                    isStatic?"静态":"实例",fieldName,instanceOffset,fieldType.equals("int")?val:obj));
+
+
         }
 
 //        System.out.println("获取实例变量的值");
