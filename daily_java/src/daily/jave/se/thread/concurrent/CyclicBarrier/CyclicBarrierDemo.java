@@ -48,7 +48,7 @@ public class CyclicBarrierDemo {
 class Runner implements Runnable {
     static AtomicInteger count = new AtomicInteger(0);
     int id = count.get() + 1;
-    Random random = new Random(40);
+    static Random random = new Random(40); //定义成静态的，每次random.nextInt(10000）返回的值会不一样
     private CyclicBarrier cyclicBarrier;
     private List result;
 
