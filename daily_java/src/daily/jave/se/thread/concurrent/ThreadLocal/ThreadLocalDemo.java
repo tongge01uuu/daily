@@ -16,6 +16,8 @@ import java.util.concurrent.Executors;
  * 2、里面存储着,以threadLocal为key,放入threadLocal的数据为值的（Map）ThreadLocalMap
  * 3、线程的ThreadLocalMap里保存了一个threadLocal携带的数据的副本，每个线程都是独立拥有该数据副本
  * 4、线程ThreadLocalMap可以保持多个以threadLocal为key的键值对
+ * 5、线程的threadLocals初始化在threadlocal的方法中进行，如下：
+ *      thread.threadLocals = new ThreadLocalMap(threadLocal, firstValue);
  */
 public class ThreadLocalDemo {
     static ThreadLocal<Integer> threadLocal1 =new MyThreadLocal<>();
