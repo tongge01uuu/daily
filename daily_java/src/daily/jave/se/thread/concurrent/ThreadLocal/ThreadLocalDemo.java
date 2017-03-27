@@ -12,7 +12,8 @@ import java.util.concurrent.Executors;
  * 当很多线程需要多次使用同一个对象，并且需要该对象具有相同初始化值的时候最适合使用ThreadLocal。
  *
  * 原理：
- * 1、每个线程会有一个ThreadLocal.ThreadLocalMap threadLocals变量
+ * 1、每个线程会有一个ThreadLocal.ThreadLocalMap threadLocals变量.
+*    每个Thread对象内部都维护了一个ThreadLocalMap这样一个ThreadLocal的Map，可以存放若干个ThreadLocal
  * 2、里面存储着,以threadLocal为key,放入threadLocal的数据为值的（Map）ThreadLocalMap
  * 3、线程的ThreadLocalMap里保存了一个threadLocal携带的数据的副本，每个线程都是独立拥有该数据副本
  * 4、线程ThreadLocalMap可以保持多个以threadLocal为key的键值对
