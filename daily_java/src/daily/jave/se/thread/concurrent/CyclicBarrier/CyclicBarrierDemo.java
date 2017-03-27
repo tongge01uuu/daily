@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
         int count=5;
-        List result = new ArrayList();
+        final List result = new ArrayList();
         CyclicBarrier cyclicBarrier = new CyclicBarrier(count, new Runnable() {
             @Override
             public void run() {
