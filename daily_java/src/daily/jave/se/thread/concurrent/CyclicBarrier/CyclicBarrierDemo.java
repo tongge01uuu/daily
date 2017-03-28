@@ -13,6 +13,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by phantom on 2017/3/5.
+ * 用于一组线程互相等待至某个状态，然后这一组线程再同时执行；
+ *
+ * 第一个版本比较常用，用来挂起当前线程，直至所有线程都到达barrier状态再同时执行后续任务；
+ *
+ * 第二个版本是让这些线程等待至一定的时间，如果还有线程没有到达barrier状态就直接让到达barrier的线程执行后续任务。
  */
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
@@ -72,7 +77,7 @@ class Runner implements Runnable {
             e.printStackTrace();
         } finally {
         }
-
+        System.out.println(String.format(" %d 高呼：比赛结束，可以休息咯", id));
     }
 }
 

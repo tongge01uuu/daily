@@ -2,6 +2,8 @@ package daily.jave.se.thread.concurrent.CountDownLatch;
 
 import java.util.Random;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by phantom on 2017/3/4.
@@ -9,10 +11,11 @@ import java.util.concurrent.*;
 
 /**
  * CountDownLatch这个类能够使一个/多个线程等待其他一个/多个线程完成各自的工作后再执行
+ * 用于某个线程A等待若干个其他线程执行完任务之后，它才执行；
  *
  */
 public class CountDownLatchDemo {
-    static final int size = 101;
+    static final int size = 5;
 
     public static void main(String[] args) {
         //CountDownLatch是通过一个计数器来实现的，计数器的初始值为线程的数量
@@ -40,19 +43,24 @@ class TaskWork implements Runnable {
     private final int id = count++;
     private static int i=0;
     private static Random random = new Random(47);
-
+    static final Lock lock=new ReentrantLock();
     public TaskWork(CountDownLatch countDownLatch) {
         this.countDownLatch = countDownLatch;
     }
 
     @Override
     public void run() {
+//        Lock lock=new ReentrantLock(); 定义在这里，再看下并发效果，注意观察countDownLatch.getCount()的计数
         try {
+            lock.lock();
             doWork();
             //类似notify，只不过需要等count计数为0时，wait的线程才能启动
             countDownLatch.countDown();
         } catch (Exception e) {
             System.out.println(this + "task interrupted");
+        }finally {
+            lock.unlock();
+
         }
 
     }
@@ -92,7 +100,7 @@ class WaitingWork implements Runnable {
     public void run() {
         try {
             countDownLatch.await();
-            System.out.println(this + " latch barrier passed " + countDownLatch.getCount());
+            System.out.println(this + " 计数器结束 " + countDownLatch.getCount());
         } catch (Exception e) {
             System.out.println(this + " waiting task interrupted");
         }
