@@ -26,6 +26,10 @@ public class SourceObjectServiceImpl implements SourceObjectService
         System.out.println(String.format("执行目标对象：%s（%s）的方法:%s",className,classInfo,methodName));
     }
 
+    /**
+     * 获取调用的方法和类的信息
+     * @return
+     */
     public static String getTraceInfo(){
         StringBuffer sb = new StringBuffer();
 
