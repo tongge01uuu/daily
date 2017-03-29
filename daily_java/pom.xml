@@ -14,7 +14,16 @@
             <artifactId>cglib-nodep</artifactId>
             <version>3.2.5</version>
         </dependency>
-
+        <!-- 动态代理的时候单独导入cglib（没有asm）不能实现动态代理，cglib和cglib-nodep版本冲突时也会有问题，
+            所以直接单独引用cglib-nodep即可
+        -->
+        <!--
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
