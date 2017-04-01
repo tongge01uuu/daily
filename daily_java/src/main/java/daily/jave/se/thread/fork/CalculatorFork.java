@@ -22,8 +22,8 @@ public class CalculatorFork extends RecursiveTask<Integer>{
     @Override
     protected Integer compute() {
         int sum = 0;
-        if(Math.abs(start - end) < THRESHOLD){
-            for(int i = start; i< end;i++){
+        if(end-start <THRESHOLD){
+            for(int i = start; i<= end;i++){
                 sum += i;
             }
         }else{
@@ -31,10 +31,8 @@ public class CalculatorFork extends RecursiveTask<Integer>{
             CalculatorFork left = new CalculatorFork(start, middle);
             CalculatorFork right = new CalculatorFork(middle + 1, end);
             ForkJoinTask leftTask=left.fork();
-            logException(leftTask);
+//            logException(leftTask);
             ForkJoinTask rightTask=right.fork();
-            logException(rightTask);
-            System.out.println("left:"+left.join() +" right:"+ right.join()+" sum: "+sum);
             sum = left.join() + right.join();
         }
         return sum;
@@ -50,7 +48,7 @@ public class CalculatorFork extends RecursiveTask<Integer>{
     }
     public Integer commonCompute(){
         int sum = 0;
-        for(int i = start; i< end;i++){
+        for(int i = start; i<= end;i++){
             sum += i;
         }
         return sum;
@@ -59,13 +57,13 @@ public class CalculatorFork extends RecursiveTask<Integer>{
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool=new ForkJoinPool();
         Long beginTime= System.currentTimeMillis();
-        Integer common=new CalculatorFork(0,1000000).commonCompute();
+        Integer common=new CalculatorFork(0,1000001).commonCompute();
         Long endTime=System.currentTimeMillis();
         System.out.println("common interval:"+(endTime-beginTime));
         System.out.println(common);
 
         beginTime= System.currentTimeMillis();
-        Future<Integer> result=forkJoinPool.submit(new CalculatorFork(1,1000001));
+        Future<Integer> result=forkJoinPool.submit(new CalculatorFork(0,1000001));
         endTime=System.currentTimeMillis();
         System.out.println("fork interval:"+(endTime-beginTime));
         try {
