@@ -1,14 +1,15 @@
-package test.thread;
+package test.java.thread;
 
 import daily.jave.se.thread.MyCallable;
-import daily.jave.se.thread.MyRunnable;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by yukai on 2017/2/20.
  */
-public class ThreadTest{
+public class ThreadTest {
 
     public static void main(String[] args) throws Exception {
         ThreadTest.callableTest();
