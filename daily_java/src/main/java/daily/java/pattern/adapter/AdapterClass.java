@@ -15,9 +15,10 @@ package daily.java.pattern.adapter;
  */
 public class AdapterClass {
     public static void main(String[] args) {
-        ClassAdapter adapter=new ClassAdapter();
-        adapter.operation1();
-        adapter.operation2();
+        //ClassAdapters是老系统在用接口，需要兼容进Adaptee功能
+        Target target=new ClassAdapter();
+        target.operation1();
+        target.operation2();
     }
 }
 class ClassAdapter extends Adaptee implements Target
