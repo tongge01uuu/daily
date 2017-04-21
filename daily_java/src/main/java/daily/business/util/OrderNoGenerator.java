@@ -1,6 +1,7 @@
 package daily.business.util;
 
 import daily.business.util.rrd.util.DateTools;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.DateUtil;
 
 import java.util.Date;
@@ -44,9 +45,9 @@ public class OrderNoGenerator {
             Future futureTask2=executor.submit(callable2);
             Future futureTask3=executor.submit(callable3);
             try {
-                System.out.println(futureTask1.get());
-                System.out.println(futureTask2.get());
-                System.out.println(futureTask3.get());
+                System.out.println(String.format("uuid orderNo:%s length:%s",futureTask1.get(), String.valueOf(futureTask1.get()).length()));
+                System.out.println(String.format("normal orderNo:%s length:%s",futureTask2.get(), String.valueOf(futureTask2.get()).length()));
+                System.out.println(String.format("snowflakeId orderNo:%s length:%s",futureTask2.get(), String.valueOf(futureTask2.get()).length()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
