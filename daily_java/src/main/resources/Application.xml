@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop
+                            http://www.springframework.org/schema/aop/spring-aop.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="daily.spring.aspect.xml"/>
+    <aop:aspectj-autoproxy/>
+
+
+    <bean id="normalBusiness" class="daily.spring.aspect.annotation.NormalBusiness"/>
+    <bean id="aspect" class="daily.spring.aspect.declarative.Aspect"/>
+    <bean id="aspectAddBusiness" class="daily.spring.aspect.declarative.AspectAddBusiness"/>
+    <aop:config>
+        <aop:aspect id="aspect" ref="aspect">
+            <aop:pointcut id="normalBusiness"
+                          expression="execution(* daily.spring.aspect.declarative.NormalBusiness.*(..))" />
+            <aop:before method="beforeBusiness" pointcut-ref="normalBusiness"/>
+            <aop:after method="afterBusiness" pointcut-ref="normalBusiness"/>
+            <aop:after-returning method="returnBusiness" pointcut-ref="normalBusiness"/>
+            <aop:after-throwing method="throwBusiness" pointcut-ref="normalBusiness"/>
+            <aop:around method="aroundBusiness" pointcut-ref="normalBusiness"/>
+        </aop:aspect>
+        <aop:aspect id="aspect" ref="aspect">
+            <aop:pointcut id="normalBusinessWithParam"
+                          expression="execution(* daily.spring.aspect.declarative.NormalBusiness.*(int)) and args(methodParam)" />
+            <aop:before method="beforeBusinessWithParam" pointcut-ref="normalBusinessWithParam"/>
+        </aop:aspect>
+        <aop:aspect>
+            <aop:declare-parents types-matching="daily.spring.aspect.declarative.NormalBusiness+"
+                                 implement-interface="daily.spring.aspect.declarative.PlusBusiness"
+                                 default-impl="daily.spring.aspect.declarative.PlusBusinessImpl"
+                                 />
+        </aop:aspect>
+    </aop:config>
+</beans>
