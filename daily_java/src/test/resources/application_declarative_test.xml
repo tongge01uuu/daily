@@ -17,13 +17,13 @@
     <aop:config>
         <aop:aspect id="aspect" ref="aspect">
             <!-- 注意：此处PointCut的id不能与上文出现过的bean id重名，不然在Autowired 的时候会出现异常 -->
-            <aop:pointcut id="normalBusiness"
+            <aop:pointcut id="normalBusinessPointCut"
                           expression="execution(* daily.spring.aspect.declarative.NormalBusiness.*(..))" />
-            <aop:before method="beforeBusiness" pointcut-ref="normalBusiness"/>
-            <aop:after method="afterBusiness" pointcut-ref="normalBusiness"/>
-            <aop:after-returning method="returnBusiness" pointcut-ref="normalBusiness"/>
-            <aop:after-throwing method="throwBusiness" pointcut-ref="normalBusiness"/>
-            <aop:around method="aroundBusiness" pointcut-ref="normalBusiness"/>
+            <aop:before method="beforeBusiness" pointcut-ref="normalBusinessPointCut"/>
+            <aop:after method="afterBusiness" pointcut-ref="normalBusinessPointCut"/>
+            <aop:after-returning method="returnBusiness" pointcut-ref="normalBusinessPointCut"/>
+            <aop:after-throwing method="throwBusiness" pointcut-ref="normalBusinessPointCut"/>
+            <aop:around method="aroundBusiness" pointcut-ref="normalBusinessPointCut"/>
         </aop:aspect>
         <aop:aspect id="aspect" ref="aspect">
             <aop:pointcut id="normalBusinessWithParam"

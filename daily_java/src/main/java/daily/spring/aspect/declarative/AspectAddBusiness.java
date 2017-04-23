@@ -9,15 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by phantom on 2017/4/6.
  */
-@Component
-@Aspect
 public class AspectAddBusiness {
     private static final Logger logger= LoggerFactory.getLogger(AspectAddBusiness.class);
-
-//    @Pointcut("execution(** daily.spring.aspect.annotation.NormalBusiness.*(..))")
-//    public void business(){};
-
-    @DeclareParents(value = "daily.spring.aspect.declarative.NormalBusiness+",
-                    defaultImpl =PlusBusinessImpl.class )
     private PlusBusiness plusBusiness;
 }

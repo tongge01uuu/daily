@@ -24,7 +24,7 @@ public class AnnotationConfig {
         return new Aspect();
     }
     @Bean
-    public AspectAddBusiness AspectOfAspect()
+    public AspectAddBusiness AspectAddBusiness()
     {
         return new AspectAddBusiness();
     }
