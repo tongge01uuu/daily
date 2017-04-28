@@ -10,7 +10,11 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by phantom on 2017/3/5.
+ *
+ * 操作ReentrantLock的加锁（lock）和解锁（unlock）必须是针对同一个ReentrantLock对象，
+ * 要是new 两个ReetrantLock来分别完成对同一资源的加锁和解锁是没有意义的。
  */
+
 public class LockDemo {
 
     public static void main(String[] args) {
