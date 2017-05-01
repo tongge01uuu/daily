@@ -13,7 +13,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="web"/>
     <!-- 属性文件用pom <filters> 加载-->
-    <!--<context:property-placeholder location="classpath:config-dev.properties" />-->
+    <context:property-placeholder location="classpath:config-dev.properties" />
     <aop:aspectj-autoproxy/>
 
     <import resource="spring-mybatis.xml"/>

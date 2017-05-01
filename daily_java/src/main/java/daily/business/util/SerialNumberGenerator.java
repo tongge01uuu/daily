@@ -48,6 +48,14 @@ public class SerialNumberGenerator {
         return prefix+format(date);
     }
 
+    public static String generatorSerialNumber(String prefix,Integer workID,Date date)
+    {
+        StringBuffer result=new StringBuffer();
+        String orderNo=generatorSerialNumber(prefix,date);
+        //TODO workID缓存到本地或者redis
+        result.append(workID).append(orderNo);
+        return result.toString();
+    }
     public static String generatorSerialNumber(String prefix,Date date)
     {
         String serialNumber=null;

@@ -31,7 +31,6 @@ public class ZookeeperUtils {
     private static final String COUNTR_NODE="/counter";
 
 
-
     public static void zookeeperTest()throws Exception{
         // 创建一个与服务器的连接
         ZooKeeper zk;
