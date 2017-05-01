@@ -188,6 +188,7 @@ public class ZookeeperUtils {
             if(client.checkExists().forPath(COUNTR_NODE)==null)
             {
                 //不存在该zk节点 则手动创建
+                System.out.println("---创建节点"+COUNTR_NODE);
                 client.create().forPath(COUNTR_NODE,COUNTR_NODE.getBytes());
             }
             baseCount.start();
