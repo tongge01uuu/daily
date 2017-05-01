@@ -8,6 +8,8 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.atomic.AtomicValue;
 import org.apache.curator.framework.recipes.atomic.DistributedAtomicInteger;
 import org.apache.curator.framework.recipes.atomic.DistributedAtomicLong;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
+import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.framework.recipes.shared.SharedCount;
 import org.apache.curator.framework.recipes.shared.SharedCountListener;
 import org.apache.curator.framework.recipes.shared.SharedCountReader;
@@ -191,6 +193,7 @@ public class ZookeeperUtils {
                 System.out.println("---创建节点"+COUNTR_NODE);
                 client.create().forPath(COUNTR_NODE,COUNTR_NODE.getBytes());
             }
+            System.out.println("-----------"+new String(client.getData().forPath(COUNTR_NODE)));
             baseCount.start();
 
             int count=baseCount.getCount();
@@ -247,5 +250,27 @@ class SharedCounterListener implements SharedCountListener {
     @Override
     public void stateChanged(CuratorFramework curatorFramework, ConnectionState connectionState) {
         System.out.println(String.format("状态改变：%s",connectionState));
+    }
+}
+
+/**
+ * 监听子节点的状态
+ */
+class PathChildrenListener implements PathChildrenCacheListener
+{
+    @Override
+    public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+        switch (event.getType())
+        {
+            case CHILD_ADDED:{}
+            case CHILD_REMOVED:{}
+            case CHILD_UPDATED:{}
+            case CONNECTION_LOST:{}
+            case CONNECTION_SUSPENDED:{}
+
+        }
+
+
+
     }
 }
