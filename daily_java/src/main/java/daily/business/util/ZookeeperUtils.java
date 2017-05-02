@@ -2,6 +2,7 @@ package daily.business.util;
 
 import com.alibaba.druid.support.json.JSONParser;
 import com.alibaba.druid.support.json.JSONUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -17,6 +18,11 @@ import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.retry.RetryOneTime;
 import org.apache.zookeeper.*;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.net.InetAddress;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -178,6 +184,10 @@ public class ZookeeperUtils {
         return result;
     }
 
+    /**
+     * 完善版  zk取服务计数
+     * @return
+     */
     public static Integer getCounterNumberWithListener()
     {
         Integer result=null;
@@ -186,6 +196,7 @@ public class ZookeeperUtils {
 
         SharedCount baseCount=new SharedCount(client,COUNTR_NODE,1);
         baseCount.addListener(new SharedCounterListener());
+
         try {
             if(client.checkExists().forPath(COUNTR_NODE)==null)
             {
@@ -193,18 +204,43 @@ public class ZookeeperUtils {
                 System.out.println("---创建节点"+COUNTR_NODE);
                 client.create().forPath(COUNTR_NODE,COUNTR_NODE.getBytes());
             }
-            System.out.println("-----------"+new String(client.getData().forPath(COUNTR_NODE)));
-            baseCount.start();
+            InetAddress address=InetAddress.getLocalHost();
+            Integer pid=getPid();
+            String path=COUNTR_NODE+"/"+address.getHostAddress()+" "+pid;
 
+            String zkTime=null;
+            String timesnap= String.valueOf(new Date().getTime());
+
+            baseCount.start();
             int count=baseCount.getCount();
-            boolean isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
-            while (!isSuccess)
+            if (client.checkExists().forPath(path)==null)
             {
-                //并发导致版本不一致，设置失败重试，直到成功
-                isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
+                //时间戳写入zk节点
+                client.create().forPath(path,timesnap.getBytes("utf-8"));
+
+                //workId计数+1
+
+                boolean isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
+                while (!isSuccess)
+                {
+                    //并发导致版本不一致，设置失败重试，直到成功
+                    isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
+                }
+                result=baseCount.getCount();
+                System.out.println(String.format("listener-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),count,result));
+
+            }else
+            {
+                //workId计数不变
+                result=count;
+                zkTime=new String(client.getData().forPath(path));
+                if (NumberUtils.compare(Long.parseLong(zkTime),Long.parseLong(timesnap))>0)
+                {
+                    System.out.println("ERROR：zk端时间大于本机时间，本机时钟可能被回拨");
+                    return null;
+                }
             }
-            result=baseCount.getCount();
-            System.out.println(String.format("listener-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),count,result));
+            System.out.println(String.format("------获取zk节点：%s 数据：%s",path,new String(client.getData().forPath(path))));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -215,7 +251,17 @@ public class ZookeeperUtils {
         return result;
     }
 
-
+    private static int getPid() {
+        //获取进程的PID
+        RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
+        String name = runtime.getName(); // format: "pid@hostname"
+        System.out.println(name);
+        try {
+            return Integer.parseInt(name.substring(0, name.indexOf('@')));
+        } catch (Exception e) {
+            return -1;
+        }
+    }
     public static void main(String[] args) {
         try {
 //            test();
