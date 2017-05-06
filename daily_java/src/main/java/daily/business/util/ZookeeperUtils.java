@@ -17,6 +17,8 @@ import org.apache.curator.framework.recipes.shared.SharedCountReader;
 import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.retry.RetryOneTime;
 import org.apache.zookeeper.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
@@ -32,6 +34,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Created by phantom on 2017/4/30.
  */
 public class ZookeeperUtils {
+    private static final Logger LOGGER= LoggerFactory.getLogger(ZookeeperUtils.class);
+
     private static final int CONNECTION_TIMEOUT=10000;
     private static final int CLIENT_PORT=2181;
     private static final int POOL_SIZE=10;
@@ -46,14 +50,13 @@ public class ZookeeperUtils {
                 CONNECTION_TIMEOUT, new Watcher() {
             // 监控所有被触发的事件
             public void process(WatchedEvent event) {
-                System.out.println("已经触发了" + event.getType() + "事件！");
+                LOGGER.info("已经触发了" + event.getType() + "事件！");
             }
         });
         String node1=zk.create("/1","1".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT_SEQUENTIAL);
-        System.out.println(String.format("节点 : %s 存储数据 : %s",node1,new String(zk.getData(node1,false,null))));
+        LOGGER.info(String.format("节点 : %s 存储数据 : %s",node1,new String(zk.getData(node1,false,null))));
         String node2=zk.create("/1","1".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT_SEQUENTIAL);
-        System.out.println(String.format("节点 : %s 存储数据 : %s",node2,new String(zk.getData(node2,false,null))));
-
+        LOGGER.info(String.format("节点 : %s 存储数据 : %s",node2,new String(zk.getData(node2,false,null))));
 
         // 创建一个目录节点
         zk.create("/testRootPath", "testRootData".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,
@@ -61,16 +64,16 @@ public class ZookeeperUtils {
         // 创建一个子目录节点
         zk.create("/testRootPath/testChildPathOne", "testChildDataOne".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
-        System.out.println(new String(zk.getData("/testRootPath",false,null)));
+        LOGGER.info(new String(zk.getData("/testRootPath",false,null)));
         // 取出子目录节点列表
-        System.out.println(zk.getChildren("/testRootPath",true));
+        LOGGER.info(String.valueOf(zk.getChildren("/testRootPath",true)));
         // 修改子目录节点数据
         zk.setData("/testRootPath/testChildPathOne","modifyChildDataOne".getBytes(),-1);
-        System.out.println("目录节点状态：["+zk.exists("/testRootPath",true)+"]");
+        LOGGER.info("目录节点状态：["+zk.exists("/testRootPath",true)+"]");
         // 创建另外一个子目录节点
         zk.create("/testRootPath/testChildPathTwo", "testChildDataTwo".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
-        System.out.println(new String(zk.getData("/testRootPath/testChildPathTwo",true,null)));
+        LOGGER.info(new String(zk.getData("/testRootPath/testChildPathTwo",true,null)));
         // 删除子目录节点
         zk.delete("/testRootPath/testChildPathTwo",-1);
         zk.delete("/testRootPath/testChildPathOne",-1);
@@ -97,7 +100,7 @@ public class ZookeeperUtils {
             final DistributedAtomicLong distributedAtomicLong=new DistributedAtomicLong(client,COUNTR_NODE,new RetryOneTime(5));
             if (!isExist.get())
             {
-                System.out.println(String.format("节点：%s 不存在 初始化计数。。。。",COUNTR_NODE));
+                LOGGER.info(String.format("节点：%s 不存在 初始化计数。。。。",COUNTR_NODE));
                 distributedAtomicLong.trySet(1l);
             }
             ExecutorService executorService= Executors.newCachedThreadPool();
@@ -112,12 +115,12 @@ public class ZookeeperUtils {
                             AtomicValue<Long> value=distributedAtomicLong.increment();
                             while (!value.succeeded())
                             {
-                                System.out.println(String.format("-------------线程：%s  请求失败 ：%s retry ",Thread.currentThread().getName(),value.succeeded()));
+                                LOGGER.info(String.format("-------------线程：%s  请求失败 ：%s retry ",Thread.currentThread().getName(),value.succeeded()));
                                 value=distributedAtomicLong.increment();
                             }
                             if (value.succeeded())
                             {
-                                System.out.println(String.format("-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),value.preValue(),value.postValue()));
+                                LOGGER.info(String.format("-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),value.preValue(),value.postValue()));
                             }
 
 
@@ -125,7 +128,7 @@ public class ZookeeperUtils {
                             e.printStackTrace();
                         }finally {
                             countDownLatch.countDown();
-                            System.out.println("-------------"+countDownLatch.getCount());
+                            LOGGER.info("-------------"+countDownLatch.getCount());
                         }
                     }
                 });
@@ -133,7 +136,7 @@ public class ZookeeperUtils {
             }
 
             countDownLatch.await();
-            System.out.println("-------------主线程等待结束");
+            LOGGER.info("-------------主线程等待结束");
             executorService.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,20 +162,20 @@ public class ZookeeperUtils {
             DistributedAtomicInteger distributedAtomicInteger=new DistributedAtomicInteger(client,COUNTR_NODE,new RetryOneTime(5));
             if (!isExist.get())
             {
-                System.out.println(String.format("节点：%s 不存在 初始化计数。。。。",COUNTR_NODE));
+                LOGGER.info(String.format("节点：%s 不存在 初始化计数。。。。",COUNTR_NODE));
                 distributedAtomicInteger.trySet(1);
             }
 
             AtomicValue<Integer> value=distributedAtomicInteger.increment();
             while (!value.succeeded())
             {
-                System.out.println(String.format("-------------线程：%s  请求失败 ：%s retry ",Thread.currentThread().getName(),value.succeeded()));
+                LOGGER.info(String.format("-------------线程：%s  请求失败 ：%s retry ",Thread.currentThread().getName(),value.succeeded()));
                 value=distributedAtomicInteger.increment();
             }
             if (value.succeeded())
             {
                 result=value.postValue();
-                System.out.println(String.format("-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),value.preValue(),result));
+                LOGGER.info(String.format("-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),value.preValue(),result));
             }
 
         } catch (Exception e) {
@@ -201,13 +204,13 @@ public class ZookeeperUtils {
             if(client.checkExists().forPath(COUNTR_NODE)==null)
             {
                 //不存在该zk节点 则手动创建
-                System.out.println("---创建节点"+COUNTR_NODE);
+                LOGGER.info("---创建节点"+COUNTR_NODE);
                 client.create().forPath(COUNTR_NODE,COUNTR_NODE.getBytes());
             }
             InetAddress address=InetAddress.getLocalHost();
             Integer pid=getPid();
             String path=COUNTR_NODE+"/"+address.getHostAddress()+" "+pid;
-
+            String countPath=COUNTR_NODE+"/"+address.getHostAddress()+" "+pid+"/count";
             String zkTime=null;
             String timesnap= String.valueOf(new Date().getTime());
 
@@ -227,20 +230,23 @@ public class ZookeeperUtils {
                     isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
                 }
                 result=baseCount.getCount();
-                System.out.println(String.format("listener-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),count,result));
+                //计数写入节点下的子节点做记录
+                client.create().forPath(countPath,String.valueOf(result).getBytes());
+                LOGGER.info(String.format("listener-------------线程：%s 前值：%s 后值：%s",Thread.currentThread().getName(),count,result));
 
             }else
             {
                 //workId计数不变
+                count=Integer.parseInt(new String(client.getData().forPath(countPath)));
                 result=count;
                 zkTime=new String(client.getData().forPath(path));
                 if (NumberUtils.compare(Long.parseLong(zkTime),Long.parseLong(timesnap))>0)
                 {
-                    System.out.println("ERROR：zk端时间大于本机时间，本机时钟可能被回拨");
+                    LOGGER.info("ERROR：zk端时间大于本机时间，本机时钟可能被回拨");
                     return null;
                 }
             }
-            System.out.println(String.format("------获取zk节点：%s 数据：%s",path,new String(client.getData().forPath(path))));
+            LOGGER.info(String.format("------获取zk节点：%s 数据：%s",path,new String(client.getData().forPath(path))));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -255,7 +261,7 @@ public class ZookeeperUtils {
         //获取进程的PID
         RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
         String name = runtime.getName(); // format: "pid@hostname"
-        System.out.println(name);
+        LOGGER.info(name);
         try {
             return Integer.parseInt(name.substring(0, name.indexOf('@')));
         } catch (Exception e) {
@@ -276,7 +282,7 @@ public class ZookeeperUtils {
                         return getCounterNumber();
                     }
                 });
-                System.out.println(future.get());
+                LOGGER.info(String.valueOf(future.get()));
             }
 
             executorService.shutdown();
@@ -286,16 +292,16 @@ public class ZookeeperUtils {
     }
 }
 class SharedCounterListener implements SharedCountListener {
-
+    private static final Logger LOGGER= LoggerFactory.getLogger(SharedCounterListener.class);
 
     @Override
     public void countHasChanged(SharedCountReader sharedCountReader, int i) throws Exception {
-        System.out.println(String.format("计数数值变为：%s",i));
+        LOGGER.info(String.format("计数数值变为：%s",i));
     }
 
     @Override
     public void stateChanged(CuratorFramework curatorFramework, ConnectionState connectionState) {
-        System.out.println(String.format("状态改变：%s",connectionState));
+        LOGGER.info(String.format("状态改变：%s",connectionState));
     }
 }
 
@@ -315,8 +321,5 @@ class PathChildrenListener implements PathChildrenCacheListener
             case CONNECTION_SUSPENDED:{}
 
         }
-
-
-
     }
 }

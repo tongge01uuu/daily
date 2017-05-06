@@ -74,6 +74,7 @@ public class SerialNumberGenerator {
                 }
             }else
             {
+                number=1;
                 serialNumber=getSerialNumber(prefix,date,number);
             }
             serialNumberMap.put(key,serialNumber);
