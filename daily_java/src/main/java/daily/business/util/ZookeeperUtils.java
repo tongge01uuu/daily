@@ -227,6 +227,7 @@ public class ZookeeperUtils {
                 while (!isSuccess)
                 {
                     //并发导致版本不一致，设置失败重试，直到成功
+                    count=baseCount.getCount();
                     isSuccess=baseCount.trySetCount(baseCount.getVersionedValue(),count+1);
                 }
                 result=baseCount.getCount();
