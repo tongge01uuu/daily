@@ -22,6 +22,7 @@ public class WebInit implements WebApplicationInitializer {
             ServletRegistration.Dynamic servletRegistration=servletContext.addServlet("dispatcher",new DispatcherServlet(context));
             servletRegistration.addMapping("/");
             servletRegistration.setLoadOnStartup(1);
+            servletRegistration.setAsyncSupported(true); //开启与页面交互的异步方法支持
         } catch (Exception e) {
             e.printStackTrace();
         }
