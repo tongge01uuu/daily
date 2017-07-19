@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by yukai on 2017/6/27.
+ * Created by yukai on 2017/6/27..
+ * 拦截器-实现方式-1-实现HandlerInterceptor
  */
 public class MvcInterceptor implements HandlerInterceptor {
     @Override

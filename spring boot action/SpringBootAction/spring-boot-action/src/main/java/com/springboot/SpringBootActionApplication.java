@@ -9,9 +9,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 
 @Controller
-@SpringBootApplication
+@SpringBootApplication //包含了@Configuration的注解
 @PropertySource({"properties/db.properties","properties/hello.properties"})
 //@ComponentScan("com.springboot")
 public class SpringBootActionApplication {

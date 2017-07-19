@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by yukai on 2017/6/27.
+ * 拦截器-实现方式-2-继承HandlerInterceptorAdapter
+ * 计算request耗时
  */
 public class MvcInterceptorExtendsAdapter extends HandlerInterceptorAdapter{
     private final static Logger logger= LoggerFactory.getLogger(MvcInterceptorExtendsAdapter.class);
