@@ -1,11 +1,9 @@
-package com.springboot.websocket;
+package com.springboot.websocket.broadcast;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -23,7 +21,7 @@ public class StompServerController {
     }
 
     @MessageMapping("/greeting/obj")
-    @SendTo("/stomp/topic/greeting/obj")
+    @SendTo("/stomp/topic/greeting/obj") // 对应WebSocketConfig.configureMessageBroker 中的消息代理地址前缀
     public Greeting welcome(Greeting greeting)
     {
         return greeting;

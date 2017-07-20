@@ -1,4 +1,4 @@
-package com.springboot.websocket;
+package com.springboot.websocket.broadcast;
 
 /**
  * Created by yukai on 2017/7/19.
