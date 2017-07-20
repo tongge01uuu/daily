@@ -13,7 +13,7 @@ function connect() {
     stompClient.connect({}, function(frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/stomp/topic/greeting', function(respnose){ //2
+        stompClient.subscribe('/stomp/topic/greeting/obj', function(respnose){ //2
             showResponse(respnose.body);
         });
     });
@@ -31,7 +31,10 @@ function disconnect() {
 function sendName() {
     var name = $('#name').val();
     //3
-    stompClient.send("/stomp/server/greeting", {}, JSON.stringify({
+    stompClient.send("/stomp/server/greeting/obj", {}, JSON.stringify({
+
+        'from': 'fromuser',
+        'to': 'touser',
         'message': name
     }));
 }

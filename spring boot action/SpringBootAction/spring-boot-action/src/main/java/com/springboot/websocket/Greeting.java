@@ -8,8 +8,10 @@ public class Greeting {
     private String to;
     private String message;
 
-    public Greeting(String from) {
-        this.from = from;
+    /**
+     * 无参数构造函数必须不能省掉，不然前端向后端传参序列化失败
+     */
+    public Greeting() {
     }
 
     public Greeting(String from, String message, String to) {

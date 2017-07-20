@@ -22,4 +22,11 @@ public class StompServerController {
         return new Greeting(new Date().toString(),greeting.getMessage(),new Date().toString());
     }
 
+    @MessageMapping("/greeting/obj")
+    @SendTo("/stomp/topic/greeting/obj")
+    public Greeting welcome(Greeting greeting)
+    {
+        return greeting;
+    }
+
 }
