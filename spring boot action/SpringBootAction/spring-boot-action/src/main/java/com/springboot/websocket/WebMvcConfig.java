@@ -1,4 +1,4 @@
-package com.springboot.websocket.broadcast;
+package com.springboot.websocket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -21,5 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
          * ThymeleafProperties
          */
         registry.addViewController("/greeting").setViewName("/websocket/broadcast/websocket_greeting");
+        registry.addViewController("/chat").setViewName("/websocket/p2p/chat");
+        registry.addViewController("/login").setViewName("/login");
     }
 }

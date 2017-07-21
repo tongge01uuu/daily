@@ -8,12 +8,12 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('/stomp/endpoint'); //1
+    var socket = new SockJS('/stomp/endpoint/broadcast'); //1
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/stomp/topic/greeting/obj', function(respnose){ //2
+        stompClient.subscribe('/stomp/topic/broadcast/greeting/obj', function(respnose){ //2
             showResponse(respnose.body);
         });
     });

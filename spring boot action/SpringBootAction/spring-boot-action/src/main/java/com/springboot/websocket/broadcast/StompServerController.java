@@ -14,16 +14,17 @@ import java.util.Date;
 public class StompServerController {
 
     @MessageMapping("/greeting")
-    @SendTo("/stomp/topic/greeting")
+    @SendTo("/stomp/topic/broadcast/greeting")
     public Greeting welcome(GreetingMessage greeting)
     {
         return new Greeting(new Date().toString(),greeting.getMessage(),new Date().toString());
     }
 
     @MessageMapping("/greeting/obj")
-    @SendTo("/stomp/topic/greeting/obj") // 对应WebSocketConfig.configureMessageBroker 中的消息代理地址前缀
+    @SendTo("/stomp/topic/broadcast/greeting/obj") // 对应WebSocketConfig.configureMessageBroker 中的消息代理地址前缀
     public Greeting welcome(Greeting greeting)
     {
+        greeting.setMessage("response:"+greeting.getMessage());
         return greeting;
     }
 
