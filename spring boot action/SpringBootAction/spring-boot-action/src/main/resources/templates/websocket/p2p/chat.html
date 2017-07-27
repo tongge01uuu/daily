@@ -23,6 +23,7 @@
         e.preventDefault();
         var text = $('#content').find('textarea[name="text"]').val();
         sendSpittle(text);
+        $('#content').find('textarea[name="text"]').empty();
     });
 
     var sock = new SockJS("/stomp/endpoint/p2p"); //1
