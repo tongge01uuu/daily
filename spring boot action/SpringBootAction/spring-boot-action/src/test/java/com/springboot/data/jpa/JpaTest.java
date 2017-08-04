@@ -1,6 +1,7 @@
 package com.springboot.data.jpa;
 
 import com.alibaba.fastjson.JSON;
+import com.springboot.data.jpa.dao.PersonRepository;
 import com.springboot.data.jpa.dao.PersonRepositoryExtendsJpa;
 import com.springboot.data.jpa.domain.Person;
 import net.minidev.json.JSONUtil;
@@ -23,25 +24,38 @@ public class JpaTest {
     private static final Logger logger= LoggerFactory.getLogger(JpaTest.class);
     @Autowired
     PersonRepositoryExtendsJpa personRepositoryExtendsJpa;
+    @Autowired
+    PersonRepository personRepository;
+
+    private static final Pageable pageable=new PageRequest(0,10, Sort.Direction.DESC,"age","address");
+    private static final Sort sortCommon=new Sort(Sort.Direction.ASC,"age","name");
+    private static final Sort.Order orderAge=new Sort.Order(Sort.Direction.ASC,"age");
+    private static final Sort.Order orderName=new Sort.Order(Sort.Direction.ASC,"name");
     @Test
     public void test()
     {
+        personRepository.withNameAndAddressNamedQuery("JAY","合肥");
+
+        Person param=new Person();
+        param.setAge(28);
+        param.setName("aa");
+        personRepository.findByAuto(param,pageable);
+        personRepository.selectByHql("select p from Person p");
+        personRepository.selectBySql("select count(*) from person p");
+
+
         personRepositoryExtendsJpa.findByName("JAY");
         personRepositoryExtendsJpa.readByNameAndAge("zz",29);
         personRepositoryExtendsJpa.selectOfCustomBindByName("武汉",28);
         personRepositoryExtendsJpa.selectOfCustomBindByNumber(6,27);
 
         //分页&排序
-        Pageable pageable=new PageRequest(0,10, Sort.Direction.DESC,"age","address");
         personRepositoryExtendsJpa.findAll(pageable);
 
         //排序-1
-        Sort sortCommon=new Sort(Sort.Direction.ASC,"age","name");
         personRepositoryExtendsJpa.findAll(sortCommon);
 
         //排序-2
-        Sort.Order orderAge=new Sort.Order(Sort.Direction.ASC,"age");
-        Sort.Order orderName=new Sort.Order(Sort.Direction.ASC,"name");
         Sort sortOrder=new Sort(orderAge,orderName);
         personRepositoryExtendsJpa.findAll(sortOrder);
 

@@ -15,6 +15,9 @@ import javax.persistence.criteria.Root;
 public class CustomSpecification<T> implements Specification<T> {
     @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+
+        //参考 CustomerSpecs 可做一些个性化封装
+
         return null;
     }
 }

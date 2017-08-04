@@ -5,9 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.io.Serializable;
+import java.util.List;
 
-import static com.springboot.data.jpa.specs.CustomerSpecs.*;
 import static com.springboot.data.jpa.specs.CustomerSpecs.byAuto;
 
 public class CustomRepositoryImpl <T, ID extends Serializable> 
@@ -26,5 +27,15 @@ public class CustomRepositoryImpl <T, ID extends Serializable>
 		return findAll(byAuto(entityManager, example),pageable);
 	}
 
+	@Override
+	public List selectBySql(String sql) {
+		Query query=entityManager.createNativeQuery(sql);
+		return query.getResultList();
+	}
 
+	@Override
+	public List selectByHql(String hql) {
+		Query query=entityManager.createQuery(hql);
+		return query.getResultList();
+	}
 }
