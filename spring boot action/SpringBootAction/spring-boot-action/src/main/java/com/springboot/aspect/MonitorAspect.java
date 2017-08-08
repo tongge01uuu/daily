@@ -28,7 +28,7 @@ public class MonitorAspect {
 
     @Before("aspectMethodJpa()")
     public void doBefore(JoinPoint joinPoint){
-        System.out.println("------------------------------------before----------");
+        System.out.println("------------------------------------before----------------------------------------");
     }
     @Around("aspectMethodJpa()")
     public Object aroundAspect(ProceedingJoinPoint proceedingJoinPoint)

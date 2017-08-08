@@ -23,12 +23,12 @@ public interface PersonRepository extends CustomRepository<Person, Long> {
 
 	Person withNameAndAddressNamedQuery(String name, String address);
 
-	@Override
-	List selectByHql(String sql);
-
-	@Override
-	Page<Person> findByAuto(Person example, Pageable pageable);
-
-	@Override
-	List selectBySql(String sql);
+//	@Override
+//	List selectByHql(String sql);
+//
+//	@Override
+//	List selectBySql(String sql);
+//
+//	@Override
+//	Page<Person> findByAuto(Person example, Pageable pageable);
 }

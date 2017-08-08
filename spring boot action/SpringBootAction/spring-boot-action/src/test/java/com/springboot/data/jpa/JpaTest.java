@@ -41,6 +41,10 @@ public class JpaTest {
         param.setName("aa");
         personRepository.findByAuto(param,pageable);
         personRepository.selectByHql("select p from Person p");
+        logger.info("=================before delete============================");
+        personRepository.selectBySql("select count(*) from person p");
+        personRepository.updateBySql("delete from person where id=?",44);
+        logger.info("=================after delete============================");
         personRepository.selectBySql("select count(*) from person p");
 
 
