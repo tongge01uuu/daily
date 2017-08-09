@@ -7,6 +7,7 @@
 -- insert into person(id,name,age,address) values(hibernate_sequence.nextval,'bb',27,'合肥');
 
 -- mysql
+-- delete from person where name like '1-%-1';
 insert into person(name,age,address) values('1-JAY-1',32,'合肥');
 insert into person(name,age,address) values('1-xx-1',31,'北京');
 insert into person(name,age,address) values('1-yy-1',30,'上海');

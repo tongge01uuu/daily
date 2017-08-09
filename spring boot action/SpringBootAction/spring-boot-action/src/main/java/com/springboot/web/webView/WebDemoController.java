@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebDemoController {
 	
 	@RequestMapping(value="/search",produces={MediaType.APPLICATION_JSON_VALUE})
-	public Person search(String personName){
+	public PersonVo search(String personName){
 		
-		return new Person(personName, 32, "hefei");
+		return new PersonVo(personName, 32, "hefei");
 		
 	}
 

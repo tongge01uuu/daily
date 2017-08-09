@@ -1,15 +1,15 @@
 package com.springboot.web.webView;
 
-public class Person {
+public class PersonVo {
 	private String name;
 	private Integer age;
 	private String address;
 	
 	
-	public Person() {
+	public PersonVo() {
 		super();
 	}
-	public Person(String name, Integer age, String address) {
+	public PersonVo(String name, Integer age, String address) {
 		super();
 		this.name = name;
 		this.age = age;
