@@ -11,7 +11,7 @@ public class RoleResource  extends PageDto implements Serializable {
 
     private Integer roleId;
 
-    private Integer resourceId;
+    private String resourceIds;
 
     private String creator;
 
@@ -20,6 +20,14 @@ public class RoleResource  extends PageDto implements Serializable {
     private String modifier;
 
     private Date modifierTime;
+
+    public String getResourceIds() {
+        return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+        this.resourceIds = resourceIds;
+    }
 
     public Integer getRoleResId() {
         return roleResId;
@@ -37,13 +45,6 @@ public class RoleResource  extends PageDto implements Serializable {
         this.roleId = roleId;
     }
 
-    public Integer getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(Integer resourceId) {
-        this.resourceId = resourceId;
-    }
 
     public String getCreator() {
         return creator;

@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `cc_role_resource`;
 CREATE TABLE `cc_role_resource` (
   `role_res_id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) DEFAULT NULL,
-  `resource_id` int(11) DEFAULT NULL,
+  `resource_ids` varchar(40) DEFAULT NULL COMMENT '逗号分隔的resource_id',
   `creator` varchar(40) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `modifier` varchar(40) DEFAULT NULL,

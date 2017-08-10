@@ -8,15 +8,13 @@ import com.we.backend.track.domain.dto.ResourceChildrenMenuDto;
 import com.we.backend.track.domain.dto.ResourceMenuDto;
 import com.we.backend.track.domain.vo.Resource;
 import com.we.backend.track.domain.vo.RoleResource;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 菜单资源服务类
@@ -38,12 +36,18 @@ public class ResourceService {
         RoleResource param=new RoleResource();
         param.setRoleId(roleId);
         List<RoleResource> roleResources=roleResourceMapper.getBySelective(param);
+        if (roleResources==null||roleResources.size()==0)
+        {
+            return null;
+        }
+        String resourceIdString=roleResources.get(0).getResourceIds();
+        List<String> resourceIds= Arrays.asList(StringUtils.split(resourceIdString,","));
         List<Resource> resources=resourceMapper.selectResourceList();
         for (Resource resource:resources)
         {
-            for (RoleResource roleResource:roleResources)
+            for (String resourceId:resourceIds)
             {
-                if (roleResource.getResourceId().equals(resource.getResId()));
+                if (resourceId.equals(String.valueOf(resource.getResId())));
                 {
                     resource.setChecked(true);
                 }
