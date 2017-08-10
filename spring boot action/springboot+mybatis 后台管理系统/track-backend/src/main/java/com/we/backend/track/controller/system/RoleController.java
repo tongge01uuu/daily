@@ -1,5 +1,6 @@
 package com.we.backend.track.controller.system;
 
+import com.alibaba.fastjson.JSON;
 import com.we.backend.track.service.RoleService;
 import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 /**
@@ -94,8 +97,8 @@ public class RoleController extends BasicController {
      * @return
      */
     @RequestMapping("/role_grant.do")
-    public String roleGrantPage(Model model){
-
+    public String roleGrantPage(Integer roleId,Model model){
+        model.addAttribute("roleId", roleId);
         return "system/role_grant";
     }
 

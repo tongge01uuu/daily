@@ -35,6 +35,10 @@ public class RoleService {
     @Autowired
     private RoleMapper roleMapper;
 
+    public List<Role> selectRoleList()
+    {
+        return roleMapper.selectRoleList();
+    }
 
     /**
      * 根据角色Id查询角色信息

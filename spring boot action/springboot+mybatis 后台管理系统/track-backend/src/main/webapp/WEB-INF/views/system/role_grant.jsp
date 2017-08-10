@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="/comm/mytags.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -20,7 +22,6 @@
     <link rel="stylesheet" href="${ctx}/static/css/metroStyle/metroStyle.css">
     <script type="text/javascript" src="${ctx}/static/js/jquery-1.4.4.min.js"></script>
 
-
     <script src="${ctx}/static/layui/layui.js"></script>
 
     <script type="text/javascript" src="${ctx}/static/js/jquery.ztree.core.js"></script>
@@ -39,7 +40,6 @@
 
 
 
-
     });
 
     var setting = {
@@ -52,26 +52,39 @@
             }
         }
     };
+    var zNodes=new Array();
+    function fetchData(){
+        $.ajax({
+            url : '${ctx}/res/ajax_res_list_all.do',
+            type : 'post',
+            async:false,
+            data :{
+                roleId:roleId
+            },
+            success : function(data) {
+                var pdata = $.parseJSON(data);
 
-    var zNodes =[
-        { id:1, pId:0, name:"随意勾选 1", open:true,iconSkin:"pIcon01"},
-        { id:11, pId:1, name:"随意勾选 1-1", open:true},
-        { id:111, pId:11, name:"随意勾选 1-1-1"},
-        { id:112, pId:11, name:"随意勾选 1-1-2"},
-        { id:12, pId:1, name:"随意勾选 1-2", open:true},
-        { id:121, pId:12, name:"随意勾选 1-2-1"},
-        { id:122, pId:12, name:"随意勾选 1-2-2"},
-        { id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
-        { id:21, pId:2, name:"随意勾选 2-1"},
-        { id:22, pId:2, name:"随意勾选 2-2", open:true},
-        { id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
-        { id:222, pId:22, name:"随意勾选 2-2-2"},
-        { id:23, pId:2, name:"随意勾选 2-3"}
-    ];
+                $(pdata).each(function(index,item){
+                    var cell={
+                        id:item.resId,
+                        pId:item.resParentid,
+                        name:item.resName,
+                        checked:true,
+                        open:true
+                    };
+                    console.log(cell);
+                    zNodes[index]=cell;
+                });
+
+            }
+        });
+        console.log(zNodes);
+        return zNodes;
+    }
 
     $(document).ready(function(){
+        zNodes=fetchData();
         $.fn.zTree.init($("#treeDemo"), setting, zNodes);
-
     });
 </script>
 </body>

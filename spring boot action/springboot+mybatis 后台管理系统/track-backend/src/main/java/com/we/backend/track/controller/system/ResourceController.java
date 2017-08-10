@@ -1,5 +1,6 @@
 package com.we.backend.track.controller.system;
 
+import com.alibaba.fastjson.JSON;
 import com.we.backend.track.controller.BasicController;
 import com.we.backend.track.domain.vo.Resource;
 import com.we.backend.track.service.ResourceService;
@@ -42,6 +43,11 @@ public class ResourceController extends BasicController {
     @ResponseBody
     public String ajaxResourceList(Resource resource){
         return resourceService.selectResourceResultPageList(resource);
+    }
+    @RequestMapping("/ajax_res_list_all.do")
+    @ResponseBody
+    public String ajaxResourceListAll(Integer roleId){
+        return JSON.toJSONString(resourceService.selectResourceList());
     }
 
     /**

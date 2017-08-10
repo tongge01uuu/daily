@@ -29,7 +29,7 @@ public class MyWebFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
         log.info("==>拦截请求"+response.getStatus());
-log.info(((HttpServletRequest) req).getRequestURL());
+        log.info(((HttpServletRequest) req).getRequestURL());
         chain.doFilter(req, res);
     }
 

@@ -3,9 +3,11 @@ package com.we.backend.track.service;
 
 import com.alibaba.fastjson.JSON;
 import com.we.backend.track.dao.ResourceMapper;
+import com.we.backend.track.dao.RoleResourceMapper;
 import com.we.backend.track.domain.dto.ResourceChildrenMenuDto;
 import com.we.backend.track.domain.dto.ResourceMenuDto;
 import com.we.backend.track.domain.vo.Resource;
+import com.we.backend.track.domain.vo.RoleResource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,27 @@ public class ResourceService {
 	private  Log log = LogFactory.getLog(ResourceService.class);
 	@Autowired
 	private ResourceMapper resourceMapper;
+    @Autowired
+    private RoleResourceMapper roleResourceMapper;
 
+    public List<Resource> selectResourceList(Integer roleId)
+    {
+        RoleResource param=new RoleResource();
+        param.setRoleId(roleId);
+        List<RoleResource> roleResources=roleResourceMapper.getBySelective(param);
+        List<Resource> resources=resourceMapper.selectResourceList();
+        for (Resource resource:resources)
+        {
+            for (RoleResource roleResource:roleResources)
+            {
+                if (roleResource.getResourceId().equals(resource.getResId()));
+                {
+                    resource.setChecked(true);
+                }
+            }
+        }
+        return resources;
+    }
     /**
      * 资源信息分页显示
      * @param resource

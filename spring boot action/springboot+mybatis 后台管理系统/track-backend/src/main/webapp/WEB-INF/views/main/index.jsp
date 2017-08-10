@@ -79,7 +79,7 @@
         <div class="layui-side layui-bg-black">
             <div class="user-photo">
                 <a class="img" title="我的头像" ><img src="${ctx}/static/img/face.jpg"></a>
-                <p>你好！<span class="userName">系统管理员</span>, 欢迎登录</p>
+                <p>你好！<span class="userName">${sessionScope.LOGIN_NAME.userName}</span>, 欢迎登录</p>
             </div>
             <!-- 左侧菜单-->
             <div class="navBar layui-side-scroll" id="navBarId"></div>
@@ -132,7 +132,7 @@
         <div class="layui-footer footer layui-larry-foot">
 
             <div class="layui-main">
-                <p>Copyright 2017 © yangxiaobing, 873559947@qq.com (推荐使用IE9+,Firefox、Chrome 浏览器访问)</p>
+                <p>Copyright 2017 ©RRD , (推荐使用IE9+,Firefox、Chrome 浏览器访问)</p>
             </div>
         </div>
     </div>
