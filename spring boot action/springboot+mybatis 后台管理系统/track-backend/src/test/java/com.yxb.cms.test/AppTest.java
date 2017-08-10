@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Spring boot 测试
- * @author yangxiaobing@ule.com
+ * @author YK@ule.com
  * @date 2017/4/1 11:34
  */
 

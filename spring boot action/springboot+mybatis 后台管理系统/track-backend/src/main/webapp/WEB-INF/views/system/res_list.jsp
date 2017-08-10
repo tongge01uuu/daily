@@ -115,7 +115,7 @@
                 type : 'post',
                 data :{
                     page: curr || 1 ,   //当前页
-                    rows: 7          //每页显示四条数据
+                    rows: 7          //每页显示7条数据
                 },
                 success : function(data) {
                     var pdata = $.parseJSON(data);
