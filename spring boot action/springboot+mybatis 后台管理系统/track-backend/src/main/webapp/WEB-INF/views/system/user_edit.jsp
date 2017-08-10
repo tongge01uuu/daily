@@ -58,7 +58,7 @@
     </div>
     <div class="layui-form-item" style="text-align: center;">
             <button class="layui-btn" lay-submit="" lay-filter="saveUser">保存</button>
-            <button type="layui-btn" id="cancle" class="layui-btn layui-btn-primary">取消</button>
+            <button type="layui-btn" id="cancel" class="layui-btn layui-btn-primary">取消</button>
 
     </div>
 </form>
@@ -135,7 +135,7 @@
         });
 
         //取消
-        $("#cancle").click(function(){
+        $("#cancel").click(function(){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
            // layer.closeAll("iframe");

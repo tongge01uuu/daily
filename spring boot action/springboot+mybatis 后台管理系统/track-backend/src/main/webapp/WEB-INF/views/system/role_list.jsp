@@ -193,7 +193,7 @@
 
         /**角色授权*/
         $("body").on("click",".role_grant",function(){
-
+            var roleId = $(this).attr("data-id");
             var index = layui.layer.open({
                 title : '<i class="larry-icon larry-jiaoseguanli1"></i>角色授权',
                 type : 2,

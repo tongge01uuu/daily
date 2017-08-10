@@ -47,7 +47,7 @@ public class ResourceController extends BasicController {
     @RequestMapping("/ajax_res_list_all.do")
     @ResponseBody
     public String ajaxResourceListAll(Integer roleId){
-        return JSON.toJSONString(resourceService.selectResourceList());
+        return JSON.toJSONString(resourceService.selectResourceList(roleId));
     }
 
     /**

@@ -101,5 +101,12 @@ public class RoleController extends BasicController {
         model.addAttribute("roleId", roleId);
         return "system/role_grant";
     }
+    //TODO 保存角色授权数据 参考 ajax_save_user
+    @RequestMapping("/ajax_save_roleResource.do")
+    @ResponseBody
+    public String saveRoleResource(Integer roleId,String resourcesFlow,Model model){
+        model.addAttribute("roleId", roleId);
+        return "system/role_grant";
+    }
 
 }
