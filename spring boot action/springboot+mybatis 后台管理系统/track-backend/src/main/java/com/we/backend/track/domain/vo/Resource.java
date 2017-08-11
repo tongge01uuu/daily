@@ -40,6 +40,26 @@ public class Resource  extends PageDto implements Serializable {
 
     private boolean checked=false;
 
+    private String parentname;
+
+    private String iconCls;
+
+    public String getParentname() {
+        return parentname;
+    }
+
+    public void setParentname(String parentname) {
+        this.parentname = parentname;
+    }
+
+    public String getIconCls() {
+        return iconCls;
+    }
+
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls;
+    }
+
     public boolean isChecked() {
         return checked;
     }

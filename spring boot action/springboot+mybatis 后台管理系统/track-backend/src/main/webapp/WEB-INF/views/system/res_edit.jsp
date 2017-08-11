@@ -23,38 +23,41 @@
 </head>
 <body class="childrenBody" style="font-size: 12px;">
 <form class="layui-form layui-form-pane">
+    <input type="hidden" id="resId" name="resId" value="${resource.resId}"/>
     <div class="layui-form-item">
         <div class="layui-inline">
             <label class="layui-form-label">菜单名称</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入菜单名称">
+                <input type="text" name="resName" class="layui-input newsName" lay-verify="required" placeholder="请输入菜单名称" value="${resource.resName}">
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">菜单路径</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input newsName" >
+                <input type="text" name="resLinkAddress" class="layui-input newsName" value="${resource.resLinkAddress}">
             </div>
         </div>
 
     </div>
     <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">菜单类型</label>
-            <div class="layui-input-inline">
-                <select name="city" >
-                    <option value=""></option>
-                    <option value="0">0-菜单</option>
-                    <option value="1">1-按钮</option>
-                </select>
-            </div>
-        </div>
+        <%--<div class="layui-inline">--%>
+            <%--<label class="layui-form-label">菜单类型</label>--%>
+            <%--<div class="layui-input-inline">--%>
+                <%--<select name="resType" >--%>
+                    <%--<option value=""></option>--%>
+                    <%--<option value="0">0-菜单</option>--%>
+                    <%--<option value="1">1-按钮</option>--%>
+                <%--</select>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <div class="layui-inline">
             <label class="layui-form-label">父级菜单</label>
-            <div class="layui-input-inline">
-                <select name="city" >
-                    <option value=""></option>
-
+            <div class="layui-input-block">
+                <select name="resParentid" >
+                    <option value="0">无(0级菜单-大标题)</option>
+                    <c:forEach var="item" items="${parents}">
+                        <option value="${item.resId}">${item.resName}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -64,13 +67,13 @@
         <div class="layui-inline">
             <label class="layui-form-label">排序</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input newsName" >
+                <input type="text" name="resDisplayOrder" lay-verify="number" class="layui-input newsName"  value="${resource.resDisplayOrder}" >
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">菜单图标</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="resImage" name="resImage" value="" disabled>
+                <input type="text" class="layui-input" id="resImage" name="resImage"  value="${resource.resImage}" disabled>
             </div>
             <div class="layui-form-mid layui-word-aux">
                 <a class="layui-btn layui-btn-mini select_img" data-id="" title="选择图标"><i class="layui-icon larry-icon larry-tupianguanli"></i></a>'
@@ -80,20 +83,20 @@
     <div class="layui-form-item" pane>
         <label class="layui-form-label">资源状态</label>
         <div class="layui-input-inline">
-            <input type="radio" name="userStatus" value="0" title="有效" checked>
-            <input type="radio" name="userStatus" value="1" title="失效" >
+            <input type="radio" name="resStatus" value="0" title="有效" <c:if test="${resource.resStatus ==0 }">checked</c:if> >
+            <input type="radio" name="resStatus" value="1" title="失效" <c:if test="${resource.resStatus ==1 }">checked</c:if> >
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">备注</label>
         <div class="layui-input-block">
-            <textarea name="desc" placeholder="请输入内容" class="layui-textarea" maxlength="50" style="resize:none;min-height:40px;"></textarea>
+            <textarea name="resRemark" placeholder="请输入内容" class="layui-textarea" maxlength="50"  value="${resource.resRemark}" style="resize:none;min-height:40px;"></textarea>
         </div>
     </div>
     </div>
     <div class="layui-form-item" style="text-align: center;">
         <button class="layui-btn" lay-submit="" lay-filter="saveRes">保存</button>
-        <button type="layui-btn" id="cancle" class="layui-btn layui-btn-primary">取消</button>
+        <button type="layui-btn" id="cancel" class="layui-btn layui-btn-primary">取消</button>
 
     </div>
 </form>
@@ -123,23 +126,22 @@
 
         //保存
         form.on("submit(saveRes)",function(data){
-            alert(data.field.resImage)
-            var userSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
-            //登陆验证
+            console.log(data.field);
+            var resourceSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
             $.ajax({
-                url : '${ctx}/user/ajax_save_user',
+                url : '${ctx}/res/ajax_saveOrUpdate_res.do',
                 type : 'post',
                 async: false,
                 data : data.field,
                 success : function(data) {
                     if(data.returnCode == 0000){
-                        top.layer.close(userSaveLoading);
-                        top.layer.msg("用户信息保存成功！");
+                        top.layer.close(resourceSaveLoading);
+                        top.layer.msg("菜单信息保存成功！");
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index); //再执行关闭                        //刷新父页面
                         parent.location.reload();
                     }else{
-                        top.layer.close(userSaveLoading);
+                        top.layer.close(resourceSaveLoading);
                         top.layer.msg(data.returnMessage);
                     }
                 },error:function(data){
@@ -151,7 +153,7 @@
         });
 
         //取消
-        $("#cancle").click(function(){
+        $("#cancel").click(function(){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index); //再执行关闭
             // layer.closeAll("iframe");

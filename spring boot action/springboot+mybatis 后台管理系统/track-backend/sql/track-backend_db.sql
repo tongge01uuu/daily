@@ -11,30 +11,30 @@ CREATE TABLE `cc_resource` (
   `res_parentId` int(11) DEFAULT NULL,
   `res_name` varchar(50) NOT NULL,
   `res_status` int(11) DEFAULT NULL,
-  `res_model_code` varchar(30) DEFAULT NULL COMMENT '模块标识',
+  `res_model_code` varchar(30) DEFAULT NULL COMMENT '模块标识(暂时无用)',
   `res_link_address` varchar(200) DEFAULT NULL,
   `res_image` varchar(100) DEFAULT NULL,
   `res_type` int(11) DEFAULT NULL,
   `res_display_order` int(11) DEFAULT NULL,
   `res_remark` varchar(200) DEFAULT NULL,
   `creator` varchar(40) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `modifier` varchar(40) DEFAULT NULL,
-  `modify_time` datetime DEFAULT NULL,
+  `modify_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',
   PRIMARY KEY (`res_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='资源表';
 
 -- ----------------------------
 -- Records of cc_resource
 -- ----------------------------
-INSERT INTO `cc_resource` VALUES ('2', '5', '用户管理', '0', '7JMoS6yG', '/user/user_list.do', 'larry-10103', '0', '2', '配置系统用户信息', 'admin', '2016-11-25 16:57:22', 'admin', '2017-07-28 22:52:22');
-INSERT INTO `cc_resource` VALUES ('3', '5', '角色管理', '0', 'SPAn6H46', '/role/role_list.do', 'larry-jiaoseguanli1', '0', '3', '配置系统角色信息', 'admin', '2016-11-25 16:57:25', null, null);
-INSERT INTO `cc_resource` VALUES ('4', '5', '菜单管理', '0', '0rbT8g7m', '/res/res_list.do', 'larry-caidanguanli', '0', '4', '配置系统菜单信息', 'admin', '2016-11-25 16:57:31', 'admin', '2016-12-14 16:01:09');
-INSERT INTO `cc_resource` VALUES ('5', '7', '系统设置', '0', '0rbT8g9m', null, 'larry-xitongshezhi1', '0', '5', '配置系统菜单信息', 'admin', '2017-07-28 09:31:43', null, null);
-INSERT INTO `cc_resource` VALUES ('7', null, '系统管理', '0', '0rbT8g8m', null, 'larry-xitongshezhi1', '0', '6', '配置系统菜单信息', 'admin', '2017-07-28 13:24:57', null, null);
-INSERT INTO `cc_resource` VALUES ('8', null, '微信公众', '0', '0rbT8g6m', null, 'larry-weixingongzhongpingtai', '0', '7', '配置系统菜单信息', 'admin', '2017-07-28 13:26:50', null, null);
-INSERT INTO `cc_resource` VALUES ('9', '7', '我的面板', '0', '0rbT8g2m', null, 'larry-gerenxinxi5', '0', '8', '配置系统菜单信息', 'admin', '2017-07-28 14:23:35', null, null);
-INSERT INTO `cc_resource` VALUES ('10', '9', '个人信息', '0', '0rbT8t2m', null, 'larry-gerenxinxi1', '0', '9', '配置系统菜单信息', 'admin', '2017-07-28 17:07:55', null, null);
+INSERT INTO `cc_resource` VALUES ('2', '5', '用户管理', '0', '7JMoS6yG', '/user/user_list.do', 'larry-10103', '2', '2', '配置系统用户信息', 'admin', '2016-11-25 16:57:22', 'admin', '2017-07-28 22:52:22');
+INSERT INTO `cc_resource` VALUES ('3', '5', '角色管理', '0', 'SPAn6H46', '/role/role_list.do', 'larry-jiaoseguanli1', '2', '3', '配置系统角色信息', 'admin', '2016-11-25 16:57:25', null, null);
+INSERT INTO `cc_resource` VALUES ('4', '5', '菜单管理', '0', '0rbT8g7m', '/res/res_list.do', 'larry-caidanguanli', '2', '4', '配置系统菜单信息', 'admin', '2016-11-25 16:57:31', 'admin', '2016-12-14 16:01:09');
+INSERT INTO `cc_resource` VALUES ('5', '7', '系统设置', '0', '0rbT8g9m', null, 'larry-xitongshezhi1', '1', '5', '配置系统菜单信息', 'admin', '2017-07-28 09:31:43', null, null);
+INSERT INTO `cc_resource` VALUES ('7', 0, '系统管理', '0', '0rbT8g8m', null, 'larry-xitongshezhi1', '0', '6', '配置系统菜单信息', 'admin', '2017-07-28 13:24:57', null, null);
+INSERT INTO `cc_resource` VALUES ('8', 0, '微信公众', '0', '0rbT8g6m', null, 'larry-weixingongzhongpingtai', '0', '7', '配置系统菜单信息', 'admin', '2017-07-28 13:26:50', null, null);
+INSERT INTO `cc_resource` VALUES ('9', '7', '我的面板', '0', '0rbT8g2m', null, 'larry-gerenxinxi5', '1', '8', '配置系统菜单信息', 'admin', '2017-07-28 14:23:35', null, null);
+INSERT INTO `cc_resource` VALUES ('10', '9', '个人信息', '0', '0rbT8t2m', '/user/user_info.do', 'larry-gerenxinxi1', '2', '9', '配置系统菜单信息', 'admin', '2017-07-28 17:07:55', null, null);
 
 -- ----------------------------
 -- Table structure for cc_role
@@ -46,9 +46,9 @@ CREATE TABLE `cc_role` (
   `role_status` int(11) NOT NULL,
   `role_remark` varchar(255) DEFAULT NULL,
   `creator` varchar(40) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
   `modifier` varchar(40) DEFAULT NULL,
-  `modifier_time` datetime DEFAULT NULL,
+  `modifier_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
@@ -62,15 +62,15 @@ INSERT INTO `cc_role` VALUES ('4', '超级管理员', '0', '最高角色', 'admi
 -- ----------------------------
 DROP TABLE IF EXISTS `cc_role_resource`;
 CREATE TABLE `cc_role_resource` (
-  `role_res_id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_id` int(11) DEFAULT NULL,
-  `resource_ids` varchar(40) DEFAULT NULL COMMENT '逗号分隔的resource_id',
-  `creator` varchar(40) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `modifier` varchar(40) DEFAULT NULL,
-  `modifier_time` datetime DEFAULT NULL,
+  `role_res_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `role_id` INT(11) DEFAULT NULL,
+  `resource_ids` VARCHAR(40) DEFAULT NULL COMMENT '逗号分隔的resource_id',
+  `creator` VARCHAR(40) DEFAULT NULL,
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `modifier` VARCHAR(40) DEFAULT NULL,
+  `modifier_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',
   PRIMARY KEY (`role_res_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色与资源关系表';
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='角色与资源关系表';
 
 -- ----------------------------
 -- Records of cc_role_resource
@@ -87,9 +87,9 @@ CREATE TABLE `cc_user` (
   `user_password` varchar(100) NOT NULL,
   `user_status` bigint(20) NOT NULL,
   `creator` varchar(50) NOT NULL,
-  `create_time` datetime NOT NULL,
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
   `modifier` varchar(50) DEFAULT NULL,
-  `update_time` datetime DEFAULT NULL,
+  `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -118,9 +118,9 @@ CREATE TABLE `cc_user_role` (
   `user_id` int(11) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   `creator` varchar(40) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
+  `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `modifier` varchar(40) DEFAULT NULL,
-  `modifier_time` datetime DEFAULT NULL,
+  `modifier_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',
   PRIMARY KEY (`user_role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户和角色关系表';
 

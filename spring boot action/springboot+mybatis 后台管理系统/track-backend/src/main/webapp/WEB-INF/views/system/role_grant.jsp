@@ -103,28 +103,28 @@
         $.fn.zTree.init($("#resourceTree"), setting, zNodes);
 
         $("#save").click(function(data){
-            var roleData=onCheck("resourceTree");
+            var resourceIds=onCheck("resourceTree");
             var pageFlag = $("#pageFlag").val();
-            var userSaveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
+            var grantLoading = top.layer.msg('授权数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
             //登陆验证
             $.ajax({
                 url : '${ctx}/role/ajax_save_roleResource.do',
                 type : 'post',
                 async: false,
-                data : data.field,
+                data :{
+                    roleId:${roleId},
+                    resourceIds:resourceIds
+                },
                 success : function(data) {
+                    console.log(data);
                     if(data.returnCode == 0000){
-                        top.layer.close(userSaveLoading);
-                        if(pageFlag == 'addPage'){
-                            top.layer.msg("用户信息保存成功,默认密码123456,请及时修改");
-                        }else {
-                            top.layer.msg("用户信息保存成功");
-                        }
+                        top.layer.close(grantLoading);
+                        top.layer.msg("授权信息保存成功");
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
                         parent.layer.close(index); //再执行关闭                        //刷新父页面
                         parent.location.reload();
                     }else{
-                        top.layer.close(userSaveLoading);
+                        top.layer.close(grantLoading);
                         top.layer.msg(data.returnMessage);
                     }
                 },error:function(data){

@@ -296,9 +296,9 @@
                                     '<td>'+userStatusLable+'</td>'+
                                     '<td title="'+objNull(item.roleNames)+'" style="text-align:left;">'+objNull(roleNamesLable)+'</td>'+
                                     '<td>'+item.creator+'</td>'+
-                                    '<td>'+item.createTime+'</td>'+
+                                    '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+objNull(item.modifier)+'</td>'+
-                                    '<td>'+objNull(item.updateTime)+'</td>'+
+                                    '<td>'+formatDate(objNull(item.updateTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+opt+'</td>'+
                                     '</tr>'
                             );
@@ -326,13 +326,6 @@
             });
         };
     });
-    /**undefined 值 过滤*/
-    function objNull(obj) {
-        if(typeof(obj) == "undefined" || obj == null){
-            return "";
-        }
-        return obj;
-    }
 
 </script>
 

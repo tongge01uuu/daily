@@ -231,7 +231,7 @@
       WHERE res_status=0
       ORDER BY res_parentId,res_display_order
     </select>
-    <!-- 查询资源父级菜单-->
+    <!-- 查询资源父级菜单 -大标题-->
     <select id="selectParentIdResList" resultType="com.we.backend.track.domain.dto.ResourceMenuDto">
       SELECT
         c.res_id                AS pid,
@@ -244,13 +244,22 @@
 	      AND (ISNULL(res_parentId) OR res_parentId=0)
     </select>
 
-    <!-- 查询资源父级菜单-->
+    <!-- 查询资源父级菜单-左侧一级菜单-->
     <select id="selectResLevelListByParentid" resultMap="BaseResultMap">
         SELECT *
         FROM cc_resource c
-        WHERE res_type = 0
+        WHERE res_type IN (1,2)
         AND res_status = 0
         AND res_parentId = #{resParentid,jdbcType=INTEGER}
+    </select>
+
+  <!-- 获取大标题 和左侧菜单一级标题 -->
+    <select id="selectParentResources" resultMap="BaseResultMap">
+        SELECT *
+        FROM cc_resource c
+        WHERE res_type IN (0,1)
+        AND res_status = 0
+        ORDER BY res_parentId,res_display_order
     </select>
 
 

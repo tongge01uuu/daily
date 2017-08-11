@@ -7,12 +7,13 @@ import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.dao.RoleMapper;
 import com.we.backend.track.dao.UserMapper;
 import com.we.backend.track.dao.UserRoleMapper;
-import com.we.backend.track.domain.bo.BussinessMsg;
+import com.we.backend.track.domain.bo.ResultEntity;
 import com.we.backend.track.domain.bo.ExcelExport;
 import com.we.backend.track.domain.vo.Role;
 import com.we.backend.track.domain.vo.User;
 import com.we.backend.track.domain.vo.UserRole;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,25 @@ public class UserService {
     private RoleMapper roleMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
+
+    public ResultEntity updateUserPassword(Integer userId, String passwordOld, String passwordNew)
+    {
+        ResultEntity resultEntity = ResultEntity.build();
+        User user=userMapper.selectByPrimaryKey(userId);
+        if (!user.getUserPassword().equals(passwordOld))
+        {
+            return resultEntity.withError("原密码输入错误");
+        }
+        try {
+            user.setUserPassword(passwordNew);
+            userMapper.updateByPrimaryKey(user);
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            resultEntity.withError("密码修改失败");
+        }
+        return resultEntity;
+    }
+
     public boolean checkLoginNameRepeat(String loginName)
     {
         boolean result=false;
@@ -146,7 +166,7 @@ public class UserService {
      * @throws Exception
      */
     @Transactional
-    public BussinessMsg updateUserStatus(Integer userId,String longinName) throws Exception{
+    public ResultEntity updateUserStatus(Integer userId, String longinName) throws Exception{
         log.info("用户失效开始，当前用户Id:"+userId);
         long start = System.currentTimeMillis();
         try {
@@ -181,7 +201,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public BussinessMsg updateUserBatchStatus(Integer[] userIds,String longinName) throws Exception{
+    public ResultEntity updateUserBatchStatus(Integer[] userIds, String longinName) throws Exception{
         log.info("批量失效用户开始，当前用户Id:"+Arrays.toString(userIds));
         long start = System.currentTimeMillis();
         try {
@@ -221,7 +241,7 @@ public class UserService {
      * @throws Exception
      */
     @Transactional
-    public BussinessMsg saveOrUpdateUser(User user, String loginName) throws Exception{
+    public ResultEntity saveOrUpdateUser(User user, String loginName) throws Exception{
         log.info("保存用户信息开始");
         long start = System.currentTimeMillis();
         try {
@@ -295,7 +315,7 @@ public class UserService {
      * @throws Exception
      */
     @Transactional
-    public BussinessMsg saveUserRole(Integer userId,String roleIds,String longinName) throws Exception{
+    public ResultEntity saveUserRole(Integer userId, String roleIds, String longinName) throws Exception{
         log.info("保存用户分配角色信息开始");
         long start = System.currentTimeMillis();
         try {

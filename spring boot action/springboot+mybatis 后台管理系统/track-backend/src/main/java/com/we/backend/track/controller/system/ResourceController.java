@@ -2,10 +2,12 @@ package com.we.backend.track.controller.system;
 
 import com.alibaba.fastjson.JSON;
 import com.we.backend.track.controller.BasicController;
+import com.we.backend.track.domain.bo.ResultEntity;
 import com.we.backend.track.domain.vo.Resource;
 import com.we.backend.track.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -62,9 +64,38 @@ public class ResourceController extends BasicController {
      * 资源添加页面
      * @return
      */
-    @RequestMapping("/res_edit.do")
-    public String toResEditPage() {
+    @RequestMapping("/res_add.do")
+    public String toResAddPage(Model model) {
+        model.addAttribute("parents",resourceService.selectParentResources().getReturnData());
+        //添加菜单 默认状态-有效
+        Resource resource=new Resource();
+        resource.setResStatus(0);
+        model.addAttribute("resource",resource);
         return "system/res_edit";
+    }
+    /**
+     * 资源编辑页面
+     * @return
+     */
+    @RequestMapping("/res_edit.do")
+    public String toResEditPage(Model model,Integer resId) {
+        Resource resource=resourceService.selectByPrimaryKey(resId);
+        model.addAttribute("resource",resource);
+        model.addAttribute("parents",resourceService.selectParentResources().getReturnData());
+        return "system/res_edit";
+    }
+
+    /**
+     * 编辑或者新增resource
+     * @param resource
+     * @return
+     */
+    @RequestMapping("/ajax_saveOrUpdate_res.do")
+    @ResponseBody
+    public ResultEntity saveOrUpdate(Resource resource){
+        ResultEntity resultEntity = ResultEntity.build();
+        resultEntity =resourceService.saveOrUpdate(resource);
+        return resultEntity;
     }
 
     @RequestMapping("/ajax_res_menu_top.do")

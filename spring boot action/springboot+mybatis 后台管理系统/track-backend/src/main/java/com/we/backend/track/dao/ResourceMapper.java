@@ -55,6 +55,8 @@ public interface ResourceMapper {
 
     List<Resource> selectResLevelListByParentid(@Param("resParentid") Integer resParentid);
 
+    List<Resource> selectParentResources();
+
 
     
 }

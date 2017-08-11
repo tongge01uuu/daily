@@ -27,7 +27,7 @@
     insert into cc_role_resource (role_res_id, role_id, resource_ids,
       creator, create_time, modifier, 
       modifier_time)
-    values (#{roleResId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{resourceIdss,jdbcType=VARCHAR},
+    values (#{roleResId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{resourceIds,jdbcType=VARCHAR},
       #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
       #{modifierTime,jdbcType=TIMESTAMP})
   </insert>

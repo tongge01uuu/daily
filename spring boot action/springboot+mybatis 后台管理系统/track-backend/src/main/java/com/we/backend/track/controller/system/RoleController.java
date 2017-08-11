@@ -1,19 +1,17 @@
 package com.we.backend.track.controller.system;
 
-import com.alibaba.fastjson.JSON;
+import com.we.backend.track.domain.bo.ResultEntity;
+import com.we.backend.track.domain.vo.RoleResource;
 import com.we.backend.track.service.RoleService;
 import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.controller.BasicController;
-import com.we.backend.track.domain.bo.BussinessMsg;
 import com.we.backend.track.domain.vo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 
 /**
@@ -82,7 +80,7 @@ public class RoleController extends BasicController {
      */
     @RequestMapping("/ajax_save_role.do")
     @ResponseBody
-    public BussinessMsg ajaxSaveRole(Role role){
+    public ResultEntity ajaxSaveRole(Role role){
         try {
             return roleService.saveOrUpdateRole(role, this.getCurrentLoginName());
         } catch (Exception e) {
@@ -104,9 +102,14 @@ public class RoleController extends BasicController {
     //TODO 保存角色授权数据 参考 ajax_save_user
     @RequestMapping("/ajax_save_roleResource.do")
     @ResponseBody
-    public String saveRoleResource(Integer roleId,String resourcesFlow,Model model){
+    public ResultEntity saveRoleResource(Integer roleId, String resourceIds, Model model){
+        RoleResource roleResource=new RoleResource();
+        roleResource.setRoleId(roleId);
+        roleResource.setResourceIds(resourceIds);
+        roleResource.setCreator(getCurrentLoginName());
+        ResultEntity resultEntity =roleService.grantResources2Role(roleResource);
         model.addAttribute("roleId", roleId);
-        return "system/role_grant";
+        return resultEntity;
     }
 
 }

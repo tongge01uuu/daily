@@ -5,9 +5,12 @@ import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.architect.utils.ParseObjectUtils;
 import com.we.backend.track.dao.RoleMapper;
-import com.we.backend.track.domain.bo.BussinessMsg;
+import com.we.backend.track.dao.RoleResourceMapper;
+import com.we.backend.track.domain.bo.ResultEntity;
 import com.we.backend.track.domain.vo.Role;
+import com.we.backend.track.domain.vo.RoleResource;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,32 @@ public class RoleService {
 
     @Autowired
     private RoleMapper roleMapper;
+    @Autowired
+    private RoleResourceMapper roleResourceMapper;
+
+    @Transactional
+    public ResultEntity grantResources2Role(RoleResource roleResource)
+    {
+        ResultEntity resultEntity = ResultEntity.build();
+        try {
+            RoleResource param=new RoleResource();
+            param.setRoleId(roleResource.getRoleId());
+            List<RoleResource> list=roleResourceMapper.getBySelective(param);
+            if (list!=null && list.size()>0)
+            {
+                RoleResource roleResourcePo=list.get(0);
+                roleResourcePo.setResourceIds(roleResource.getResourceIds());
+                roleResourcePo.setModifier(roleResource.getCreator());
+                roleResourceMapper.updateByPrimaryKeySelective(roleResourcePo);
+            }else {
+                roleResourceMapper.insertSelective(roleResource);
+            }
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            resultEntity.withError("授权异常");
+        }
+        return resultEntity;
+    }
 
     public List<Role> selectRoleList()
     {
@@ -80,7 +109,7 @@ public class RoleService {
      * @throws Exception
      */
     @Transactional
-    public BussinessMsg saveOrUpdateRole(Role role, String loginName) throws Exception {
+    public ResultEntity saveOrUpdateRole(Role role, String loginName) throws Exception {
         log.info("保存用户角色开始");
         long start = System.currentTimeMillis();
         try {

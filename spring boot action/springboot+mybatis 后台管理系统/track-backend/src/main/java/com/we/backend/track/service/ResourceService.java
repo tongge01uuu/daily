@@ -2,13 +2,16 @@ package com.we.backend.track.service;
 
 
 import com.alibaba.fastjson.JSON;
+import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.dao.ResourceMapper;
 import com.we.backend.track.dao.RoleResourceMapper;
+import com.we.backend.track.domain.bo.ResultEntity;
 import com.we.backend.track.domain.dto.ResourceChildrenMenuDto;
 import com.we.backend.track.domain.dto.ResourceMenuDto;
 import com.we.backend.track.domain.vo.Resource;
 import com.we.backend.track.domain.vo.RoleResource;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,23 +34,57 @@ public class ResourceService {
     @Autowired
     private RoleResourceMapper roleResourceMapper;
 
+    /**
+     * 菜单便捷/新增
+     * @param resource
+     * @return
+     */
+    public ResultEntity saveOrUpdate(Resource resource)
+    {
+        ResultEntity resultEntity = ResultEntity.build();
+        if (resource.getResParentid()!=null&&resource.getResParentid()!=0)
+        {
+            Resource parentResource=resourceMapper.selectByPrimaryKey(resource.getResParentid());
+            //设置菜单的层级（父级+1）
+            resource.setResType(parentResource.getResType()+1);
+        }
+        try {
+            if (resource.getResId()==null)
+            {
+                //新增
+                resourceMapper.insertSelective(resource);
+            }else {
+                //编辑
+                resourceMapper.updateByPrimaryKeySelective(resource);
+            }
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            resultEntity.withError("菜单资源处理异常");
+        }
+        return resultEntity;
+    }
+    /**
+     * 角色授权用， 查询所有资源
+     * @param roleId
+     * @return
+     */
     public List<Resource> selectResourceList(Integer roleId)
     {
         RoleResource param=new RoleResource();
         param.setRoleId(roleId);
+        List<Resource> resources=resourceMapper.selectResourceList();
         List<RoleResource> roleResources=roleResourceMapper.getBySelective(param);
         if (roleResources==null||roleResources.size()==0)
         {
-            return null;
+            return resources;
         }
         String resourceIdString=roleResources.get(0).getResourceIds();
         List<String> resourceIds= Arrays.asList(StringUtils.split(resourceIdString,","));
-        List<Resource> resources=resourceMapper.selectResourceList();
         for (Resource resource:resources)
         {
             for (String resourceId:resourceIds)
             {
-                if (resourceId.equals(String.valueOf(resource.getResId())));
+                if (resourceId.equals(String.valueOf(resource.getResId())))
                 {
                     resource.setChecked(true);
                 }
@@ -79,6 +116,22 @@ public class ResourceService {
         return resourceMapper.selectByPrimaryKey(resId);
     }
 
+    /**
+     * 查询所有父级菜单
+     * @return
+     */
+    public ResultEntity selectParentResources()
+    {
+        ResultEntity resultEntity=ResultEntity.build();
+        try {
+            List<Resource> resources=resourceMapper.selectParentResources();
+            resultEntity.setReturnData(resources);
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            resultEntity.withError(BussinessCode.GLOBAL_ERROR);
+        }
+        return resultEntity;
+    }
 
     /**
      * 顶部菜单展示封装

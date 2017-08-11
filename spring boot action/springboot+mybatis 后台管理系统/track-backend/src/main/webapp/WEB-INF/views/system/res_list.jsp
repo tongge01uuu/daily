@@ -55,7 +55,7 @@
                             <tr>
                                 <th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"></th>
                                 <th>菜单名称</th>
-                                <th>菜单编码</th>
+                                <th>菜单ID</th>
                                 <th>菜单状态</th>
                                 <th>菜单路径</th>
                                 <th>菜单类型</th>
@@ -98,7 +98,7 @@
                 title : '<i class="larry-icon larry-caidanguanli"></i>新增菜单',
                 type : 2,
                 skin : 'layui-layer-molv',
-                content : "${ctx}/res/res_edit.do",
+                content : "${ctx}/res/res_add.do",
                 area: ['750px', '470px '],
                 resize:false,
                 anim:1,
@@ -106,13 +106,13 @@
 
                 }
             })
-        })
-
+        });
         function paging(curr){
             var pageLoading = layer.load(2);
             $.ajax({
                 url : '${ctx}/res/ajax_res_list.do',
                 type : 'post',
+                async:false,
                 data :{
                     page: curr || 1 ,   //当前页
                     rows: 7          //每页显示7条数据
@@ -135,10 +135,13 @@
                         var menuTypeLable;
                         switch (item.resType){
                             case 0:
-                                menuTypeLable = '<span class="label label-info ">0-菜单</span>';
+                                menuTypeLable = '<span class="label label-info ">0-大标题</span>';
                                 break;
                             case 1:
-                                menuTypeLable = '<span class="label label-info ">1-菜单</span>'
+                                menuTypeLable = '<span class="label label-info ">1-一级菜单</span>'
+                                break;
+                            case 2:
+                                menuTypeLable = '<span class="label label-info ">2-二级菜单</span>'
                                 break;
                         }
 
@@ -156,18 +159,18 @@
                         opt+= '</div>';
 
                         $("#resTbody").append(
-                             '<tr>'+
+                                '<tr>'+
                                 '<td><input name="" lay-skin="primary" type="checkbox"></td>'+
                                 '<td >'+item.resName+'</td>'+
-                                '<td>'+item.resModelCode+'</td>'+
+                                '<td>'+item.resId+'</td>'+
                                 '<td>'+resStatusLable+'</td>'+
                                 '<td style="text-align: left;" title="'+objNull(item.resLinkAddress)+'">'+objNull(resLinkAddressLable)+'</td>'+
                                 '<td>'+menuTypeLable+'</td>'+
                                 '<td>'+objNull(item.parentname)+'</td>'+
-                                '<td>'+item.createTime+'</td>'+
-                                '<td>'+objNull(item.modifyTime)+'</td>'+
+                                '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
+                                '<td>'+formatDate(objNull(item.modifyTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                 '<td>'+opt+'</td>'+
-                             '</tr>'
+                                '</tr>'
                         );
                         form.render();
 
@@ -187,23 +190,29 @@
                         }
                     });
                     layer.close(pageLoading);
-
                 }
 
             });
         }
-
         paging(1);
+        //编辑菜单
+        $(".res_edit").click(function(){
+            var resId=$(this).attr("data-id");
+            var index = top.layui.layer.open({
+                title : '<i class="larry-icon larry-caidanguanli"></i>编辑菜单',
+                type : 2,
+                skin : 'layui-layer-molv',
+                content : "${ctx}/res/res_edit.do?resId="+resId,
+                area: ['750px', '470px '],
+                resize:false,
+                anim:1,
+                success : function(layero, index){
+
+                }
+            })
+        })
 
     });
-
-
-    function objNull(obj) {
-        if(typeof(obj) == "undefined" || obj == null){
-            return "";
-        }
-        return obj;
-    }
 
 
 </script>

@@ -3,7 +3,7 @@ package com.we.backend.track.controller;
 import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.architect.constant.Constants;
-import com.we.backend.track.domain.bo.BussinessMsg;
+import com.we.backend.track.domain.bo.ResultEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;
@@ -53,7 +53,7 @@ public class LoginController extends BasicController {
      */
     @RequestMapping("/loginCheck.do")
     @ResponseBody
-    public BussinessMsg loginCheck(String username, String password,HttpServletRequest request){
+    public ResultEntity loginCheck(String username, String password, HttpServletRequest request){
         log.info("登陆验证处理开始");
         long start = System.currentTimeMillis();
         try {

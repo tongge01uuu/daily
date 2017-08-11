@@ -1,7 +1,7 @@
 package com.we.backend.track.architect.utils;
 
 import com.we.backend.track.architect.constant.BussinessCode;
-import com.we.backend.track.domain.bo.BussinessMsg;
+import com.we.backend.track.domain.bo.ResultEntity;
 
 /**
  * 后台管理系统返回码信息帮助类
@@ -19,7 +19,7 @@ public class BussinessMsgUtil {
      * @param bussinessCode 返回码
      * @return
      */
-    public static BussinessMsg returnCodeMessage(BussinessCode bussinessCode) {
+    public static ResultEntity returnCodeMessage(BussinessCode bussinessCode) {
         return returnCodeMessage(bussinessCode, null);
     }
 
@@ -30,11 +30,11 @@ public class BussinessMsgUtil {
      * @param returnData    返回数据
      * @return
      */
-    public static BussinessMsg returnCodeMessage(BussinessCode bussinessCode, Object returnData) {
-        BussinessMsg bussinessMsg = new BussinessMsg();
-        bussinessMsg.setReturnCode(bussinessCode.getCode());
-        bussinessMsg.setReturnMessage(bussinessCode.getMsg());
-        bussinessMsg.setReturnData(returnData);
-        return bussinessMsg;
+    public static ResultEntity returnCodeMessage(BussinessCode bussinessCode, Object returnData) {
+        ResultEntity resultEntity = new ResultEntity();
+        resultEntity.setReturnCode(bussinessCode.getCode());
+        resultEntity.setReturnMessage(bussinessCode.getMsg());
+        resultEntity.setReturnData(returnData);
+        return resultEntity;
     }
 }

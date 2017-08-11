@@ -6,7 +6,7 @@ import com.we.backend.track.service.UserService;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.architect.utils.CommonHelper;
 import com.we.backend.track.controller.BasicController;
-import com.we.backend.track.domain.bo.BussinessMsg;
+import com.we.backend.track.domain.bo.ResultEntity;
 import com.we.backend.track.domain.bo.ExcelExport;
 import com.we.backend.track.domain.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +33,22 @@ public class UserController extends BasicController {
     private UserService userService;
     @Autowired
     private RoleService roleService;
+
+    @RequestMapping("/user_info.do")
+    public String toUserInfoPage(Model model)
+    {
+        User user=getCurrentUser();
+        model.addAttribute("user",user);
+        return "system/user_info";
+    }
+    @RequestMapping("/ajax_update_user_pw.do")
+    @ResponseBody
+    public ResultEntity updateUserPW(Integer userId, String passwordOld, String passwordNew)
+    {
+        ResultEntity resultEntity = ResultEntity.build();
+        resultEntity =userService.updateUserPassword(userId,passwordOld,passwordNew);
+        return resultEntity;
+    }
 
     @RequestMapping("check_loginname_repeat.do")
     public boolean checkLoginNameRepeat(String loginName)
@@ -102,7 +118,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping("/ajax_save_user.do")
     @ResponseBody
-    public BussinessMsg ajaxSaveUser(User user){
+    public ResultEntity ajaxSaveUser(User user){
         try {
             return userService.saveOrUpdateUser(user, this.getCurrentLoginName());
         } catch (Exception e) {
@@ -118,7 +134,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping("/ajax_user_fail.do")
     @ResponseBody
-    public BussinessMsg ajaxUserFail(Integer userId){
+    public ResultEntity ajaxUserFail(Integer userId){
         try {
             return userService.updateUserStatus(userId, this.getCurrentLoginName());
         } catch (Exception e) {
@@ -134,7 +150,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping("/ajax_user_batch_fail.do")
     @ResponseBody
-    public BussinessMsg ajaxUserBatchFail(@RequestParam(value = "userIds[]") Integer[] userIds){
+    public ResultEntity ajaxUserBatchFail(@RequestParam(value = "userIds[]") Integer[] userIds){
         try {
             return userService.updateUserBatchStatus(userIds, this.getCurrentLoginName());
         } catch (Exception e) {
@@ -184,7 +200,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping("/ajax_save_user_role.do")
     @ResponseBody
-    public BussinessMsg ajaxSaveUserRole(Integer userId,String roleIds){
+    public ResultEntity ajaxSaveUserRole(Integer userId, String roleIds){
         try {
            return  userService.saveUserRole(userId,roleIds, this.getCurrentLoginName());
         } catch (Exception e) {
