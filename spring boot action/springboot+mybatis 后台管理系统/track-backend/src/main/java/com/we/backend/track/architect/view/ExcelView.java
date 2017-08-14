@@ -1,6 +1,6 @@
 package com.we.backend.track.architect.view;
 
-import com.we.backend.track.domain.bo.ExcelExport;
+import com.we.backend.track.domain.system.bo.ExcelExport;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.springframework.util.ReflectionUtils;

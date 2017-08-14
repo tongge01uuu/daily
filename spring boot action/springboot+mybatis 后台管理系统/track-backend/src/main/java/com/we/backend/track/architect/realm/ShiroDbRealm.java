@@ -1,9 +1,9 @@
 package com.we.backend.track.architect.realm;
 
-import com.we.backend.track.service.UserService;
-import com.we.backend.track.domain.vo.Resource;
-import com.we.backend.track.domain.vo.User;
-import com.we.backend.track.service.ResourceService;
+import com.we.backend.track.service.system.UserService;
+import com.we.backend.track.domain.system.vo.Resource;
+import com.we.backend.track.domain.system.vo.User;
+import com.we.backend.track.service.system.ResourceService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -1,7 +1,7 @@
 
 package com.we.backend.track.architect.utils;
 
-import com.we.backend.track.domain.bo.ExcelExport;
+import com.we.backend.track.domain.system.bo.ExcelExport;
 import com.we.backend.track.architect.view.ExcelView;
 import org.springframework.web.servlet.ModelAndView;
 

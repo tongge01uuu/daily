@@ -1,12 +1,12 @@
 package com.we.backend.track.controller.system;
 
-import com.we.backend.track.domain.bo.ResultEntity;
-import com.we.backend.track.domain.vo.RoleResource;
-import com.we.backend.track.service.RoleService;
+import com.we.backend.track.domain.system.bo.ResultEntity;
+import com.we.backend.track.domain.system.vo.RoleResource;
+import com.we.backend.track.service.system.RoleService;
 import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.controller.BasicController;
-import com.we.backend.track.domain.vo.Role;
+import com.we.backend.track.domain.system.vo.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,7 +1,7 @@
 package com.we.backend.track.architect.utils;
 
 import com.we.backend.track.architect.constant.BussinessCode;
-import com.we.backend.track.domain.bo.ResultEntity;
+import com.we.backend.track.domain.system.bo.ResultEntity;
 
 /**
  * 后台管理系统返回码信息帮助类

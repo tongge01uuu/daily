@@ -1,6 +1,6 @@
 package com.we.backend.track.architect.interceptor;
 
-import com.we.backend.track.domain.bo.PermissionSubject;
+import com.we.backend.track.domain.system.bo.PermissionSubject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;

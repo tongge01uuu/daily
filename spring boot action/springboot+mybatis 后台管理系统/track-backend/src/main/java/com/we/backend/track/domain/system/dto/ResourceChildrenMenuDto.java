@@ -1,7 +1,6 @@
-package com.we.backend.track.domain.dto;
+package com.we.backend.track.domain.system.dto;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 资源菜单Dto
@@ -9,7 +8,7 @@ import java.util.List;
  * @date 2017/7/28
  */
 
-public class ResourceMenuDto implements Serializable {
+public class ResourceChildrenMenuDto implements Serializable {
 
     //菜单名称
     private String title;
@@ -21,10 +20,6 @@ public class ResourceMenuDto implements Serializable {
     private String href;
 
 
-    //父级菜单Id
-    private  Integer pid;
-
-    private List<ResourceChildrenMenuDto> children;
 
 
     public String getTitle() {
@@ -53,19 +48,5 @@ public class ResourceMenuDto implements Serializable {
 
 
 
-    public Integer getPid() {
-        return pid;
-    }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public List<ResourceChildrenMenuDto> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<ResourceChildrenMenuDto> children) {
-        this.children = children;
-    }
 }

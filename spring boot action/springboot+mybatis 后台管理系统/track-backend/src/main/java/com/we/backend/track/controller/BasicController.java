@@ -1,6 +1,6 @@
 package com.we.backend.track.controller;
 
-import com.we.backend.track.domain.vo.User;
+import com.we.backend.track.domain.system.vo.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
@@ -25,8 +25,7 @@ public class BasicController {
      * 登录用户名
      */
     public String getCurrentLoginName() {
-        Subject currentUser = SecurityUtils.getSubject();
-        User user = currentUser.getPrincipals().oneByType(User.class);
+        User user = getCurrentUser();
         return user.getUserLoginName();
     }
 

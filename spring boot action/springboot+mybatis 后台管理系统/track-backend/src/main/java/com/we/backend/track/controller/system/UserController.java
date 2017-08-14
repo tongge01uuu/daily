@@ -1,14 +1,14 @@
 package com.we.backend.track.controller.system;
 
 import com.we.backend.track.architect.constant.BussinessCode;
-import com.we.backend.track.service.RoleService;
-import com.we.backend.track.service.UserService;
+import com.we.backend.track.service.system.RoleService;
+import com.we.backend.track.service.system.UserService;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.architect.utils.CommonHelper;
 import com.we.backend.track.controller.BasicController;
-import com.we.backend.track.domain.bo.ResultEntity;
-import com.we.backend.track.domain.bo.ExcelExport;
-import com.we.backend.track.domain.vo.User;
+import com.we.backend.track.domain.system.bo.ResultEntity;
+import com.we.backend.track.domain.system.bo.ExcelExport;
+import com.we.backend.track.domain.system.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +38,8 @@ public class UserController extends BasicController {
     public String toUserInfoPage(Model model)
     {
         User user=getCurrentUser();
-        model.addAttribute("user",user);
+        User userWithRole = userService.selectUserRolesByUserId(user.getUserId());
+        model.addAttribute("user",userWithRole);
         return "system/user_info";
     }
     @RequestMapping("/ajax_update_user_pw.do")

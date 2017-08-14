@@ -1,8 +1,8 @@
-package com.we.backend.track.dao;
+package com.we.backend.track.dao.system;
 
 
-import com.we.backend.track.domain.dto.ResourceMenuDto;
-import com.we.backend.track.domain.vo.Resource;
+import com.we.backend.track.domain.system.dto.ResourceMenuDto;
+import com.we.backend.track.domain.system.vo.Resource;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

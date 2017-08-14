@@ -69,6 +69,20 @@ layui.define(['layer'], function (exports) {
             }, function () {
                
             })
+        },logOutRightNow: function (title, text, url, type, dataType, data, callback) {
+            parent.layer.confirm(text, {
+                title: title,
+                resize: false,
+                btn: ['确定退出系统'],
+                btnAlign: 'c',
+                icon: 3
+            }, function () {
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(index); //再执行关闭                        //刷新父页面
+                parent.location.reload();
+                location.href = url
+            }, function () {
+            })
         }
     };
     exports('common', CmsCommon)

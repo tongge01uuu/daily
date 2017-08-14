@@ -155,7 +155,7 @@
                         //操作
                         var opt ='<div class="layui-btn-group">';
                         opt+=  '<a class="layui-btn layui-btn-mini res_edit" data-id="'+item.resId+'"><i class="layui-icon larry-icon larry-bianji2"></i> 编辑</a>';
-                        opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  links_del" data-id=""><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
+//                        opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  links_del" data-id=""><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
                         opt+= '</div>';
 
                         $("#resTbody").append(

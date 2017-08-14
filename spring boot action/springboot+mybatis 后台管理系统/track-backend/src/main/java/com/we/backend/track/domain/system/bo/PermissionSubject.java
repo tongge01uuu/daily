@@ -1,4 +1,4 @@
-package com.we.backend.track.domain.bo;
+package com.we.backend.track.domain.system.bo;
 
 import org.apache.shiro.subject.Subject;
 

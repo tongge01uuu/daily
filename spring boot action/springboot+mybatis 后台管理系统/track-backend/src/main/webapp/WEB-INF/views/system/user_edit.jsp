@@ -93,7 +93,7 @@
             },
             userName: function(value, item){
                 //验证用户名
-                if(!new RegExp("^([\u4e00-\u9fa5]){2,100}$").test(value)){
+                if(!new RegExp("^([\u4e00-\u9fa5]){2,6}$").test(value)){
                     return '用户姓名只能为中文，长度2-7位';
                 }
             }

@@ -2,8 +2,8 @@ package com.yxb.cms.test;
 
 import com.we.backend.track.Application;
 import com.we.backend.track.architect.properties.JdbcProperties;
-import com.we.backend.track.service.ResourceService;
-import com.we.backend.track.service.UserService;
+import com.we.backend.track.service.system.ResourceService;
+import com.we.backend.track.service.system.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

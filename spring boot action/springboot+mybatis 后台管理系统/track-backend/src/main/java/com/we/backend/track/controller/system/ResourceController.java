@@ -2,9 +2,9 @@ package com.we.backend.track.controller.system;
 
 import com.alibaba.fastjson.JSON;
 import com.we.backend.track.controller.BasicController;
-import com.we.backend.track.domain.bo.ResultEntity;
-import com.we.backend.track.domain.vo.Resource;
-import com.we.backend.track.service.ResourceService;
+import com.we.backend.track.domain.system.bo.ResultEntity;
+import com.we.backend.track.domain.system.vo.Resource;
+import com.we.backend.track.service.system.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

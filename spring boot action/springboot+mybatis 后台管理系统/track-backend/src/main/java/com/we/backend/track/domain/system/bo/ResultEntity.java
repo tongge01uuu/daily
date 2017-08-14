@@ -1,4 +1,4 @@
-package com.we.backend.track.domain.bo;
+package com.we.backend.track.domain.system.bo;
 
 import com.we.backend.track.architect.constant.BussinessCode;
 

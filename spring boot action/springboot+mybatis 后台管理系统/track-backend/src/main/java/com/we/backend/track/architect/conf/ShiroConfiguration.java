@@ -1,8 +1,8 @@
 package com.we.backend.track.architect.conf;
 
 import com.we.backend.track.architect.realm.ShiroDbRealm;
-import com.we.backend.track.dao.ResourceMapper;
-import com.we.backend.track.domain.vo.Resource;
+import com.we.backend.track.dao.system.ResourceMapper;
+import com.we.backend.track.domain.system.vo.Resource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -96,10 +96,10 @@ public class ShiroConfiguration {
      * @return
      */
     @Bean(name = "securityManager")
-    public SecurityManager securityManager(ShiroDbRealm myRealm, @Qualifier("cacheManager") EhCacheManager cacheManager) {
+    public SecurityManager securityManager(ShiroDbRealm shiroDbRealm, @Qualifier("cacheManager") EhCacheManager cacheManager) {
         log.info("--------------加载securityManager----------------");
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(myRealm);
+        securityManager.setRealm(shiroDbRealm);
         securityManager.setCacheManager(cacheManager);
         return securityManager;
     }

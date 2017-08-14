@@ -1,6 +1,6 @@
-package com.we.backend.track.dao;
+package com.we.backend.track.dao.system;
 
-import com.we.backend.track.domain.vo.Role;
+import com.we.backend.track.domain.system.vo.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

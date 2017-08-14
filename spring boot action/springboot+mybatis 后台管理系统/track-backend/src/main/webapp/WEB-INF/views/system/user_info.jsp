@@ -23,29 +23,92 @@
 </head>
 <body class="childrenBody" style="font-size: 12px;">
 <form class="layui-form layui-form-pane">
+
+    <table class="layui-table">
+        <%--<colgroup>--%>
+            <%--<col width="30">--%>
+            <%--<col width="30">--%>
+            <%--<col>--%>
+        <%--</colgroup>--%>
+        <%--<tbody>--%>
+        <%--<tr>--%>
+            <%--<td>登陆账号</td>--%>
+            <%--<td>${user.userLoginName}</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>用户姓名</td>--%>
+            <%--<td>${user.userName}</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>角色</td>--%>
+            <%--<td>${user.roleNames}</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>状态</td>--%>
+            <%--<td>--%>
+                <%--<c:if test="${user.userStatus ==0 }">有效</c:if>--%>
+                <%--<c:if test="${user.userStatus ==1 }">失效</c:if>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>旧密码：</td>--%>
+            <%--<td>--%>
+                <%--<div class="layui-input-inline">--%>
+                    <%--<input type="password" name="passwordOld" id="passwordOld" required lay-verify="required" placeholder="请输入原密码" autocomplete="off" class="layui-input">--%>
+                <%--</div>--%>
+                <%--<div class="layui-form-mid layui-word-aux">*必须</div>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>新密码：</td>--%>
+            <%--<td>--%>
+                <%--<div class="layui-input-inline">--%>
+                    <%--<input type="password" name="passwordNew" id="passwordNew" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">--%>
+                <%--</div>--%>
+                <%--<div class="layui-form-mid layui-word-aux">*必须</div>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+        <%--<tr>--%>
+            <%--<td>再次新密码：</td>--%>
+            <%--<td>--%>
+                <%--<div class="layui-input-inline">--%>
+                    <%--<input type="password" name="passwordNewRepeat" id="passwordNewRepeat" required lay-verify="required" placeholder="请输入新密码" autocomplete="off" class="layui-input">--%>
+                <%--</div>--%>
+                <%--<div class="layui-form-mid layui-word-aux">*两次新密码必须一致</div>--%>
+            <%--</td>--%>
+        <%--</tr>--%>
+        </tbody>
+    </table>
+
+
     <input id="userId" name="userId" type="hidden" value="${user.userId}">
 
     <input id="pageFlag"  type="hidden" value="${pageFlag}">
 
     <div class="layui-form-item">
         <label class="layui-form-label">登陆账号</label>
-        <div class="layui-show">
+        <div class="layui-form-label">
             ${user.userLoginName}
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">用户姓名</label>
-        <div class="layui-show">
+        <div class="layui-form-label">
             ${user.userName}
         </div>
     </div>
     <div class="layui-form-item" >
-        <label class="layui-form-label">角色&状态</label>
-        <div class="layui-show">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-form-label" style="overflow:auto; width:300px">
             ${user.roleNames}
         </div>
-        <c:if test="${user.userStatus ==0 }">有效</c:if>
-        <c:if test="${user.userStatus ==1 }">失效</c:if>
+    </div>
+    <div class="layui-form-item" >
+        <label class="layui-form-label">状态</label>
+        <div class="layui-form-label"  style="overflow:auto;">
+            <c:if test="${user.userStatus ==0 }">有效</c:if>
+            <c:if test="${user.userStatus ==1 }">失效</c:if>
+        </div>
     </div>
     <div class="layui-form-item" >
         <label class="layui-form-label">旧密码：</label>
@@ -76,9 +139,12 @@
     </div>
 </form>
 <script type="text/javascript">
-    layui.use(['form','layer','jquery'],function(){
+    layui.config({
+        base : "/static/js/"
+    }).use(['form','common','layer','jquery'],function(){
         var $ = layui.jquery,
                 form = layui.form(),
+                common = layui.common,
                 layer = parent.layer === undefined ? layui.layer : parent.layer;
 
         form.verify({
@@ -118,9 +184,12 @@
                     console.log(data.field);
                     if(data.returnCode == 0000){
                         top.layer.close(saveUserPWLoading);
+                        top.layer.msg(data.returnMessage);
 //                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 //                        parent.layer.close(index); //再执行关闭                        //刷新父页面
-                        parent.location.reload();
+//                        parent.location.reload();
+                        var url = '/logout.do';
+                        common.logOutRightNow('重新登陆提示！','密码修改成功，请重新登陆系统', url)
                     }else{
                         top.layer.close(saveUserPWLoading);
                         top.layer.msg(data.returnMessage);

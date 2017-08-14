@@ -3,7 +3,7 @@ package com.we.backend.track.controller;
 import com.we.backend.track.architect.constant.BussinessCode;
 import com.we.backend.track.architect.utils.BussinessMsgUtil;
 import com.we.backend.track.architect.constant.Constants;
-import com.we.backend.track.domain.bo.ResultEntity;
+import com.we.backend.track.domain.system.bo.ResultEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AccountException;

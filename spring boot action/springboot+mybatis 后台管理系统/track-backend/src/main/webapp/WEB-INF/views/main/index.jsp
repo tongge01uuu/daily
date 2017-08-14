@@ -39,16 +39,16 @@
                 <!-- 右侧常用菜单导航 -->
                 <div class="larry-right-menu posb" >
                     <ul class="layui-nav clearfix ">
-                        <button class="layui-btn layui-btn-small" id="dianzhan">
-                            <i class="larry-icon larry-dianzan"></i>
-                            打赏作者
-                        </button>
+                        <%--<button class="layui-btn layui-btn-small" id="dianzhan">--%>
+                            <%--<i class="larry-icon larry-dianzan"></i>--%>
+                            <%--打赏作者--%>
+                        <%--</button>--%>
                         <%--<li style="" class="layui-nav-item">--%>
                             <%--<a class="onFullScreen" id="FullScreen"><i class="larry-icon larry-quanping"></i>全屏</a>--%>
                         <%--</li>--%>
-                        <li style="" class="layui-nav-item">
-                            <a id="lock"><i class="larry-icon larry-diannao5"></i>锁屏</a>
-                        </li>
+                        <%--<li style="" class="layui-nav-item">--%>
+                            <%--<a id="lock"><i class="larry-icon larry-diannao5"></i>锁屏</a>--%>
+                        <%--</li>--%>
                         <%--<li style="" class="layui-nav-item">--%>
                             <%--<a id="clearCached"><i class="larry-icon larry-qingchuhuancun"></i>清除缓存</a>--%>
                         <%--</li>--%>

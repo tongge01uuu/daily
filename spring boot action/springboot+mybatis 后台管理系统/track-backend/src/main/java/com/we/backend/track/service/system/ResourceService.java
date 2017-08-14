@@ -1,15 +1,15 @@
-package com.we.backend.track.service;
+package com.we.backend.track.service.system;
 
 
 import com.alibaba.fastjson.JSON;
 import com.we.backend.track.architect.constant.BussinessCode;
-import com.we.backend.track.dao.ResourceMapper;
-import com.we.backend.track.dao.RoleResourceMapper;
-import com.we.backend.track.domain.bo.ResultEntity;
-import com.we.backend.track.domain.dto.ResourceChildrenMenuDto;
-import com.we.backend.track.domain.dto.ResourceMenuDto;
-import com.we.backend.track.domain.vo.Resource;
-import com.we.backend.track.domain.vo.RoleResource;
+import com.we.backend.track.dao.system.ResourceMapper;
+import com.we.backend.track.dao.system.RoleResourceMapper;
+import com.we.backend.track.domain.system.bo.ResultEntity;
+import com.we.backend.track.domain.system.dto.ResourceChildrenMenuDto;
+import com.we.backend.track.domain.system.dto.ResourceMenuDto;
+import com.we.backend.track.domain.system.vo.Resource;
+import com.we.backend.track.domain.system.vo.RoleResource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.commons.logging.Log;

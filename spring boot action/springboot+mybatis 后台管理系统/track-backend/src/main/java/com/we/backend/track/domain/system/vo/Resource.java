@@ -1,8 +1,7 @@
-package com.we.backend.track.domain.vo;
+package com.we.backend.track.domain.system.vo;
 
-import com.we.backend.track.domain.dto.PageDto;
+import com.we.backend.track.domain.system.dto.PageDto;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
