@@ -3,14 +3,14 @@ package com.we.backend.track.architect.conf;
 import com.we.backend.track.architect.realm.ShiroDbRealm;
 import com.we.backend.track.dao.system.ResourceMapper;
 import com.we.backend.track.domain.system.vo.Resource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +28,7 @@ import java.util.Map;
 @Configuration
 public class ShiroConfiguration {
 
-    private Log log = LogFactory.getLog(ShiroConfiguration.class);
+    private Logger log = LoggerFactory.getLogger(ShiroConfiguration.class);
 
     /**
      * Shiro Web过滤器Factory

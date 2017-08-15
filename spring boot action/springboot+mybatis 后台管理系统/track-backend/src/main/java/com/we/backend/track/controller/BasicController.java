@@ -1,10 +1,10 @@
 package com.we.backend.track.controller;
 
 import com.we.backend.track.domain.system.vo.User;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 @Scope("prototype")
 public class BasicController {
 
-    protected Log log = LogFactory.getLog(getClass());
+    protected Logger log = LoggerFactory.getLogger(getClass());
 
 
     /**

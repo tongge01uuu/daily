@@ -3,10 +3,10 @@ package com.we.backend.track.architect.conf;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.we.backend.track.architect.properties.AppCommonMyBatisProperties;
 import com.we.backend.track.architect.properties.JdbcProperties;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -37,7 +37,7 @@ import java.util.Properties;
 //@MapperScan(basePackages = "com.yxb.cms.dao")
 public class MyBatisDataSourceConfig {
 
-    private Log log = LogFactory.getLog(MyBatisDataSourceConfig.class);
+    private Logger log = LoggerFactory.getLogger(MyBatisDataSourceConfig.class);
 
     /**
      * 注册DataSource

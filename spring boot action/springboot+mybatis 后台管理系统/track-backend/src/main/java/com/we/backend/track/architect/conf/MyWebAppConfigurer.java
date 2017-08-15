@@ -2,8 +2,8 @@ package com.we.backend.track.architect.conf;
 
 import com.we.backend.track.architect.interceptor.CommonInterceptor;
 import com.we.backend.track.architect.interceptor.ErrorInterceptor;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
-    private Log log = LogFactory.getLog(MyWebAppConfigurer.class);
+    private Logger log = LoggerFactory.getLogger(MyWebAppConfigurer.class);
 
     @Bean
     public ErrorPageFilter errorPageFilter() {

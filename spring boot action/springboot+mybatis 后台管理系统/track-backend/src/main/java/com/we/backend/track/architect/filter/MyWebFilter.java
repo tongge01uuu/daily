@@ -1,8 +1,8 @@
 
 package com.we.backend.track.architect.filter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 //@Component
 public class MyWebFilter implements Filter {
-    private Log log = LogFactory.getLog(MyWebFilter.class);
+    private Logger log = LoggerFactory.getLogger(MyWebFilter.class);
 
 
     @Override
@@ -29,7 +29,7 @@ public class MyWebFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
         log.info("==>拦截请求"+response.getStatus());
-        log.info(((HttpServletRequest) req).getRequestURL());
+        log.info(((HttpServletRequest) req).getRequestURL().toString());
         chain.doFilter(req, res);
     }
 

@@ -1,9 +1,9 @@
 package com.we.backend.track.architect.interceptor;
 
 import com.we.backend.track.domain.system.bo.PermissionSubject;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class CommonInterceptor implements HandlerInterceptor {
-    private Log log = LogFactory.getLog(CommonInterceptor.class);
+    private Logger log = LoggerFactory.getLogger(CommonInterceptor.class);
 
 
     /**

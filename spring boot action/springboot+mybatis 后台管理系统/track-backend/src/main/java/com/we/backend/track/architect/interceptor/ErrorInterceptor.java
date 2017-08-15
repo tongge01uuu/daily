@@ -1,7 +1,7 @@
 package com.we.backend.track.architect.interceptor;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class ErrorInterceptor implements HandlerInterceptor {
-    private Log log = LogFactory.getLog(ErrorInterceptor.class);
+    private Logger log = LoggerFactory.getLogger(ErrorInterceptor.class);
 
 
     /**

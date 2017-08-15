@@ -5,14 +5,14 @@ import com.we.backend.track.domain.system.vo.Resource;
 import com.we.backend.track.domain.system.vo.User;
 import com.we.backend.track.service.system.ResourceService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ShiroDbRealm extends AuthorizingRealm {
 
-    private Log log = LogFactory.getLog(ShiroDbRealm.class);
+    private Logger log = LoggerFactory.getLogger(ShiroDbRealm.class);
 
     @Autowired
     @Lazy
