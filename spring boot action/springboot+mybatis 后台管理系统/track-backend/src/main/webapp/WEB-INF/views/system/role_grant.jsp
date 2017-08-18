@@ -117,7 +117,7 @@
                 },
                 success : function(data) {
                     console.log(data);
-                    if(data.returnCode == 0000){
+                    if(data.code == 0000){
                         top.layer.close(grantLoading);
                         top.layer.msg("授权信息保存成功");
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
@@ -125,7 +125,7 @@
                         parent.location.reload();
                     }else{
                         top.layer.close(grantLoading);
-                        top.layer.msg(data.returnMessage);
+                        top.layer.msg(data.message);
                     }
                 },error:function(data){
                     top.layer.close(index);

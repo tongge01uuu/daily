@@ -14,11 +14,11 @@ import java.io.Serializable;
 
 public class ResultEntity implements Serializable {
     //返回Code
-    private String returnCode;
+    private String code;
     //返回描述
-    private String returnMessage;
+    private String message;
     //返回数据
-    private Object returnData;
+    private Object data;
 
     private final static String SUCCESS="SUCCESS";
 
@@ -36,14 +36,14 @@ public class ResultEntity implements Serializable {
     }
     public ResultEntity withError(String returnMessage)
     {
-        this.setReturnCode(BussinessCode.GLOBAL_ERROR.getCode());
-        this.setReturnMessage(returnMessage);
+        this.setCode(BussinessCode.GLOBAL_ERROR.getCode());
+        this.setMessage(returnMessage);
         return this;
     }
     public ResultEntity withError(BussinessCode bussinessCode)
     {
-        this.setReturnCode(bussinessCode.getCode());
-        this.setReturnMessage(bussinessCode.getMsg());
+        this.setCode(bussinessCode.getCode());
+        this.setMessage(bussinessCode.getMsg());
         return this;
     }
 
@@ -53,32 +53,32 @@ public class ResultEntity implements Serializable {
 
     public ResultEntity(){}
 
-    private ResultEntity(String returnCode, String returnMessage) {
-        this.returnCode = returnCode;
-        this.returnMessage = returnMessage;
+    private ResultEntity(String code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    public String getReturnCode() {
-        return returnCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setReturnCode(String returnCode) {
-        this.returnCode = returnCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getReturnMessage() {
-        return returnMessage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setReturnMessage(String returnMessage) {
-        this.returnMessage = returnMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public Object getReturnData() {
-        return returnData;
+    public Object getData() {
+        return data;
     }
 
-    public void setReturnData(Object returnData) {
-        this.returnData = returnData;
+    public void setData(Object data) {
+        this.data = data;
     }
 }

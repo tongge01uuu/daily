@@ -9,6 +9,7 @@ import org.springframework.boot.web.support.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
@@ -60,7 +61,9 @@ public class MyWebAppConfigurer extends WebMvcConfigurerAdapter {
         super.addInterceptors(registry);
     }
 
-
-
-
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+        registry.addViewController("/business/dic_list").setViewName("/business/dic_list");
+    }
 }

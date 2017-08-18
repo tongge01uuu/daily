@@ -6,6 +6,11 @@ public class Dictionary {
     private Integer id;
 
     /**
+    * 为0时属于类别
+    */
+    private Integer pid;
+
+    /**
     * 名称
     */
     private String name;
@@ -13,10 +18,10 @@ public class Dictionary {
     /**
     * 排序
     */
-    private Integer order;
+    private Integer orderWeight;
 
     /**
-    * 类型 例如：流程节点
+    * 类型 (备用)
     */
     private Integer type;
 
@@ -24,6 +29,11 @@ public class Dictionary {
     * 描述
     */
     private String description;
+
+    /**
+    * 开关 0-失效 1-生效
+    */
+    private Integer access;
 
     private Date createTime;
 
@@ -40,6 +50,14 @@ public class Dictionary {
         this.id = id;
     }
 
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
     public String getName() {
         return name;
     }
@@ -48,12 +66,12 @@ public class Dictionary {
         this.name = name;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getOrderWeight() {
+        return orderWeight;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setOrderWeight(Integer orderWeight) {
+        this.orderWeight = orderWeight;
     }
 
     public Integer getType() {
@@ -70,6 +88,14 @@ public class Dictionary {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getAccess() {
+        return access;
+    }
+
+    public void setAccess(Integer access) {
+        this.access = access;
     }
 
     public Date getCreateTime() {

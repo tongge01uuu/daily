@@ -185,6 +185,66 @@ public class DictionaryExample {
             return (Criteria) this;
         }
 
+        public Criteria andPidIsNull() {
+            addCriterion("pid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidIsNotNull() {
+            addCriterion("pid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidEqualTo(Integer value) {
+            addCriterion("pid =", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidNotEqualTo(Integer value) {
+            addCriterion("pid <>", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidGreaterThan(Integer value) {
+            addCriterion("pid >", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pid >=", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidLessThan(Integer value) {
+            addCriterion("pid <", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidLessThanOrEqualTo(Integer value) {
+            addCriterion("pid <=", value, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidIn(List<Integer> values) {
+            addCriterion("pid in", values, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidNotIn(List<Integer> values) {
+            addCriterion("pid not in", values, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidBetween(Integer value1, Integer value2) {
+            addCriterion("pid between", value1, value2, "pid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPidNotBetween(Integer value1, Integer value2) {
+            addCriterion("pid not between", value1, value2, "pid");
+            return (Criteria) this;
+        }
+
         public Criteria andNameIsNull() {
             addCriterion("name is null");
             return (Criteria) this;
@@ -255,63 +315,63 @@ public class DictionaryExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNull() {
-            addCriterion("order is null");
+        public Criteria andOrderWeightIsNull() {
+            addCriterion("order_weight is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIsNotNull() {
-            addCriterion("order is not null");
+        public Criteria andOrderWeightIsNotNull() {
+            addCriterion("order_weight is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrderEqualTo(Integer value) {
-            addCriterion("order =", value, "order");
+        public Criteria andOrderWeightEqualTo(Integer value) {
+            addCriterion("order_weight =", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotEqualTo(Integer value) {
-            addCriterion("order <>", value, "order");
+        public Criteria andOrderWeightNotEqualTo(Integer value) {
+            addCriterion("order_weight <>", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThan(Integer value) {
-            addCriterion("order >", value, "order");
+        public Criteria andOrderWeightGreaterThan(Integer value) {
+            addCriterion("order_weight >", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderGreaterThanOrEqualTo(Integer value) {
-            addCriterion("order >=", value, "order");
+        public Criteria andOrderWeightGreaterThanOrEqualTo(Integer value) {
+            addCriterion("order_weight >=", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThan(Integer value) {
-            addCriterion("order <", value, "order");
+        public Criteria andOrderWeightLessThan(Integer value) {
+            addCriterion("order_weight <", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderLessThanOrEqualTo(Integer value) {
-            addCriterion("order <=", value, "order");
+        public Criteria andOrderWeightLessThanOrEqualTo(Integer value) {
+            addCriterion("order_weight <=", value, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderIn(List<Integer> values) {
-            addCriterion("order in", values, "order");
+        public Criteria andOrderWeightIn(List<Integer> values) {
+            addCriterion("order_weight in", values, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotIn(List<Integer> values) {
-            addCriterion("order not in", values, "order");
+        public Criteria andOrderWeightNotIn(List<Integer> values) {
+            addCriterion("order_weight not in", values, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderBetween(Integer value1, Integer value2) {
-            addCriterion("order between", value1, value2, "order");
+        public Criteria andOrderWeightBetween(Integer value1, Integer value2) {
+            addCriterion("order_weight between", value1, value2, "orderWeight");
             return (Criteria) this;
         }
 
-        public Criteria andOrderNotBetween(Integer value1, Integer value2) {
-            addCriterion("order not between", value1, value2, "order");
+        public Criteria andOrderWeightNotBetween(Integer value1, Integer value2) {
+            addCriterion("order_weight not between", value1, value2, "orderWeight");
             return (Criteria) this;
         }
 
@@ -442,6 +502,66 @@ public class DictionaryExample {
 
         public Criteria andDescriptionNotBetween(String value1, String value2) {
             addCriterion("description not between", value1, value2, "description");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessIsNull() {
+            addCriterion("access is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessIsNotNull() {
+            addCriterion("access is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessEqualTo(Integer value) {
+            addCriterion("access =", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessNotEqualTo(Integer value) {
+            addCriterion("access <>", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessGreaterThan(Integer value) {
+            addCriterion("access >", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessGreaterThanOrEqualTo(Integer value) {
+            addCriterion("access >=", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessLessThan(Integer value) {
+            addCriterion("access <", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessLessThanOrEqualTo(Integer value) {
+            addCriterion("access <=", value, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessIn(List<Integer> values) {
+            addCriterion("access in", values, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessNotIn(List<Integer> values) {
+            addCriterion("access not in", values, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessBetween(Integer value1, Integer value2) {
+            addCriterion("access between", value1, value2, "access");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccessNotBetween(Integer value1, Integer value2) {
+            addCriterion("access not between", value1, value2, "access");
             return (Criteria) this;
         }
 

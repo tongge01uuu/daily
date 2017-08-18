@@ -11,12 +11,32 @@ public class UserFlowState {
     private Integer userId;
 
     /**
+    * 真实姓名
+    */
+    private String realName;
+
+    /**
+    * 手机号
+    */
+    private String mobile;
+
+    /**
+    * 民生回调返回数据
+    */
+    private String stateInput;
+
+    /**
+    * order_id
+    */
+    private String orderId;
+
+    /**
     * 流程节点id
     */
     private Integer flowId;
 
     /**
-    * 流程节点状态
+    * 流程节点状态 0-未完成 1-已完成
     */
     private Integer flowStatus;
 
@@ -46,6 +66,38 @@ public class UserFlowState {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getStateInput() {
+        return stateInput;
+    }
+
+    public void setStateInput(String stateInput) {
+        this.stateInput = stateInput;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getFlowId() {

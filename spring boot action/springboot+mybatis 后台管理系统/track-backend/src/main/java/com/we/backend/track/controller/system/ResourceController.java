@@ -66,7 +66,7 @@ public class ResourceController extends BasicController {
      */
     @RequestMapping("/res_add.do")
     public String toResAddPage(Model model) {
-        model.addAttribute("parents",resourceService.selectParentResources().getReturnData());
+        model.addAttribute("parents",resourceService.selectParentResources().getData());
         //添加菜单 默认状态-有效
         Resource resource=new Resource();
         resource.setResStatus(0);
@@ -81,7 +81,7 @@ public class ResourceController extends BasicController {
     public String toResEditPage(Model model,Integer resId) {
         Resource resource=resourceService.selectByPrimaryKey(resId);
         model.addAttribute("resource",resource);
-        model.addAttribute("parents",resourceService.selectParentResources().getReturnData());
+        model.addAttribute("parents",resourceService.selectParentResources().getData());
         return "system/res_edit";
     }
 

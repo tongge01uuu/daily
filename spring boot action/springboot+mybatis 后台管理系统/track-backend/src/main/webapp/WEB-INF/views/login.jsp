@@ -53,12 +53,12 @@
                 }
             });
             //登陆成功
-            if (ajaxReturnData.returnCode == 0000) {
+            if (ajaxReturnData.code == 0000) {
                 top.layer.close(loginLoading);
                 return true;
             } else {
                 top.layer.close(loginLoading);
-                top.layer.msg(ajaxReturnData.returnMessage);
+                top.layer.msg(ajaxReturnData.message);
                 return false;
             }
         });

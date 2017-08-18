@@ -125,7 +125,7 @@ public class ResourceService {
         ResultEntity resultEntity=ResultEntity.build();
         try {
             List<Resource> resources=resourceMapper.selectParentResources();
-            resultEntity.setReturnData(resources);
+            resultEntity.setData(resources);
         } catch (Exception e) {
             log.error(ExceptionUtils.getStackTrace(e));
             resultEntity.withError(BussinessCode.GLOBAL_ERROR);

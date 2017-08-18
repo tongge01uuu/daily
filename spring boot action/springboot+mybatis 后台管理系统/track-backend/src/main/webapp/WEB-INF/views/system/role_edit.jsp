@@ -72,7 +72,7 @@
                 async: false,
                 data : data.field,
                 success : function(data) {
-                    if(data.returnCode == 0000){
+                    if(data.code == 0000){
                         top.layer.close(roleSaveLoading);
                         top.layer.msg("角色信息保存成功！");
                         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
@@ -80,7 +80,7 @@
                         parent.location.reload();
                     }else{
                         top.layer.close(roleSaveLoading);
-                        top.layer.msg(data.returnMessage);
+                        top.layer.msg(data.message);
                     }
                 },error:function(data){
                     top.layer.close(index);

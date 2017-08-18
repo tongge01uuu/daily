@@ -3,10 +3,8 @@ package com.we.backend.track.dao.business;
 import com.we.backend.track.domain.business.po.UserFlowState;
 import com.we.backend.track.domain.business.po.UserFlowStateExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-@Mapper
+
 public interface UserFlowStateMapper {
     int countByExample(UserFlowStateExample example);
 

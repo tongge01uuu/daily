@@ -112,7 +112,7 @@
                 async: false,
                 data : data.field,
                 success : function(data) {
-                    if(data.returnCode == 0000){
+                    if(data.code == 0000){
                         top.layer.close(userSaveLoading);
                         if(pageFlag == 'addPage'){
                             top.layer.msg("用户信息保存成功,默认密码123456,请及时修改");
@@ -124,7 +124,7 @@
                         parent.location.reload();
                     }else{
                         top.layer.close(userSaveLoading);
-                        top.layer.msg(data.returnMessage);
+                        top.layer.msg(data.message);
                     }
                 },error:function(data){
                     top.layer.close(index);

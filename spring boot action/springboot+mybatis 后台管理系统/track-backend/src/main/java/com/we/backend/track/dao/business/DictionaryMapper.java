@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 @Mapper
 public interface DictionaryMapper {
     int countByExample(DictionaryExample example);
@@ -19,6 +20,9 @@ public interface DictionaryMapper {
     int insertSelective(Dictionary record);
 
     List<Dictionary> selectByExample(DictionaryExample example);
+
+    List<Dictionary> selectAll();
+
 
     Dictionary selectByPrimaryKey(Integer id);
 

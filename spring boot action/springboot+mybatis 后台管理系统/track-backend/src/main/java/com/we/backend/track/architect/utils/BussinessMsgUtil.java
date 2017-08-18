@@ -32,9 +32,9 @@ public class BussinessMsgUtil {
      */
     public static ResultEntity returnCodeMessage(BussinessCode bussinessCode, Object returnData) {
         ResultEntity resultEntity = new ResultEntity();
-        resultEntity.setReturnCode(bussinessCode.getCode());
-        resultEntity.setReturnMessage(bussinessCode.getMsg());
-        resultEntity.setReturnData(returnData);
+        resultEntity.setCode(bussinessCode.getCode());
+        resultEntity.setMessage(bussinessCode.getMsg());
+        resultEntity.setData(returnData);
         return resultEntity;
     }
 }

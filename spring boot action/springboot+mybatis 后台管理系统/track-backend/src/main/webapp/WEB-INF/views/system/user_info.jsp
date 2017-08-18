@@ -182,9 +182,9 @@
                 data : data.field,
                 success : function(data) {
                     console.log(data.field);
-                    if(data.returnCode == 0000){
+                    if(data.code == 0000){
                         top.layer.close(saveUserPWLoading);
-                        top.layer.msg(data.returnMessage);
+                        top.layer.msg(data.message);
 //                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 //                        parent.layer.close(index); //再执行关闭                        //刷新父页面
 //                        parent.location.reload();
@@ -192,7 +192,7 @@
                         common.logOutRightNow('重新登陆提示！','密码修改成功，请重新登陆系统', url)
                     }else{
                         top.layer.close(saveUserPWLoading);
-                        top.layer.msg(data.returnMessage);
+                        top.layer.msg(data.message);
                     }
                 },error:function(data){
                     top.layer.close(index);
