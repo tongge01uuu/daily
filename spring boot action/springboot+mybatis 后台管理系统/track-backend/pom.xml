@@ -24,22 +24,9 @@
     </parent>
 
     <dependencies>
-        <!-- springboot 必备的Jar包 支持 Web 应用开发，包含 Tomcat 和 spring-mvc。 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <!-- 使用log4j,排除SPRING BANCKLOG-->
-                <!--<exclusion>-->
-                    <!--<artifactId>spring-boot-starter-logging</artifactId>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                <!--</exclusion>-->
-                <!-- 排除Spring boot 内嵌Tomcat
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>-->
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,12 +71,12 @@
             <!--<version>${log4j}</version>-->
             <!--<type>jar</type>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
-            <type>jar</type>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>commons-logging</groupId>-->
+            <!--<artifactId>commons-logging</artifactId>-->
+            <!--<version>${commons-logging.version}</version>-->
+            <!--<type>jar</type>-->
+        <!--</dependency>-->
         <!-- commons -->
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -147,10 +134,10 @@
            缓存Cache（EHCache），
            任务计划Scheduling（uartz）。
         -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-context-support</artifactId>-->
+        <!--</dependency>-->
         <!-- SpringBoot 热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -176,7 +163,7 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.1.2</version>
+            <version>1.1.1</version>
         </dependency>
 
 
@@ -216,7 +203,7 @@
                         </resource>
                     </webResources>
                     <warName>${name}</warName>
-                    <outputDirectory>${outPath}</outputDirectory>
+                    <!--<outputDirectory>${outPath}</outputDirectory>-->
                 </configuration>
             </plugin>
             <plugin>

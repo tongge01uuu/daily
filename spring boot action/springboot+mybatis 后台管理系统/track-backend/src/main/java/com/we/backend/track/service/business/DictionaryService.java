@@ -52,10 +52,10 @@ public class DictionaryService {
         return result;
     }
 
-    public void selectAll()
+    public List selectAll()
     {
         PageHelper.startPage(1,2);
-        dictionaryMapper.selectAll();
+        return dictionaryMapper.selectAll();
     }
 
 }

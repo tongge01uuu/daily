@@ -60,7 +60,7 @@ CREATE TABLE `cc_user_flow_count` (
 DROP TABLE IF EXISTS `cc_work_sheet`;
 CREATE TABLE `cc_work_sheet` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `state_id` INT(11) NOT NULL1
+  `state_id` INT(11) NOT NULL,
   `description` VARCHAR(400) DEFAULT NULL COMMENT '描述',
   `create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '5.6.5+有效',

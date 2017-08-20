@@ -3,8 +3,10 @@ package com.yxb.cms.test;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.we.backend.track.Application;
 import com.we.backend.track.architect.properties.JdbcProperties;
+import com.we.backend.track.dao.business.DictionaryMapper;
 import com.we.backend.track.service.business.DictionaryService;
 import com.we.backend.track.service.system.ResourceService;
 import com.we.backend.track.service.system.UserService;
@@ -34,6 +36,8 @@ public class AppTest {
 
     @Autowired
     private DictionaryService dictionaryService;
+    @Autowired
+    private DictionaryMapper dictionaryMapper;
 
     @Test
     public void test() throws Exception{
@@ -41,7 +45,11 @@ public class AppTest {
 //        List list = dictionaryService.getDictionary(null);
 
 //        System.out.println(JSON.toJSONString((Page)list));
-        dictionaryService.selectAll();
+//        dictionaryService.selectAll();
+        PageHelper.startPage(1,1,true);
+        List list= dictionaryMapper.selectAll();
+        PageInfo pageInfo=new PageInfo(list);
+        System.out.println(JSON.toJSONString(pageInfo));
     }
 
     @Test
