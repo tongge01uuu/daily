@@ -84,7 +84,7 @@
                 common = layui.common;
 
 
-        /**加载用户列表信息*/
+        /**加载字典列表信息*/
         dicPageList(1,$("#pid").val());
 
         /**全选*/
@@ -100,7 +100,7 @@
             var index = layui.layer.open({
                 title : "新增元素",
                 type : 2,
-                content : "${ctx}/dictionary/dictionary_add.do",
+                content : "${ctx}/dictionary/toSaveOrUpdate.do",
                 area: ['550px', '265px'],
                 success : function(layero, index){
 
@@ -113,7 +113,7 @@
              var index = layui.layer.open({
                  title : "编辑用户",
                  type : 2,
-                 content : "${ctx}/dictionary/update.do?dictionaryId="+dictionaryId,
+                 content : "${ctx}/dictionary/toSaveOrUpdate.do?dictionaryId="+dictionaryId,
                  area: ['550px', '265px'],
                  success : function(layero, index){
 
@@ -130,7 +130,7 @@
                 return false;
             }
 
-            var url = "${ctx}/dictionary/ajax_dictionary_fail.do";
+            var url = "${ctx}/dictionary/fail.do";
             var param = {dictionaryId:dictionaryId};
             common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param)
 
@@ -139,14 +139,14 @@
         $(".dictionarySearchList_btn").click(function(){
             //监听提交
             form.on('submit(dictionarySearchFilter)', function (data) {
-                dicPageList(1,$("#pid"));
+                dicPageList(1,$("#pid").val());
             });
 
         });
         /**批量失效*/
         $(".dictionaryBatchFail_btn").click(function(){
             if($("input:checkbox[name='dictionaryIdCK']:checked").length == 0){
-                layer.msg("请选择要失效的用户信息");
+                layer.msg("请选择要失效的元素信息");
             }else{
                 var isCreateBy = false;
                 var dictionaryStatus = false;
@@ -154,15 +154,8 @@
 
                 $("input:checkbox[name='dictionaryIdCK']:checked").each(function(){
                     dictionaryIds.push($(this).val());
-                    //不能失效当前登录用户
-                    if(currentdictionaryName != $(this).val()){
-                        isCreateBy = true;
-                    }else{
-                        isCreateBy = false;
-                        return false;
-                    }
-                    //用户已失效
-                    if($(this).attr('alt') == 0){
+                    //已失效
+                    if($(this).attr('alt') == 1){
                         dictionaryStatus = true;
                     }else{
                         dictionaryStatus = false;
@@ -175,15 +168,11 @@
                     return false;
                 }
 
-                var url = "${ctx}/dictionary/ajax_dictionary_batch_fail.do";
+                var url = "${ctx}/dictionary/fail/batch.do";
                 var param = {dictionaryIds:dictionaryIds};
+                console.log(param);
                 common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param);
-
-
             }
-
-
-
         });
 
         /**加载元素信息**/
@@ -195,16 +184,17 @@
                 type : 'post',
                 data :{
                     pageNum: curr || 1 ,   //当前页
-                    pageSize: 2 ,          //每页显示7条数据
+                    pageSize: 7 ,          //每页显示7条数据
                     pid: pid
                 },
                 success : function(data) {
-                    console.log(data)
+                    console.log("result：\n"+data)
                     if(data != "" ){
                         $("#dicTbody").text('');//先清空原先内容
-                        var pdata = data.list;
-                        console.log(pdata);
-                        $(pdata).each(function(index,item){
+                        var pdata = data.data;
+                        var ldata=pdata.list
+                        console.log("列表：\n"+ldata);
+                        $(ldata).each(function(index,item){
 
                             //节点名
                             var dicNameLable;
@@ -219,10 +209,10 @@
                             var flowStatusLable;
                             switch (item.access){
                                 case 0:
-                                    flowStatusLable = '<span class="label label-success ">0-失效</span>';
+                                    flowStatusLable = '<span class="label label-danger">0-失效</span>';
                                     break;
                                 case 1:
-                                    flowStatusLable = '<span class="label label-danger ">1-有效</span>'
+                                    flowStatusLable = '<span class="label label-success ">1-有效</span>'
                                     break;
                             }
 
@@ -250,13 +240,13 @@
                         //分页
                         laypage({
                             cont: 'dicPage',
-                            pages:  pdata.totalSize,
+                            pages:  pdata.pages,
                             curr: curr || 1, //当前页
                             groups: 8, //连续显示分页数
                             skip: true,
                             jump: function(obj, first){ //触发分页后的回调
                                 if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                    dicPageList(obj.curr);
+                                    dicPageList(obj.curr,$("#pid").val());
                                 }
                             }
                         });

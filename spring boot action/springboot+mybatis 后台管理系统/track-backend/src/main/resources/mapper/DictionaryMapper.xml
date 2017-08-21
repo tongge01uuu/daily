@@ -285,4 +285,15 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="doBatchAccess">
+    update cc_dictionary
+    SET access=#{access}
+    <where>
+      id IN
+      <foreach collection="dictionaryIds" open="(" close=")" separator="," item="dicId">
+        #{dicId}
+      </foreach>
+    </where>
+  </update>
 </mapper>

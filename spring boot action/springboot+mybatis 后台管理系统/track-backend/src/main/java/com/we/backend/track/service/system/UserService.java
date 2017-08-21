@@ -201,6 +201,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
+    @Transactional
     public ResultEntity updateUserBatchStatus(Integer[] userIds, String longinName) throws Exception{
         log.info("批量失效用户开始，当前用户Id:"+Arrays.toString(userIds));
         long start = System.currentTimeMillis();

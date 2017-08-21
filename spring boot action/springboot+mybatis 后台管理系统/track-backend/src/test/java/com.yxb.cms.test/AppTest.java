@@ -41,12 +41,7 @@ public class AppTest {
 
     @Test
     public void test() throws Exception{
-
-//        List list = dictionaryService.getDictionary(null);
-
-//        System.out.println(JSON.toJSONString((Page)list));
-//        dictionaryService.selectAll();
-        PageHelper.startPage(1,1,true);
+        PageHelper.startPage(2,2,true);
         List list= dictionaryMapper.selectAll();
         PageInfo pageInfo=new PageInfo(list);
         System.out.println(JSON.toJSONString(pageInfo));

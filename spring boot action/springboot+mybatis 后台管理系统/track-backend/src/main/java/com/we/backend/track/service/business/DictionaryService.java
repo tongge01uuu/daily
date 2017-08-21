@@ -8,11 +8,13 @@ import com.we.backend.track.controller.business.DictionaryController;
 import com.we.backend.track.dao.business.DictionaryMapper;
 import com.we.backend.track.domain.business.po.Dictionary;
 import com.we.backend.track.domain.business.po.DictionaryExample;
+import com.we.backend.track.domain.system.bo.ResultEntity;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +28,16 @@ public class DictionaryService {
     @Autowired
     private DictionaryMapper dictionaryMapper;
 
-    public List<Dictionary> getDictionary(Integer pid) throws Exception
+    public List<Dictionary> getDictionarys(Integer pid) throws Exception
     {
         List<Dictionary> result= null;
         try {
             result = new ArrayList<>();
             DictionaryExample example=new DictionaryExample();
-            DictionaryExample.Criteria criteria= example.createCriteria().andAccessEqualTo(1);
+            DictionaryExample.Criteria criteria= example.createCriteria();
             if (pid==null)
             {
                 //查所有字典元素
-                PageHelper.offsetPage(0,2,true);
                 result=dictionaryMapper.selectByExample(example);
             }else
             {
@@ -44,18 +45,49 @@ public class DictionaryService {
                 criteria.andPidEqualTo(pid);
                 result=dictionaryMapper.selectByExample(example);
             }
-            PageInfo pageInfo=new PageInfo(result);
-            System.out.println(pageInfo.getTotal()+"-----"+JSON.toJSONString(pageInfo));
         } catch (Exception e) {
             logger.error(ExceptionUtils.getStackTrace(e));
         }
         return result;
     }
 
-    public List selectAll()
+    public ResultEntity saveOrUpdate(Dictionary dictionary)throws Exception
     {
-        PageHelper.startPage(1,2);
-        return dictionaryMapper.selectAll();
+        ResultEntity resultEntity=ResultEntity.build();
+        if (dictionary.getId()!=null&&dictionary.getId()>0)
+        {
+            dictionaryMapper.updateByPrimaryKeySelective(dictionary);
+        }else {
+            dictionaryMapper.insertSelective(dictionary);
+        }
+        return resultEntity;
+    }
+
+    public Dictionary get(Integer dictionaryId)throws Exception
+    {
+        Dictionary dictionary=dictionaryMapper.selectByPrimaryKey(dictionaryId);
+        return dictionary;
+    }
+
+    public ResultEntity fail(Integer dictionaryId)throws Exception
+    {
+        ResultEntity resultEntity=ResultEntity.build();
+        Dictionary dictionary = get(dictionaryId);
+        dictionary.setAccess(0);
+        saveOrUpdate(dictionary);
+        return resultEntity;
+    }
+    @Transactional
+    public ResultEntity failBatch(Integer[] dictionaryIds)throws Exception
+    {
+        ResultEntity resultEntity=ResultEntity.build();
+        if (dictionaryIds!=null && dictionaryIds.length>0)
+        {
+            int count=dictionaryMapper.doBatchAccess(dictionaryIds,0);
+            resultEntity.setData(count);
+            resultEntity.setMessage(String.format("成功更新%d条数据",count));
+        }
+        return resultEntity;
     }
 
 }

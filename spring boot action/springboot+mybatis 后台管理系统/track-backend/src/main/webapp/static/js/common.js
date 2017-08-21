@@ -41,11 +41,21 @@ layui.define(['layer'], function (exports) {
                     async: false,
                     data : param,
                     success : function(data) {
-                        if(data.returnCode == 0000){
-                            layer.msg(data.returnMessage);
+                        var msg=data.message;
+
+                        if(data.code == 0000){
+                            if(msg==null || msg=="")
+                            {
+                                msg=="处理成功";
+                            }
+                            top.layer.msg(msg);
                             location.reload();
                         }else{
-                            layer.msg(data.returnMessage);
+                            if(msg==null || msg=="")
+                            {
+                                msg="处理异常"
+                            }
+                            layer.msg(msg);
                         }
                     },error:function(data){
 
