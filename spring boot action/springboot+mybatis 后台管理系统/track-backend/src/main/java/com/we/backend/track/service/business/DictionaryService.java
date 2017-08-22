@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.we.backend.track.architect.constant.DictionaryConstant;
 import com.we.backend.track.controller.business.DictionaryController;
 import com.we.backend.track.dao.business.DictionaryMapper;
 import com.we.backend.track.domain.business.po.Dictionary;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yukai on 2017-8-16.
@@ -88,6 +90,17 @@ public class DictionaryService {
             resultEntity.setMessage(String.format("成功更新%d条数据",count));
         }
         return resultEntity;
+    }
+    /**
+     * 获取某类别（pid）对应子title
+     * @param pid
+     * @return
+     */
+    public List<Dictionary> fetchTitles(Integer pid)
+    {
+        Map<Integer,List<Dictionary>> dic= DictionaryConstant.dicData;
+        List<Dictionary> subDics=dic.get(pid);
+        return subDics;
     }
 
 }

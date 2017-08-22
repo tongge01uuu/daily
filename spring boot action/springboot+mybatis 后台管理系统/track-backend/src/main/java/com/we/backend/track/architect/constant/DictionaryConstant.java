@@ -23,7 +23,10 @@ public class DictionaryConstant {
     @Autowired
     private DictionaryMapper dictionaryMapper;
     //Map<pid,children>
-    public Map<Integer,List<Dictionary>> dicData=new HashMap<Integer, List<Dictionary>>();
+    public static final Map<Integer,List<Dictionary>> dicData=new HashMap<Integer, List<Dictionary>>();
+    //Map<pid,childMap<id,dic>>
+    public static final Map<Long,Map<Long,Dictionary>> dicDataMap=new HashMap<Long, Map<Long, Dictionary>>();
+
 
     @PostConstruct
     public void init()
@@ -44,22 +47,26 @@ public class DictionaryConstant {
             for (Dictionary parent:dictionaryListParent)
             {
                 dicData.put(parent.getId(),new ArrayList<>());
+                dicDataMap.put(parent.getId().longValue(),new HashMap<Long, Dictionary>());
             }
             for (Dictionary dictionary:dictionaryListChildren)
             {
-                int pid=dictionary.getPid();
+                Integer pid=dictionary.getPid();
                 List list=dicData.get(pid);
-                if (list==null)
+                Map<Long, Dictionary> map=dicDataMap.get(pid.longValue());
+                if (list==null||map==null)
                 {
                     throw new RuntimeException(String.format("字典类型数据 -%s- 未在系统中声明，请删除数据库中pid=%s的数据 或者添加 id=%s的父节点",pid,pid,pid));
                 }
                 list.add(dictionary);
+                map.put(dictionary.getId().longValue(),dictionary);
             }
 
         } catch (Exception e) {
             logger.error("-------------加载字典数据-异常---------------\n{}", ExceptionUtils.getStackTrace(e));
         }
-        logger.info("-------------加载字典数据-结束---------------\n{}", JSON.toJSON(dicData));
+        logger.info("-------------加载字典数据-结束---------------\ndicData\n{} \ndicDataMap\n{}",
+                JSON.toJSON(dicData),JSON.toJSON(dicDataMap));
 
     }
 }

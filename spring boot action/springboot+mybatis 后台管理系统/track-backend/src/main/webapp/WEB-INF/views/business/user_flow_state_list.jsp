@@ -20,8 +20,6 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/static/css/common.css" media="all">
     <link rel="stylesheet" type="text/css" href="${ctx}/static/css/personal.css" media="all">
     <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_9h680jcse4620529.css">
-
-
     <script src="${ctx}/static/layui/layui.js"></script>
 <body>
 <div class="larry-grid larryTheme-A">
@@ -31,43 +29,40 @@
                 <div class="layui-inline">
                     <form class="layui-form" id="dictionarySearchForm">
                         <div class="layui-input-inline" style="width:110px;">
-                            <select name="pid" id="pid">
-                                <option value="">全部</option>
-                                <c:forEach var="cell" items="${parentDics}">
+                            <select name="flowId" id="flowId">
+                                <option value="0">全部</option>
+                                <c:forEach var="cell" items="${flows}">
                                     <option value="${cell.id}">${cell.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
-                        <a class="layui-btn dictionarySearchList_btn" lay-submit lay-filter="dictionarySearchFilter"><i class="layui-icon larry-icon larry-chaxun7"></i>查询</a>
+                        <a class="layui-btn dictionarySearchList_btn" lay-submit lay-filter="listSearchFilter"><i class="layui-icon larry-icon larry-chaxun7"></i>查询</a>
                     </form>
-                </div>
-                <div class="layui-inline">
-                    <a class="layui-btn layui-btn-normal dictionaryAdd_btn"> <i class="layui-icon larry-icon larry-xinzeng1"></i>新增元素</a>
-                </div>
-                <div class="layui-inline">
-                    <a class="layui-btn layui-btn-danger dictionaryBatchFail_btn"><i class="layui-icon larry-icon larry-shanchu"></i>批量失效</a>
                 </div>
             </blockquote>
             <div class="larry-separate"></div>
-            <!-- 元素列表 -->
+            <!-- 列表 -->
             <div class="layui-tab-item layui-field-box layui-show">
                 <div class="layui-form">
                     <table class="layui-table" lay-even="" lay-skin="row">
                         <thead >
                             <tr>
-                                <th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"></th>
-                                <th>节点名称</th>
-                                <th>排序</th>
+                                <th>用户ID</th>
+                                <th>姓名</th>
+                                <th>手机号</th>
+                                <th>订单号</th>
                                 <th>状态</th>
+                                <th>民生数据</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
+                                <th>处理状态</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
-                        <tbody id="dicTbody"></tbody>
+                        <tbody id="listTbody"></tbody>
                     </table>
                 </div>
-                <div class="larry-table-page clearfix" id="dicPage"></div>
+                <div class="larry-table-page clearfix" id="listPage"></div>
             </div>
 
         </div>
@@ -84,8 +79,8 @@
                 common = layui.common;
 
 
-        /**加载字典列表信息*/
-        dicPageList(1,$("#pid").val());
+        /**加载列表信息*/
+        listPageList(1,null);
 
         /**全选*/
         form.on('checkbox(allChoose)', function (data) {
@@ -138,9 +133,13 @@
         /**查询*/
         $(".dictionarySearchList_btn").click(function(){
             //监听提交
-            form.on('submit(dictionarySearchFilter)', function (data) {
-                var param=$("#pid").val();
-                dicPageList(1,param);
+            form.on('submit(listSearchFilter)', function (data) {
+                var param=$("#flowId").val();
+                if (param==0)
+                {
+                    param=null;
+                }
+                listPageList(1,param);
             });
 
         });
@@ -176,61 +175,77 @@
             }
         });
 
+
         /**加载元素信息**/
-        function dicPageList(curr,pid){
-            console.log("page:"+curr+"   pid:"+pid);
+        function listPageList(curr,flowId){
+            console.log("page:"+curr+"   flowId:"+flowId);
             var pageLoading = layer.load(2);
             $.ajax({
-                url : '${ctx}/dictionary/children.do',
+                url : '${ctx}/userFlow/state/list.do',
                 type : 'post',
                 data :{
                     pageNum: curr || 1 ,   //当前页
                     pageSize: 7 ,          //每页显示7条数据
-                    pid: pid
+                    flowId: flowId
                 },
                 success : function(data) {
-                    console.log("result：\n"+data)
+                    console.log("result：\n"+data);
                     if(data != "" ){
-                        $("#dicTbody").text('');//先清空原先内容
-                        var pdata = data.data;
-                        var ldata=pdata.list
+                        $("#listTbody").text('');//先清空原先内容
+                        var pdata = data.data.pageInfo;
+                        var ldata=pdata.list;
+                        var dic=data.data.dic;
                         console.log("列表：\n"+ldata);
+                        console.log("dic：\n"+dic);
                         $(ldata).each(function(index,item){
 
                             //节点名
-                            var dicNameLable;
-                            if(objNull(item.name) != "" && item.name.length > 9){
-                                dicNameLable = item.name.substring(0,9) +"...";
+                            var cmsData;
+                            if(objNull(item.stateInput) != "" && item.name.length > 9){
+                                cmsData = item.stateInput.substring(0,9) +"...";
 
                             }else{
-                                dicNameLable = item.name;
+                                cmsData = item.stateInput;
+                            }
+                            var flowName;
+                            if (objNull(dic[1][item.flowId])=="")
+                            {
+                                flowName=item.flowId
+                            }else {
+                                flowName=dic[1][item.flowId]['name'];
                             }
 
                             //节点状态
-                            var flowStatusLable;
-                            switch (item.access){
+                            var handleStateLable;
+                            switch (item.handleState){
                                 case 0:
-                                    flowStatusLable = '<span class="label label-danger">0-失效</span>';
+                                    handleStateLable = '<span class="label label-default">未处理</span>';
                                     break;
                                 case 1:
-                                    flowStatusLable = '<span class="label label-success ">1-有效</span>'
+                                    handleStateLable = '<span class="label label-danger ">处理中</span>'
+                                    break;
+                                case 2:
+                                    handleStateLable = '<span class="label label-success ">已回访</span>'
                                     break;
                             }
 
                             //操作按钮
                             var opt ='<div class="layui-btn-group">';
-                                opt+=  '<a class="layui-btn layui-btn-mini dictionary_edit" data-id="'+item.id+'"><i class="layui-icon larry-icon larry-bianji2"></i> 编辑</a>';
-                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  dictionary_fail" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini dictionary_edit" data-id="'+item.id+' data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-bianji2"></i>处理</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  dictionary_fail" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-x_suoping"></i>锁定</a>';
                                 opt+= '</div>';
                             //组装table
-                            $("#dicTbody").append(
+                            $("#listTbody").append(
                                     '<tr>'+
-                                    '<td><input name="dictionaryIdCK" lay-skin="primary" type="checkbox"  alt="'+item.access+'" value="'+item.id+'"></td>'+
-                                    '<td title="'+objNull(item.name)+'">'+objNull(dicNameLable)+'</td>'+
-                                    '<td title="'+objNull(item.orderWeight)+'">'+objNull(item.orderWeight)+'</td>'+
-                                    '<td>'+flowStatusLable+'</td>'+
+                                    '<td title="'+objNull(item.userId)+'">'+objNull(item.userId)+'</td>'+
+                                    '<td title="'+objNull(item.realName)+'">'+objNull(item.realName)+'</td>'+
+                                    '<td>'+item.mobile+'</td>'+
+                                    '<td>'+item.orderId+'</td>'+
+                                    '<td title="'+objNull(item.flowId)+'">'+flowName+'</td>'+
+                                    '<td title="'+objNull(item.stateInput)+'">'+cmsData+'</td>'+
                                     '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+formatDate(objNull(item.updateTime),"yyyy-MM-dd HH:mm")+'</td>'+
+                                    '<td title="'+objNull(item.handleState)+'">'+handleStateLable+'</td>'+
                                     '<td>'+opt+'</td>'+
                                     '</tr>'
                             );
@@ -240,14 +255,14 @@
                         });
                         //分页
                         laypage({
-                            cont: 'dicPage',
+                            cont: 'listPage',
                             pages:  pdata.pages,
                             curr: curr || 1, //当前页
                             groups: 8, //连续显示分页数
                             skip: true,
                             jump: function(obj, first){ //触发分页后的回调
                                 if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                    dicPageList(obj.curr,$("#pid").val());
+                                    listPageList(obj.curr,$("#flowId").val());
                                 }
                             }
                         });

@@ -65,7 +65,6 @@ public class DictionaryController {
             PageHelper.startPage(pageNum,pageSize,true);
             List<Dictionary> dictionaries=dictionaryService.getDictionarys(pid);
             PageInfo page = new PageInfo(dictionaries);
-            System.out.println("------"+ JSON.toJSON(page));
             resultEntity.setData(page);
         } catch (Exception e) {
             logger.error(ExceptionUtils.getStackTrace(e));

@@ -56,7 +56,7 @@
                 <select name="resParentid" >
                     <option value="0">无(0级菜单-大标题)</option>
                     <c:forEach var="item" items="${parents}">
-                        <option value="${item.resId}">${item.resName}</option>
+                        <option value="${item.resId}" <c:if test="${resource.resParentid ==item.resId}">selected</c:if>>${item.resName}</option>
                     </c:forEach>
                 </select>
             </div>
