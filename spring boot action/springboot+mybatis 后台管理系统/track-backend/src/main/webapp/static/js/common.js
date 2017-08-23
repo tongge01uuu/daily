@@ -25,6 +25,23 @@ layui.define(['layer'], function (exports) {
             });
             return
         },
+
+        cmsConfirm: function (title, text) {
+            layer.confirm(text, {
+                title: title,
+                resize: false,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                anim:1,
+                icon: 3
+            }, function () {
+                return true
+
+            }, function () {
+
+            })
+
+        },
         // ajax Confirm 对话框
         ajaxCmsConfirm: function (title, text, url,param) {
             layer.confirm(text, {
@@ -79,7 +96,8 @@ layui.define(['layer'], function (exports) {
             }, function () {
                
             })
-        },logOutRightNow: function (title, text, url, type, dataType, data, callback) {
+        },
+        logOutRightNow: function (title, text, url, type, dataType, data, callback) {
             parent.layer.confirm(text, {
                 title: title,
                 resize: false,

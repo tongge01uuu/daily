@@ -3,24 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>后台管理系统</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="${ctx}/static/img/favicon.ico">
-
-    <link rel="stylesheet" href="${ctx}/static/layui/css/layui.css">
-    <link rel="stylesheet" href="${ctx}/static/css/global.css">
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/common.css" media="all">
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/personal.css" media="all">
-    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_9h680jcse4620529.css">
-    <script src="${ctx}/static/layui/layui.js"></script>
+    <%@include file="/comm/myinc.jsp" %>
+</head>
 <body>
 <div class="larry-grid larryTheme-A">
     <div class="larry-personal">
@@ -45,6 +29,9 @@
             <div class="layui-tab-item layui-field-box layui-show">
                 <div class="layui-form">
                     <table class="layui-table" lay-even="" lay-skin="row">
+                        <colgroup>
+                            <col width="50">
+                        </colgroup>
                         <thead >
                             <tr>
                                 <th>用户ID</th>
@@ -55,6 +42,7 @@
                                 <th>民生数据</th>
                                 <th>创建时间</th>
                                 <th>修改时间</th>
+                                <th>回访人</th>
                                 <th>处理状态</th>
                                 <th>操作</th>
                             </tr>
@@ -90,44 +78,67 @@
             });
             form.render('checkbox');
         });
-        /**添加元素*/
-        $(".dictionaryAdd_btn").click(function(){
-            var index = layui.layer.open({
-                title : "新增元素",
-                type : 2,
-                content : "${ctx}/dictionary/toSaveOrUpdate.do",
-                area: ['550px', '265px'],
-                success : function(layero, index){
 
+        function checkAndLock(userFlowId,ifalert,ifReload) {
+            var result=true;
+            $.ajax({
+                url : '${ctx}/userFlow/state/checkAndLock.do',
+                type : 'post',
+                async:false,
+                data :{
+                    userFlowStateId: userFlowId
+                },
+                success : function(data) {
+                    if (data.code!='0000')
+                    {
+                        top.layer.alert(data.message);
+//                        top.layer.msg(data.message);
+                        location.reload();
+                        result=false;
+                    }else {
+//                        top.layer.alert("success");
+                        if (ifalert)
+                        {
+                            top.layer.msg("任务锁定成功");
+                        }
+                        if (ifReload)
+                        {
+                            location.reload();
+                        }
+                    }
+                    return result;
                 }
             });
-        });
-        /**修改元素*/
-        $("body").on("click",".dictionary_edit",function(){
-            var dictionaryId = $(this).attr("data-id");
-             var index = layui.layer.open({
-                 title : "编辑用户",
-                 type : 2,
-                 content : "${ctx}/dictionary/toSaveOrUpdate.do?dictionaryId="+dictionaryId,
-                 area: ['550px', '265px'],
-                 success : function(layero, index){
 
-                 }
-             });
-        });
+            return result;
 
-        /**元素失效*/
-        $("body").on("click",".dictionary_fail",function(){
-            var dictionaryId = $(this).attr("data-id");
-            var dictionaryStatus = $(this).attr("data-status");
-            if(dictionaryStatus == 0){
-                layer.msg("当前元素已失效");
-                return false;
+        }
+        /**修改*/
+        $("body").on("click","._edit",function(){
+            var userFlowId = $(this).attr("data-id");
+
+            if (checkAndLock(userFlowId,false,false))
+            {
+                var index = layui.layer.open({
+                    title : "编辑",
+                    type : 2,
+                    content : "${ctx}/userFlow/state/toEdit.do?userFlowStateId="+userFlowId,
+                    area: ['550px', '366px'],
+                    success : function(layero, index){
+
+                    }
+                });
             }
+        });
 
-            var url = "${ctx}/dictionary/fail.do";
-            var param = {dictionaryId:dictionaryId};
-            common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param)
+        /**锁定*/
+        $("body").on("click","._fail",function(){
+            var userFlowId = $(this).attr("data-id");
+
+            checkAndLock(userFlowId,true,true);
+            <%--var url = "${ctx}/dictionary/fail.do";--%>
+            <%--var param = {dictionaryId:dictionaryId};--%>
+            <%--common.ajaxCmsConfirm('系统提示', '确定领取当前任务吗?',url,param)--%>
 
         });
         /**查询*/
@@ -143,37 +154,7 @@
             });
 
         });
-        /**批量失效*/
-        $(".dictionaryBatchFail_btn").click(function(){
-            if($("input:checkbox[name='dictionaryIdCK']:checked").length == 0){
-                layer.msg("请选择要失效的元素信息");
-            }else{
-                var isCreateBy = false;
-                var dictionaryStatus = false;
-                var dictionaryIds = [];
 
-                $("input:checkbox[name='dictionaryIdCK']:checked").each(function(){
-                    dictionaryIds.push($(this).val());
-                    //已失效
-                    if($(this).attr('alt') == 1){
-                        dictionaryStatus = true;
-                    }else{
-                        dictionaryStatus = false;
-                        return false;
-                    }
-
-                });
-                if(dictionaryStatus==false){
-                    layer.msg("当前选择的元素已失效");
-                    return false;
-                }
-
-                var url = "${ctx}/dictionary/fail/batch.do";
-                var param = {dictionaryIds:dictionaryIds};
-                console.log(param);
-                common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param);
-            }
-        });
 
 
         /**加载元素信息**/
@@ -228,16 +209,21 @@
                                     handleStateLable = '<span class="label label-success ">已回访</span>'
                                     break;
                             }
+                            var lockBtn='<a class="layui-btn layui-btn-mini layui-btn-danger  _fail"  title="领取任务，锁定该条记录" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-x_suoping"></i>锁定</a>';
+                            if(item.handleState!=0)
+                            {
+                                lockBtn='<a class="layui-btn layui-btn-mini layui-btn-disabled "  title="任务已被领取" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-x_suoping"></i>锁定</a>';
+                            }
 
                             //操作按钮
                             var opt ='<div class="layui-btn-group">';
-                                opt+=  '<a class="layui-btn layui-btn-mini dictionary_edit" data-id="'+item.id+' data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-bianji2"></i>处理</a>';
-                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  dictionary_fail" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-x_suoping"></i>锁定</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini _edit" title="点击进入编辑会直接锁定记录" data-id="'+item.id+'" ><i class="layui-icon larry-icon larry-bianji2"></i>处理</a>';
+                                opt+= lockBtn;
                                 opt+= '</div>';
                             //组装table
                             $("#listTbody").append(
                                     '<tr>'+
-                                    '<td title="'+objNull(item.userId)+'">'+objNull(item.userId)+'</td>'+
+                                    '<td title="'+objNull(item.id)+'">'+objNull(item.userId)+'</td>'+
                                     '<td title="'+objNull(item.realName)+'">'+objNull(item.realName)+'</td>'+
                                     '<td>'+item.mobile+'</td>'+
                                     '<td>'+item.orderId+'</td>'+
@@ -245,6 +231,7 @@
                                     '<td title="'+objNull(item.stateInput)+'">'+cmsData+'</td>'+
                                     '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+formatDate(objNull(item.updateTime),"yyyy-MM-dd HH:mm")+'</td>'+
+                                    '<td title="'+objNull(item.workerName)+'">'+objNull(item.workerName)+'</td>'+
                                     '<td title="'+objNull(item.handleState)+'">'+handleStateLable+'</td>'+
                                     '<td>'+opt+'</td>'+
                                     '</tr>'

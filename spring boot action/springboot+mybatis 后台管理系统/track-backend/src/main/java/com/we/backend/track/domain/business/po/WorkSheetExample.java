@@ -245,63 +245,63 @@ public class WorkSheetExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdIsNull() {
-            addCriterion("user_backend_id is null");
+        public Criteria andWorkerIdIsNull() {
+            addCriterion("worker_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdIsNotNull() {
-            addCriterion("user_backend_id is not null");
+        public Criteria andWorkerIdIsNotNull() {
+            addCriterion("worker_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdEqualTo(Integer value) {
-            addCriterion("user_backend_id =", value, "userBackendId");
+        public Criteria andWorkerIdEqualTo(Integer value) {
+            addCriterion("worker_id =", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdNotEqualTo(Integer value) {
-            addCriterion("user_backend_id <>", value, "userBackendId");
+        public Criteria andWorkerIdNotEqualTo(Integer value) {
+            addCriterion("worker_id <>", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdGreaterThan(Integer value) {
-            addCriterion("user_backend_id >", value, "userBackendId");
+        public Criteria andWorkerIdGreaterThan(Integer value) {
+            addCriterion("worker_id >", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("user_backend_id >=", value, "userBackendId");
+        public Criteria andWorkerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("worker_id >=", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdLessThan(Integer value) {
-            addCriterion("user_backend_id <", value, "userBackendId");
+        public Criteria andWorkerIdLessThan(Integer value) {
+            addCriterion("worker_id <", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdLessThanOrEqualTo(Integer value) {
-            addCriterion("user_backend_id <=", value, "userBackendId");
+        public Criteria andWorkerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("worker_id <=", value, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdIn(List<Integer> values) {
-            addCriterion("user_backend_id in", values, "userBackendId");
+        public Criteria andWorkerIdIn(List<Integer> values) {
+            addCriterion("worker_id in", values, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdNotIn(List<Integer> values) {
-            addCriterion("user_backend_id not in", values, "userBackendId");
+        public Criteria andWorkerIdNotIn(List<Integer> values) {
+            addCriterion("worker_id not in", values, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdBetween(Integer value1, Integer value2) {
-            addCriterion("user_backend_id between", value1, value2, "userBackendId");
+        public Criteria andWorkerIdBetween(Integer value1, Integer value2) {
+            addCriterion("worker_id between", value1, value2, "workerId");
             return (Criteria) this;
         }
 
-        public Criteria andUserBackendIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("user_backend_id not between", value1, value2, "userBackendId");
+        public Criteria andWorkerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("worker_id not between", value1, value2, "workerId");
             return (Criteria) this;
         }
 

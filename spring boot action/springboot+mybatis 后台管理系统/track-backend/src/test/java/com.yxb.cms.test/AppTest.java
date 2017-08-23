@@ -8,6 +8,7 @@ import com.we.backend.track.Application;
 import com.we.backend.track.architect.properties.JdbcProperties;
 import com.we.backend.track.dao.business.DictionaryMapper;
 import com.we.backend.track.service.business.DictionaryService;
+import com.we.backend.track.service.business.UserFlowStateService;
 import com.we.backend.track.service.system.ResourceService;
 import com.we.backend.track.service.system.UserService;
 import org.junit.Test;
@@ -37,6 +38,8 @@ public class AppTest {
     @Autowired
     private DictionaryService dictionaryService;
     @Autowired
+    private UserFlowStateService userFlowStateService;
+    @Autowired
     private DictionaryMapper dictionaryMapper;
 
     @Test
@@ -51,9 +54,10 @@ public class AppTest {
     public void test2() throws Exception{
 
 
-        String result = resourceService.selectResLevelListByParentid(7);
-
-        System.out.println(result);
+//        String result = resourceService.selectResLevelListByParentid(7);
+//
+//        System.out.println(result);
+        userFlowStateService.getUserFlowStates(null,null);
 
 
     }

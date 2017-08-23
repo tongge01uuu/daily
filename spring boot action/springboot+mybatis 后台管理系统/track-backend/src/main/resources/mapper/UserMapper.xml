@@ -213,6 +213,11 @@
         LIMIT #{start},#{rows}
     </select>
 
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from cc_user
+  </select>
     <!-- 用户列表信息List -->
     <select id="selectUserList" parameterType="com.we.backend.track.domain.system.vo.User" resultMap="BaseResultMap" >
         select

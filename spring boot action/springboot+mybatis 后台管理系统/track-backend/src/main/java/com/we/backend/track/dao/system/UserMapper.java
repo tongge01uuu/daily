@@ -68,6 +68,8 @@ public interface UserMapper {
      * @return
      */
     List<User>selectUserList(User user);
+    List<User>selectAll();
+
 
     /**
      * 验证用户账号唯一性

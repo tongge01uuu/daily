@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.we.backend.track.domain.business.po.WorkSheet" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="state_id" property="stateId" jdbcType="INTEGER" />
-    <result column="user_backend_id" property="userBackendId" jdbcType="INTEGER" />
+    <result column="worker_id" property="workerId" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, state_id, user_backend_id, description, create_time, update_time
+    id, state_id, worker_id, description, create_time, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.we.backend.track.domain.business.po.WorkSheetExample" >
     select
@@ -109,10 +109,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.we.backend.track.domain.business.po.WorkSheet" >
-    insert into cc_work_sheet (id, state_id, user_backend_id, 
+    insert into cc_work_sheet (id, state_id, worker_id, 
       description, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, #{userBackendId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{stateId,jdbcType=INTEGER}, #{workerId,jdbcType=INTEGER}, 
       #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -125,8 +125,8 @@
       <if test="stateId != null" >
         state_id,
       </if>
-      <if test="userBackendId != null" >
-        user_backend_id,
+      <if test="workerId != null" >
+        worker_id,
       </if>
       <if test="description != null" >
         description,
@@ -145,8 +145,8 @@
       <if test="stateId != null" >
         #{stateId,jdbcType=INTEGER},
       </if>
-      <if test="userBackendId != null" >
-        #{userBackendId,jdbcType=INTEGER},
+      <if test="workerId != null" >
+        #{workerId,jdbcType=INTEGER},
       </if>
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
@@ -174,8 +174,8 @@
       <if test="record.stateId != null" >
         state_id = #{record.stateId,jdbcType=INTEGER},
       </if>
-      <if test="record.userBackendId != null" >
-        user_backend_id = #{record.userBackendId,jdbcType=INTEGER},
+      <if test="record.workerId != null" >
+        worker_id = #{record.workerId,jdbcType=INTEGER},
       </if>
       <if test="record.description != null" >
         description = #{record.description,jdbcType=VARCHAR},
@@ -195,7 +195,7 @@
     update cc_work_sheet
     set id = #{record.id,jdbcType=INTEGER},
       state_id = #{record.stateId,jdbcType=INTEGER},
-      user_backend_id = #{record.userBackendId,jdbcType=INTEGER},
+      worker_id = #{record.workerId,jdbcType=INTEGER},
       description = #{record.description,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -209,8 +209,8 @@
       <if test="stateId != null" >
         state_id = #{stateId,jdbcType=INTEGER},
       </if>
-      <if test="userBackendId != null" >
-        user_backend_id = #{userBackendId,jdbcType=INTEGER},
+      <if test="workerId != null" >
+        worker_id = #{workerId,jdbcType=INTEGER},
       </if>
       <if test="description != null" >
         description = #{description,jdbcType=VARCHAR},
@@ -227,7 +227,7 @@
   <update id="updateByPrimaryKey" parameterType="com.we.backend.track.domain.business.po.WorkSheet" >
     update cc_work_sheet
     set state_id = #{stateId,jdbcType=INTEGER},
-      user_backend_id = #{userBackendId,jdbcType=INTEGER},
+      worker_id = #{workerId,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

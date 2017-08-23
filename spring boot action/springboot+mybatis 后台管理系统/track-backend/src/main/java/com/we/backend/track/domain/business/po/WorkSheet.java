@@ -5,15 +5,12 @@ import java.util.Date;
 public class WorkSheet {
     private Integer id;
 
-    /**
-    * 用户流程状态记录id
-    */
     private Integer stateId;
 
     /**
     * 后台工作人员id
     */
-    private Integer userBackendId;
+    private Integer workerId;
 
     /**
     * 描述
@@ -43,12 +40,12 @@ public class WorkSheet {
         this.stateId = stateId;
     }
 
-    public Integer getUserBackendId() {
-        return userBackendId;
+    public Integer getWorkerId() {
+        return workerId;
     }
 
-    public void setUserBackendId(Integer userBackendId) {
-        this.userBackendId = userBackendId;
+    public void setWorkerId(Integer workerId) {
+        this.workerId = workerId;
     }
 
     public String getDescription() {
