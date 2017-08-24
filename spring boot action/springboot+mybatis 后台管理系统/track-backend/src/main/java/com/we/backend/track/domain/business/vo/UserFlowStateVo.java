@@ -8,6 +8,15 @@ import com.we.backend.track.domain.business.po.UserFlowState;
 public class UserFlowStateVo extends UserFlowState{
     private String flowName;
     private String workerName;
+    private Integer workerId;
+
+    public Integer getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(Integer workerId) {
+        this.workerId = workerId;
+    }
 
     public String getWorkerName() {
         return workerName;

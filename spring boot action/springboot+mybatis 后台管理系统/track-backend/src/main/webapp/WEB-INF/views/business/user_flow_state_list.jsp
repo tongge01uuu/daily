@@ -28,7 +28,7 @@
             <!-- 列表 -->
             <div class="layui-tab-item layui-field-box layui-show">
                 <div class="layui-form">
-                    <table class="layui-table" lay-even="" lay-skin="row">
+                    <table class="layui-table" lay-even lay-skin="row line">
                         <colgroup>
                             <col width="50">
                         </colgroup>
@@ -131,6 +131,18 @@
             }
         });
 
+        /** 查看CMBC完整数据*/
+        $("body").on("click","._showCmbc",function(){
+            var data = $(this).attr("data-content");
+
+            var index = layui.layer.open({
+                title : "民生回调数据",
+                skin:'layui-layer-molv',
+                content : '<textarea style="resize: both;width: 500px;height: inherit" disabled>'+JSON.stringify(JSON.parse(data), null, 5)+'</textarea>',
+                area: ['550px', '366px'],
+            });
+        });
+
         /**锁定*/
         $("body").on("click","._fail",function(){
             var userFlowId = $(this).attr("data-id");
@@ -182,7 +194,7 @@
 
                             //节点名
                             var cmsData;
-                            if(objNull(item.stateInput) != "" && item.name.length > 9){
+                            if(objNull(item.stateInput) != "" && item.stateInput.length > 9){
                                 cmsData = item.stateInput.substring(0,9) +"...";
 
                             }else{
@@ -228,7 +240,7 @@
                                     '<td>'+item.mobile+'</td>'+
                                     '<td>'+item.orderId+'</td>'+
                                     '<td title="'+objNull(item.flowId)+'">'+flowName+'</td>'+
-                                    '<td title="'+objNull(item.stateInput)+'">'+cmsData+'</td>'+
+                                    '<td title="点击查看完整数据">'+'<a class="_showCmbc" style="cursor:pointer" data-content='+item.stateInput+'>'+cmsData+'</a></td>'+
                                     '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+formatDate(objNull(item.updateTime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td title="'+objNull(item.workerName)+'">'+objNull(item.workerName)+'</td>'+

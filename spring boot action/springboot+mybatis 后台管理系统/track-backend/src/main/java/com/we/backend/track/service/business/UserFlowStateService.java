@@ -46,26 +46,19 @@ public class UserFlowStateService {
         UserFlowStateExample userFlowStateExample=new UserFlowStateExample();
         UserFlowStateExample.Criteria criteria=userFlowStateExample.createCriteria();
         criteria.andFlowStatusEqualTo(flowStatus);
-        userFlowStateExample.setOrderByClause("handle_state asc");
+        userFlowStateExample.setOrderByClause("handle_state asc,update_time desc");
         if (flowId!=null)
         {
             criteria.andFlowIdEqualTo(flowId);
         }
-        List<UserFlowState> list=userFlowStateMapper.selectByExample(userFlowStateExample);
+        List<UserFlowStateVo> list=userFlowStateMapper.selectVoByExample(userFlowStateExample);
         List<UserFlowStateVo> voList=new ArrayList<>();
-        UserFlowStateVo userFlowStateVo=null;
         WorkSheetVo workSheetVo=null;
-        for (UserFlowState userFlowState :list)
+        for (UserFlowStateVo userFlowStateVo :list)
         {
-            userFlowStateVo=new UserFlowStateVo();
-            BeanUtils.copyProperties(userFlowState,userFlowStateVo);
-            if (userFlowState.getHandleState()!=HandleStatus.UN_HANDLE.getKey())
+            if (userFlowStateVo.getHandleState()!=HandleStatus.UN_HANDLE.getKey() && userFlowStateVo.getWorkerId()!=null)
             {
-                workSheetVo=workSheetService.getByStateId(userFlowState.getId());
-                if (workSheetVo!=null)
-                {
-                    userFlowStateVo.setWorkerName(WorkerConstant.USER_MAP.get(workSheetVo.getWorkerId()).getUserName());
-                }
+                userFlowStateVo.setWorkerName(WorkerConstant.USER_MAP.get(userFlowStateVo.getWorkerId()).getUserName());
             }
             voList.add(userFlowStateVo);
         }

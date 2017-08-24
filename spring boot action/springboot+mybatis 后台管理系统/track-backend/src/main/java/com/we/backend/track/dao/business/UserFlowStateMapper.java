@@ -4,6 +4,7 @@ import com.we.backend.track.domain.business.po.UserFlowState;
 import com.we.backend.track.domain.business.po.UserFlowStateExample;
 import java.util.List;
 
+import com.we.backend.track.domain.business.vo.UserFlowStateVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper
@@ -19,6 +20,8 @@ public interface UserFlowStateMapper {
     int insertSelective(UserFlowState record);
 
     List<UserFlowState> selectByExample(UserFlowStateExample example);
+
+    List<UserFlowStateVo> selectVoByExample(UserFlowStateExample example);
 
     UserFlowState selectByPrimaryKey(Integer id);
 

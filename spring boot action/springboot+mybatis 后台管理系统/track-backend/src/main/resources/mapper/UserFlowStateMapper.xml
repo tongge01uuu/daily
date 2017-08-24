@@ -14,6 +14,9 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="BaseResultMapVo" type="com.we.backend.track.domain.business.vo.UserFlowStateVo" extends="BaseResultMap" >
+    <result column="worker_id" property="workerId" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -76,6 +79,10 @@
     id, user_id, real_name, mobile, state_input, order_id, flow_id, flow_status, handle_state, 
     create_time, update_time
   </sql>
+  <sql id="Base_Column_List_Vo">
+    u.id, user_id, real_name, mobile, state_input, order_id, flow_id, flow_status, handle_state,
+    u.create_time, u.update_time
+  </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.we.backend.track.domain.business.po.UserFlowStateExample" >
     select
     <if test="distinct" >
@@ -83,6 +90,30 @@
     </if>
     <include refid="Base_Column_List" />
     from cc_user_flow_state
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectVoByExample" resultMap="BaseResultMapVo" parameterType="com.we.backend.track.domain.business.po.UserFlowStateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    worker_id,
+    <include refid="Base_Column_List_Vo" />
+    from cc_user_flow_state  u LEFT JOIN cc_work_sheet w
+    ON  u.id=w.state_id
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
