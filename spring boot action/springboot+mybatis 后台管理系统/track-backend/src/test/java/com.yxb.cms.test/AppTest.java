@@ -5,7 +5,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.we.backend.track.Application;
-import com.we.backend.track.architect.properties.JdbcProperties;
 import com.we.backend.track.dao.business.DictionaryMapper;
 import com.we.backend.track.service.business.DictionaryService;
 import com.we.backend.track.service.business.UserFlowStateService;
