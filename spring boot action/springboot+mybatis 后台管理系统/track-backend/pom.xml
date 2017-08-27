@@ -5,7 +5,7 @@
     <artifactId>track-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
         <name>track-backend</name>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <properties>
         <log4j>1.2.16</log4j>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.5.RELEASE</version>
+        <version>1.5.3.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -30,17 +30,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
         <!-- 打包成war包必备 -->
+        <!--
+        tomcat server.xml <host>加入如下CONTEXT 即可根目录访问工程
+        <Context path="" docBase="D:\DEV\SERVER\apache-tomcat-9.0.0.M15\webapps\track-backend-0.0.1-SNAPSHOT"  reloadable="true" crossContext="true"/>
+        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- 兼容Jsp -->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -50,6 +54,8 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+
+
         <!--spring boot 属性文件配置处理器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -99,12 +105,6 @@
             <version>1.2.2</version>
         </dependency>
 
-        <!-- Druid 数据连接池依赖 -->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>druid</artifactId>-->
-            <!--<version>1.0.20</version>-->
-        <!--</dependency>-->
         <!-- 添加mysql驱动包 -->
         <dependency>
             <groupId>mysql</groupId>
@@ -157,7 +157,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.4.2</version>
+                <version>1.4.2.RELEASE</version>
                 <configuration>
                     <jvmArguments>
                         -Dfile.encoding=UTF-8
@@ -168,6 +168,7 @@
                         <java.source>1.8</java.source>
                         <java.target>1.8</java.target>
                     </additionalProperties>
+                    <mainClass>com.we.backend.track.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>
