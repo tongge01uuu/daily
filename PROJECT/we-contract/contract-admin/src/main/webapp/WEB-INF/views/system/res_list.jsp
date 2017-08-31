@@ -119,6 +119,7 @@
                 },
                 success : function(data) {
                     var pdata = (data);
+                    $("#resTbody").empty();
                     $(pdata.rows).each(function(index,item){
 
                         //菜单状态
@@ -179,6 +180,7 @@
                         cont: 'resPage',
                         pages:  pdata.totalSize,
                         curr: curr || 1, //当前页
+                        groups: 8, //连续显示分页数
                         skip: true,
                         jump: function(obj, first){ //触发分页后的回调
                             if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
@@ -194,12 +196,11 @@
 
             });
         }
-        paging(2);
+        paging(1);
         //编辑菜单
-        $(".res_edit").click(function(){
-            var resId=$(this).attr("data-id");
-            console.log(resId);
-            var index = top.layui.layer.open({
+        $("body").on("click",".res_edit",function(){
+            var resId = $(this).attr("data-id");
+            var index = layui.layer.open({
                 title : '<i class="larry-icon larry-caidanguanli"></i>编辑菜单',
                 type : 2,
                 skin : 'layui-layer-molv',
@@ -211,7 +212,9 @@
 
                 }
             })
-        })
+
+
+        });
 
     });
 
