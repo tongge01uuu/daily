@@ -20,7 +20,7 @@
     </bean>
 
     <!-- Realm实现 -->
-    <bean id="userRealm" class="com.we.contract.admin.architect.realm.ShiroDbRealm">
+    <bean id="userRealm" class="com.we.contract.architect.realm.ShiroDbRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher" />
     </bean>
 

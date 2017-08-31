@@ -14,5 +14,5 @@
     <dubbo:registry address="${dubbo.registry.address}" file="false"/>
 
 
-    <dubbo:reference id="demoService" interface="com.we.contract.service.DemoService" retries="0" timeout="100000"/>
+    <!--<dubbo:reference id="demoService" interface="com.we.contract.service.DemoService" retries="0" timeout="100000"/>-->
 </beans>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.contract.admin.dao.system.ResourceMapper" >
-  <resultMap id="BaseResultMap" type="com.we.contract.admin.domain.system.vo.Resource" >
+<mapper namespace="com.we.contract.dao.system.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.we.contract.domain.system.vo.Resource" >
     <id column="res_id" property="resId" jdbcType="INTEGER" />
     <result column="res_parentId" property="resParentid" jdbcType="INTEGER" />
     <result column="res_name" property="resName" jdbcType="VARCHAR" />
@@ -31,7 +31,7 @@
     delete from cc_resource
     where res_id = #{resId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.we.contract.admin.domain.system.vo.Resource" >
+  <insert id="insert" parameterType="com.we.contract.domain.system.vo.Resource" >
     insert into cc_resource (res_id, res_parentId, res_name,
       res_model_code, res_link_address, res_image, 
       res_type, res_status, res_display_order, res_remark, 
@@ -43,7 +43,7 @@
       #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
       #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.we.contract.admin.domain.system.vo.Resource" >
+  <insert id="insertSelective" parameterType="com.we.contract.domain.system.vo.Resource" >
     insert into cc_resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="resId != null" >
@@ -134,7 +134,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.we.contract.admin.domain.system.vo.Resource" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.contract.domain.system.vo.Resource" >
     update cc_resource
     <set >
       <if test="resParentid != null" >
@@ -179,7 +179,7 @@
     </set>
     where res_id = #{resId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.we.contract.admin.domain.system.vo.Resource" >
+  <update id="updateByPrimaryKey" parameterType="com.we.contract.domain.system.vo.Resource" >
     update cc_resource
     set res_parentId = #{resParentid,jdbcType=INTEGER},
       res_name = #{resName,jdbcType=VARCHAR},
@@ -197,12 +197,12 @@
     where res_id = #{resId,jdbcType=INTEGER}
   </update>
     <!-- 查询资源总记录数 -->
-    <select id="selectCountResource" parameterType="com.we.contract.admin.domain.system.vo.Resource" resultType="Long">
+    <select id="selectCountResource" parameterType="com.we.contract.domain.system.vo.Resource" resultType="Long">
         select count(*)
         from cc_resource
     </select>
     <!-- 资源列表信息分页显示 -->
-    <select id="selectResourceListByPage" resultType="com.we.contract.admin.domain.system.vo.Resource" parameterType="com.we.contract.admin.domain.system.vo.Resource">
+    <select id="selectResourceListByPage" resultType="com.we.contract.domain.system.vo.Resource" parameterType="com.we.contract.domain.system.vo.Resource">
           SELECT
             T1.res_id 			 			AS resId,
             T1.res_name  		 			AS resName,
@@ -232,7 +232,7 @@
       ORDER BY res_parentId,res_display_order
     </select>
     <!-- 查询资源父级菜单 -大标题-->
-    <select id="selectParentIdResList" resultType="com.we.contract.admin.domain.system.dto.ResourceMenuDto">
+    <select id="selectParentIdResList" resultType="com.we.contract.domain.system.dto.ResourceMenuDto">
       SELECT
         c.res_id                AS pid,
         c.res_name              AS title,

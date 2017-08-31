@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.we.contract.admin.dao.system.RoleResourceMapper" >
-  <resultMap id="BaseResultMap" type="com.we.contract.admin.domain.system.vo.RoleResource" >
+<mapper namespace="com.we.contract.dao.system.RoleResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.we.contract.domain.system.vo.RoleResource" >
     <id column="role_res_id" property="roleResId" jdbcType="INTEGER" />
     <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="resource_ids" property="resourceIds" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from cc_role_resource
     where role_res_id = #{roleResId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.we.contract.admin.domain.system.vo.RoleResource" >
+  <insert id="insert" parameterType="com.we.contract.domain.system.vo.RoleResource" >
     insert into cc_role_resource (role_res_id, role_id, resource_ids,
       creator, create_time, modifier, 
       modifier_time)
@@ -31,7 +31,7 @@
       #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=VARCHAR}, 
       #{modifierTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.we.contract.admin.domain.system.vo.RoleResource" >
+  <insert id="insertSelective" parameterType="com.we.contract.domain.system.vo.RoleResource" >
     insert into cc_role_resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="roleResId != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.we.contract.admin.domain.system.vo.RoleResource" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.contract.domain.system.vo.RoleResource" >
     update cc_role_resource
     <set >
       <if test="roleId != null" >
@@ -102,7 +102,7 @@
     </set>
     where role_res_id = #{roleResId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.we.contract.admin.domain.system.vo.RoleResource" >
+  <update id="updateByPrimaryKey" parameterType="com.we.contract.domain.system.vo.RoleResource" >
     update cc_role_resource
     set role_id = #{roleId,jdbcType=INTEGER},
       resource_ids = #{resourceIds,jdbcType=VARCHAR},
@@ -113,7 +113,7 @@
     where role_res_id = #{roleResId,jdbcType=INTEGER}
   </update>
 
-  <select id="getBySelective" resultMap="BaseResultMap" parameterType="com.we.contract.admin.domain.system.vo.RoleResource">
+  <select id="getBySelective" resultMap="BaseResultMap" parameterType="com.we.contract.domain.system.vo.RoleResource">
     SELECT
     <include refid="Base_Column_List"/>
     FROM cc_role_resource

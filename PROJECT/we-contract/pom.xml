@@ -9,7 +9,6 @@
     <modules>
         <module>contract-rely</module>
         <module>contract-service</module>
-        <module>contract-web</module>
         <module>contract-admin</module>
     </modules>
 

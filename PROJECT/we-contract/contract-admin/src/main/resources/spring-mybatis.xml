@@ -69,12 +69,12 @@
 
     <!-- spring与mybatis整合配置，扫描所有dao -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-          p:basePackage="com.we.contract.admin.dao"
+          p:basePackage="com.we.contract.dao"
           p:sqlSessionFactoryBeanName="sqlSessionFactory"/>
 
     <!-- spring 事务配置， 声明式事务，@Transactional标注-->
     <context:annotation-config/>
-    <context:component-scan base-package="com.we.contract.admin.service"/>
+    <context:component-scan base-package="com.we.contract.service"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
