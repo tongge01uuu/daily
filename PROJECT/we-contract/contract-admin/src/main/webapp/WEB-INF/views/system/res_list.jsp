@@ -39,9 +39,9 @@
             <div class="layui-tab-item layui-field-box layui-show" >
                 <div class="layui-form">
                     <table class="layui-table" lay-even="" lay-skin="row">
-                        <%--<colgroup>--%>
+                        <colgroup>
                             <%--<col width="49">--%>
-                            <%--<col width="100">--%>
+                            <col width="100">
                             <%--<col width="90">--%>
                             <%--<col width="90">--%>
                             <%--<col width="150">--%>
@@ -50,10 +50,10 @@
                             <%--<col width="150">--%>
                             <%--<col width="150">--%>
                             <%--<col width="150">--%>
-                        <%--</colgroup>--%>
+                        </colgroup>
                         <thead >
                             <tr>
-                                <th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"></th>
+                                <%--<th><input name="" lay-skin="primary" lay-filter="allChoose" type="checkbox"></th>--%>
                                 <th>菜单名称</th>
                                 <th>菜单ID</th>
                                 <th>菜单状态</th>
@@ -160,7 +160,7 @@
 
                         $("#resTbody").append(
                                 '<tr>'+
-                                '<td><input name="" lay-skin="primary" type="checkbox"></td>'+
+//                                '<td><input name="" lay-skin="primary" type="checkbox"></td>'+
                                 '<td >'+item.resName+'</td>'+
                                 '<td>'+item.resId+'</td>'+
                                 '<td>'+resStatusLable+'</td>'+
@@ -182,7 +182,7 @@
                         skip: true,
                         jump: function(obj, first){ //触发分页后的回调
                             if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                $("#resTbody").text('');//先清空原先内容
+                                $("#resTbody").empty();//先清空原先内容
                                 paging(obj.curr);
 
 
@@ -194,10 +194,11 @@
 
             });
         }
-        paging(1);
+        paging(2);
         //编辑菜单
         $(".res_edit").click(function(){
             var resId=$(this).attr("data-id");
+            console.log(resId);
             var index = top.layui.layer.open({
                 title : '<i class="larry-icon larry-caidanguanli"></i>编辑菜单',
                 type : 2,
