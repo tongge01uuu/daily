@@ -1,6 +1,6 @@
 package com.we.contract.architect.interceptor;
 
-import com.we.contract.domain.system.bo.PermissionSubject;
+import com.we.contract.util.PermissionSubject;
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

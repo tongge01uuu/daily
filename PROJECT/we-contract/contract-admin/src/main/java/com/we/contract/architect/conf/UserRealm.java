@@ -1,8 +1,8 @@
 package com.we.contract.architect.conf;
 
 import com.we.contract.dao.system.ResourceMapper;
-import com.we.contract.domain.system.vo.Resource;
-import com.we.contract.domain.system.vo.User;
+import com.we.contract.entity.system.vo.Resource;
+import com.we.contract.entity.system.vo.User;
 import com.we.contract.service.system.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

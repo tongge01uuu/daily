@@ -3,7 +3,7 @@ package com.we.contract.controller;
 import com.we.contract.architect.constant.BussinessCode;
 import com.we.contract.architect.constant.Constants;
 import com.we.contract.architect.utils.BussinessMsgUtil;
-import com.we.contract.domain.system.bo.ResultEntity;
+import com.we.contract.util.ResultEntity;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;

@@ -1,7 +1,7 @@
 package com.we.contract.architect.realm;
 
-import com.we.contract.domain.system.vo.Resource;
-import com.we.contract.domain.system.vo.User;
+import com.we.contract.entity.system.vo.Resource;
+import com.we.contract.entity.system.vo.User;
 import com.we.contract.service.system.ResourceService;
 import com.we.contract.service.system.UserService;
 import org.apache.commons.lang3.StringUtils;

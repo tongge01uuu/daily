@@ -3,8 +3,8 @@ package com.we.contract;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.we.contract.dao.ContractTemplateMapper;
 import com.we.contract.service.system.UserService;
-import com.we.contract.logic.impl.ContractTemplateLogic;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,11 @@ public class ContractAdminApplicationTests {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private ContractTemplateLogic contractTemplateLogic;
+	private ContractTemplateMapper contractTemplateMapper;
 	@Test
 	public void test() throws Exception{
 		PageHelper.startPage(2,2);
-		List list= contractTemplateLogic.select(null);
+		List list= contractTemplateMapper.selectByExample(null);
 		PageInfo pageInfo=new PageInfo(list);
 		System.out.println(JSON.toJSONString(pageInfo));
 	}

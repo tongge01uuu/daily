@@ -2,7 +2,7 @@
 package com.we.contract.architect.utils;
 
 import com.we.contract.architect.view.ExcelView;
-import com.we.contract.domain.system.bo.ExcelExport;
+import com.we.contract.util.ExcelExport;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;

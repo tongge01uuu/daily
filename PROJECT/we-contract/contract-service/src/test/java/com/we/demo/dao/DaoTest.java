@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.we.contract.dao.ContractTemplateMapper;
 import com.we.demo.BaseTest;
-import com.we.contract.dao.DemoDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

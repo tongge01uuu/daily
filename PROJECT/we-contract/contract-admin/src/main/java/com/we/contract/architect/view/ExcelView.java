@@ -1,6 +1,6 @@
 package com.we.contract.architect.view;
 
-import com.we.contract.domain.system.bo.ExcelExport;
+import com.we.contract.util.ExcelExport;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.springframework.util.ReflectionUtils;

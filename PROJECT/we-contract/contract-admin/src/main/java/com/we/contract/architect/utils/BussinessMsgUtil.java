@@ -1,7 +1,7 @@
 package com.we.contract.architect.utils;
 
 import com.we.contract.architect.constant.BussinessCode;
-import com.we.contract.domain.system.bo.ResultEntity;
+import com.we.contract.util.ResultEntity;
 
 /**
  * 后台管理系统返回码信息帮助类

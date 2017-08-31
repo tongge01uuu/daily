@@ -2,7 +2,7 @@ package com.we.contract.architect.conf;
 
 import com.we.contract.architect.realm.ShiroDbRealm;
 import com.we.contract.dao.system.ResourceMapper;
-import com.we.contract.domain.system.vo.Resource;
+import com.we.contract.entity.system.vo.Resource;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;

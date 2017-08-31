@@ -2,7 +2,7 @@ package com.we.contract.architect.constant;
 
 import com.alibaba.fastjson.JSON;
 import com.we.contract.dao.system.UserMapper;
-import com.we.contract.domain.system.vo.User;
+import com.we.contract.entity.system.vo.User;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,9 +1,9 @@
 package com.we.contract.controller.system;
 
 import com.we.contract.controller.BasicController;
-import com.we.contract.domain.system.bo.ResultEntity;
-import com.we.contract.domain.system.dto.ResourceMenuDto;
-import com.we.contract.domain.system.vo.Resource;
+import com.we.contract.util.ResultEntity;
+import com.we.contract.entity.system.dto.ResourceMenuDto;
+import com.we.contract.entity.system.vo.Resource;
 import com.we.contract.service.system.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

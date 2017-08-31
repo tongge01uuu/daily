@@ -1,6 +1,6 @@
 package com.we.contract.controller;
 
-import com.we.contract.domain.system.vo.User;
+import com.we.contract.entity.system.vo.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
