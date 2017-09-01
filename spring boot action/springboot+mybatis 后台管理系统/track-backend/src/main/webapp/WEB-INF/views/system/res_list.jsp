@@ -196,9 +196,9 @@
         }
         paging(1);
         //编辑菜单
-        $(".res_edit").click(function(){
-            var resId=$(this).attr("data-id");
-            var index = top.layui.layer.open({
+        $("body").on("click",".res_edit",function(){
+            var resId = $(this).attr("data-id");
+            var index = layui.layer.open({
                 title : '<i class="larry-icon larry-caidanguanli"></i>编辑菜单',
                 type : 2,
                 skin : 'layui-layer-molv',
@@ -210,7 +210,9 @@
 
                 }
             })
-        })
+
+
+        });
 
     });
 
