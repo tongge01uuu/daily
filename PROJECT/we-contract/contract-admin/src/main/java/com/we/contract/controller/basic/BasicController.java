@@ -1,4 +1,4 @@
-package com.we.contract.controller;
+package com.we.contract.controller.basic;
 
 import com.we.contract.entity.system.vo.User;
 import org.apache.shiro.SecurityUtils;

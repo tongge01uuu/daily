@@ -2,7 +2,7 @@ package com.we.contract.controller.system;
 
 import com.we.contract.architect.constant.BussinessCode;
 import com.we.contract.architect.utils.BussinessMsgUtil;
-import com.we.contract.controller.BasicController;
+import com.we.contract.controller.basic.BasicController;
 import com.we.contract.util.ResultEntity;
 import com.we.contract.entity.system.vo.Role;
 import com.we.contract.entity.system.vo.RoleResource;

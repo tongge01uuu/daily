@@ -1,4 +1,4 @@
-package com.we.contract.controller;
+package com.we.contract.controller.basic;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

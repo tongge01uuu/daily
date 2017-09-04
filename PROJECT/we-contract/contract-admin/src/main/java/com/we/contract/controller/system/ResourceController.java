@@ -1,6 +1,6 @@
 package com.we.contract.controller.system;
 
-import com.we.contract.controller.BasicController;
+import com.we.contract.controller.basic.BasicController;
 import com.we.contract.util.ResultEntity;
 import com.we.contract.entity.system.dto.ResourceMenuDto;
 import com.we.contract.entity.system.vo.Resource;

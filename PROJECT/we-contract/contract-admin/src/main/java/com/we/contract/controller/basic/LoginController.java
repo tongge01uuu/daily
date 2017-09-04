@@ -1,4 +1,4 @@
-package com.we.contract.controller;
+package com.we.contract.controller.basic;
 
 import com.we.contract.architect.constant.BussinessCode;
 import com.we.contract.architect.constant.Constants;

@@ -1,4 +1,4 @@
-package com.we.contract.controller;
+package com.we.contract.controller.basic;
 
 import com.we.contract.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
