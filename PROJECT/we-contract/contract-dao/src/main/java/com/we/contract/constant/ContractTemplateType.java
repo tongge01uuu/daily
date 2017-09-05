@@ -4,6 +4,11 @@
  */
 package com.we.contract.constant;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author jinkai
  */
@@ -87,5 +92,15 @@ public enum ContractTemplateType {
 
     @Override
     public abstract String toString();
+
+    public static Map<String,String> getAllTypes()
+    {
+        Map<String,String> map=new HashMap<>();
+        for (ContractTemplateType cell:ContractTemplateType.values())
+        {
+            map.put(cell.name(),cell.toString());
+        }
+        return map;
+    }
 
 }

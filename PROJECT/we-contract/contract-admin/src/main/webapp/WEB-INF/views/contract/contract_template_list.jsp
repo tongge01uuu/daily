@@ -13,14 +13,14 @@
                 <div class="layui-inline">
                     <form class="layui-form" id="searchForm">
                         <div class="layui-input-inline" style="width:110px;">
-                            <select name="pid" id="pid">
-                                <option value="">全部</option>
-                                <%--<c:forEach var="cell" items="${parentDics}">--%>
-                                    <%--<option value="${cell.id}">${cell.name}</option>--%>
-                                <%--</c:forEach>--%>
+                            <select name="type" id="type" lay-verify="required">
+                                <option value=""></option>
+                                <c:forEach var="cell" items="${types}">
+                                <option value="${cell.key}"<c:if test="${cell.key==type}">selected</c:if>>${cell.value}</option>
+                                </c:forEach>
                             </select>
                         </div>
-                        <a class="layui-btn SearchList_btn" lay-submit lay-filter="SearchFilter"><i class="layui-icon larry-icon larry-chaxun7"></i>查询</a>
+                        <a class="layui-btn searchList_btn" lay-submit lay-filter="searchFilter"><i class="layui-icon larry-icon larry-chaxun7"></i>查询</a>
                     </form>
                 </div>
                 <div class="layui-inline">
@@ -41,15 +41,17 @@
                                 <th>ID</th>
                                 <th>模板名称</th>
                                 <th>模板文件名称</th>
+                                <th>模板类型</th>
                                 <th>状态</th>
                                 <th>创建时间</th>
+                                <th>修改时间</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody id="contractTbody"></tbody>
                     </table>
                 </div>
-                <div class="larry-table-page clearfix" id="dicPage"></div>
+                <div class="larry-table-page clearfix" id="pageElement"></div>
             </div>
 
         </div>
@@ -67,7 +69,7 @@
 
 
         /**加载字典列表信息*/
-        dicPageList(1,$("#pid").val());
+        pageList(1,$("#type").val());
 
         /**全选*/
         form.on('checkbox(allChoose)', function (data) {
@@ -103,26 +105,26 @@
              });
         });
 
-        /**元素失效*/
+        /**失效*/
         $("body").on("click","._fail",function(){
             var contractId = $(this).attr("data-id");
             var contractStatus = $(this).attr("data-status");
-            if(contractStatus == 0){
-                layer.msg("当前元素已失效");
+            if(contractStatus == "false"){
+                layer.msg("当前模板已失效");
                 return false;
             }
 
             var url = "${ctx}/contract/fail.do";
-            var param = {contractId:contractId};
-            common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param)
+            var param = {id:contractId,enabled:false};
+            common.ajaxCmsConfirm('系统提示', '确定失效当前模板吗?',url,param)
 
         });
         /**查询*/
-        $(".SearchList_btn").click(function(){
+        $(".searchList_btn").click(function(){
             //监听提交
-            form.on('submit(SearchFilter)', function (data) {
-                var param=$("#pid").val();
-                dicPageList(1,param);
+            form.on('submit(searchFilter)', function (data) {
+                var param=$("#type").val();
+                pageList(1,param);
             });
 
         });
@@ -138,7 +140,7 @@
                 $("input:checkbox[name='IdCK']:checked").each(function(){
                     contractIds.push($(this).val());
                     //已失效
-                    if($(this).attr('alt') == 1){
+                    if($(this).attr('alt') == "true"){
                         contractStatus = true;
                     }else{
                         contractStatus = false;
@@ -147,72 +149,72 @@
 
                 });
                 if(contractStatus==false){
-                    layer.msg("当前选择的元素已失效");
+                    layer.msg("当前选择的模板已失效");
                     return false;
                 }
 
                 var url = "${ctx}/contract/fail/batch.do";
-                var param = {contractIds:contractIds};
-                console.log(param);
-                common.ajaxCmsConfirm('系统提示', '确定失效当前元素吗?',url,param);
+                var param = {ids:contractIds};
+                console.log( JSON.stringify(param));
+                common.ajaxCmsConfirm('系统提示', '确定失效当前模板吗?',url,param);
             }
         });
 
         /**加载元素信息**/
-        function dicPageList(curr,pid){
-            console.log("page:"+curr+"   pid:"+pid);
+        function pageList(curr,type){
+            console.log("page:"+curr+"   type:"+type);
             var pageLoading = layer.load(2);
             $.ajax({
-                url : '${ctx}/contract/children.do',
+                url : '${ctx}/contract/list.do',
                 type : 'post',
                 data :{
                     pageNum: curr || 1 ,   //当前页
                     pageSize: 7 ,          //每页显示7条数据
-                    pid: pid
+                    type: type
                 },
                 success : function(data) {
-                    console.log("result：\n"+data)
+                    console.log("result：\n"+ JSON.stringify(data))
                     if(data != "" ){
+                        var msg=data.message;
+                        if (data.code!="0000")
+                        {
+                            layer.close(pageLoading);
+                            if(msg==null || msg=="")
+                            {
+                                msg="处理异常"
+                            }
+                            layer.msg(msg);
+                        }
                         $("#contractTbody").text('');//先清空原先内容
                         var pdata = data.data;
                         var ldata=pdata.list
-                        console.log("列表：\n"+ldata);
+                        console.log("列表：\n"+ JSON.stringify(ldata));
                         $(ldata).each(function(index,item){
 
-                            //节点名
-                            var dicNameLable;
-                            if(objNull(item.name) != "" && item.name.length > 9){
-                                dicNameLable = item.name.substring(0,9) +"...";
-
+                            //状态
+                            var templateStatusLable;
+                            if (item.enabled==true) {
+                                templateStatusLable = '<span class="label label-success " title="'+item.enabled+'">有效</span>';
                             }else{
-                                dicNameLable = item.name;
-                            }
-
-                            //节点状态
-                            var flowStatusLable;
-                            switch (item.access){
-                                case 0:
-                                    flowStatusLable = '<span class="label label-danger">0-失效</span>';
-                                    break;
-                                case 1:
-                                    flowStatusLable = '<span class="label label-success ">1-有效</span>'
-                                    break;
+                                templateStatusLable = '<span class="label label-danger" title="'+item.enabled+'">失效</span>';
                             }
 
                             //操作按钮
                             var opt ='<div class="layui-btn-group">';
                                 opt+=  '<a class="layui-btn layui-btn-mini _edit" data-id="'+item.id+'"><i class="layui-icon larry-icon larry-bianji2"></i> 编辑</a>';
-                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  _fail" data-id="'+item.id+'" data-status= "'+item.access+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  _fail" data-id="'+item.id+'" data-status= "'+item.enabled+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
                                 opt+= '</div>';
                             //组装table
                             $("#contractTbody").append(
                                     '<tr>'+
-                                    '<td><input name="IdCK" lay-skin="primary" type="checkbox"  alt="'+item.access+'" value="'+item.id+'"></td>'+
-                                    '<td title="'+objNull(item.name)+'">'+objNull(dicNameLable)+'</td>'+
-                                    '<td title="'+objNull(item.orderWeight)+'">'+objNull(item.orderWeight)+'</td>'+
-                                    '<td>'+flowStatusLable+'</td>'+
-                                    '<td>'+formatDate(objNull(item.createTime),"yyyy-MM-dd HH:mm")+'</td>'+
-                                    '<td>'+formatDate(objNull(item.updateTime),"yyyy-MM-dd HH:mm")+'</td>'+
+                                    '<td><input name="IdCK" lay-skin="primary" type="checkbox"  alt="'+item.enabled+'" value="'+item.id+'"></td>'+
+                                    '<td title="'+item.id+'">'+item.id+'</td>'+
+                                    '<td title="'+objNull(item.name)+'">'+formatString(item.name)+'</td>'+
+                                    '<td title="'+objNull(item.filename)+'">'+formatString(item.filename)+'</td>'+
+                                    '<td title="'+objNull(item.voType)+'">'+formatString(item.voType)+'</td>'+
+                                    '<td>'+templateStatusLable+'</td>'+
+                                    '<td>'+formatDate(objNull(item.createtime),"yyyy-MM-dd HH:mm")+'</td>'+
+                                    '<td>'+formatDate(objNull(item.updatetime),"yyyy-MM-dd HH:mm")+'</td>'+
                                     '<td>'+opt+'</td>'+
                                     '</tr>'
                             );
@@ -222,14 +224,14 @@
                         });
                         //分页
                         laypage({
-                            cont: 'dicPage',
+                            cont: 'pageElement',
                             pages:  pdata.pages,
                             curr: curr || 1, //当前页
                             groups: 8, //连续显示分页数
                             skip: true,
                             jump: function(obj, first){ //触发分页后的回调
                                 if(!first){ //点击跳页触发函数自身，并传递当前页：obj.curr
-                                    dicPageList(obj.curr,$("#pid").val());
+                                    pageList(obj.curr,$("#type").val());
                                 }
                             }
                         });

@@ -18,21 +18,9 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:annotation-config/>
     <mvc:annotation-driven/>
-    <!--<mvc:annotation-driven>-->
-        <!--<mvc:message-converters>-->
-            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
-                <!--<property name="supportedMediaTypes">-->
-                    <!--<list>-->
-                        <!--<value>application/json;charset=UTF-8</value>-->
-                        <!--<value>text/html;charset=UTF-8</value>-->
-                        <!--<value>text/plain;charset=UTF-8</value>-->
-                    <!--</list>-->
-                <!--</property>-->
-            <!--</bean>-->
-        <!--</mvc:message-converters>-->
-    <!--</mvc:annotation-driven>-->
     <mvc:interceptors>
         <bean class="com.we.contract.architect.interceptor.CommonInterceptor"/>
+        <bean class="com.we.contract.architect.interceptor.ErrorInterceptor"/>
         <!--<mvc:interceptor>-->
             <!--<mvc:mapping path="/test/number.do"/>-->
             <!--&lt;!&ndash; 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 &ndash;&gt;-->

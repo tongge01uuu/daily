@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.we.contract.dao.ContractTemplateMapper;
+import com.we.contract.service.ContractTemplateService;
 import com.we.contract.service.system.UserService;
+import com.we.contract.vo.ContractTemplateVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,12 @@ public class ContractAdminApplicationTests {
 	private UserService userService;
 	@Autowired
 	private ContractTemplateMapper contractTemplateMapper;
+	@Autowired
+	private ContractTemplateService contractTemplateService;
 	@Test
 	public void test() throws Exception{
 		PageHelper.startPage(2,2);
-		List list= contractTemplateMapper.selectByExample(null);
+		List list= contractTemplateService.list(null);
 		PageInfo pageInfo=new PageInfo(list);
 		System.out.println(JSON.toJSONString(pageInfo));
 	}

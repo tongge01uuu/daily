@@ -211,6 +211,18 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <update id="batchUpdateStatus">
+    update contract_template
+    <set>
+      enabled = #{enabled,jdbcType=BIT},
+    </set>
+    <where>
+      id IN
+      <foreach collection="ids" item="id" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+    </where>
+  </update>
   <update id="updateByExampleSelective" parameterType="map" >
     update contract_template
     <set >

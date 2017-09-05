@@ -5,6 +5,19 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <script>
+    function formatString(obj,length) {
+        if (objNull(length)=="")
+        {
+            length=12;
+        }
+        var result;
+        if(objNull(obj) != "" && obj.length > length){
+            result = obj.substring(0,length) +"...";
+        }else{
+            result = obj;
+        }
+        return result;
+    }
     function objNull(obj) {
         if(typeof(obj) == "undefined" || obj == null){
             return "";

@@ -36,4 +36,6 @@ public interface ContractTemplateMapper {
     int updateByPrimaryKeyWithBLOBs(ContractTemplate record);
 
     int updateByPrimaryKey(ContractTemplate record);
+
+    int batchUpdateStatus(@Param("ids")Integer[] ids,@Param("enabled") Boolean enabled);
 }
