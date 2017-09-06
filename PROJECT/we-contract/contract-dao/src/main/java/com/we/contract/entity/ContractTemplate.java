@@ -7,16 +7,21 @@ public class ContractTemplate {
 
     private Date createtime;
 
+    //是否启用
     private Boolean enabled;
 
+    //合同名称，后台显示，便于区分
     private String name;
 
     private Date updatetime;
 
+    //文件名
     private String filename;
 
+    //前后台是否同步
     private Boolean synced;
 
+    //模板类型 参照contractTemplateType
     private String type;
 
     private String content;

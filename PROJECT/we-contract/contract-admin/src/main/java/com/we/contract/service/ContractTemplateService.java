@@ -38,4 +38,9 @@ public class ContractTemplateService {
     {
         return contractTemplateMapper.batchUpdateStatus(ids,enabled);
     }
+
+    public ContractTemplate get(Integer id)
+    {
+        return contractTemplateMapper.selectByPrimaryKey(id);
+    }
 }

@@ -24,14 +24,14 @@
                     </form>
                 </div>
                 <div class="layui-inline">
-                    <a class="layui-btn layui-btn-normal Add_btn"> <i class="layui-icon larry-icon larry-xinzeng1"></i>新增元素</a>
+                    <a class="layui-btn layui-btn-normal add_btn"> <i class="layui-icon larry-icon larry-xinzeng1"></i>新增模板</a>
                 </div>
                 <div class="layui-inline">
                     <a class="layui-btn layui-btn-danger BatchFail_btn"><i class="layui-icon larry-icon larry-shanchu"></i>批量失效</a>
                 </div>
             </blockquote>
             <div class="larry-separate"></div>
-            <!-- 元素列表 -->
+            <!-- 模板列表 -->
             <div class="layui-tab-item layui-field-box layui-show">
                 <div class="layui-form">
                     <table class="layui-table" lay-even="" lay-skin="row">
@@ -79,26 +79,27 @@
             });
             form.render('checkbox');
         });
-        /**添加元素*/
-        $(".Add_btn").click(function(){
+        /**添加模板*/
+        $(".add_btn").click(function(){
             var index = layui.layer.open({
-                title : "新增元素",
+                title : "新增模板",
                 type : 2,
                 content : "${ctx}/contract/toSaveOrUpdate.do",
-                area: ['550px', '265px'],
+                area: ['950px', '565px'],
                 success : function(layero, index){
 
                 }
             });
         });
-        /**修改元素*/
+        /**修改模板*/
         $("body").on("click","._edit",function(){
             var contractId = $(this).attr("data-id");
+            var contractName = $(this).attr("data-name");
              var index = layui.layer.open({
-                 title : "编辑用户",
+                 title : "编辑模板  ID: "+contractId+"  名称: "+contractName,
                  type : 2,
-                 content : "${ctx}/contract/toSaveOrUpdate.do?contractId="+contractId,
-                 area: ['550px', '265px'],
+                 content : "${ctx}/contract/toSaveOrUpdate.do?id="+contractId,
+                 area: ['950px', '565px'],
                  success : function(layero, index){
 
                  }
@@ -131,7 +132,7 @@
         /**批量失效*/
         $(".BatchFail_btn").click(function(){
             if($("input:checkbox[name='IdCK']:checked").length == 0){
-                layer.msg("请选择要失效的元素信息");
+                layer.msg("请选择要失效的模板信息");
             }else{
                 var isCreateBy = false;
                 var contractStatus = false;
@@ -160,7 +161,7 @@
             }
         });
 
-        /**加载元素信息**/
+        /**加载模板信息**/
         function pageList(curr,type){
             console.log("page:"+curr+"   type:"+type);
             var pageLoading = layer.load(2);
@@ -201,8 +202,8 @@
 
                             //操作按钮
                             var opt ='<div class="layui-btn-group">';
-                                opt+=  '<a class="layui-btn layui-btn-mini _edit" data-id="'+item.id+'"><i class="layui-icon larry-icon larry-bianji2"></i> 编辑</a>';
-                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  _fail" data-id="'+item.id+'" data-status= "'+item.enabled+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini _edit" data-name="'+item.name+'"  data-id="'+item.id+'"><i class="layui-icon larry-icon larry-bianji2"></i> 编辑</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  _fail" data-id="'+item.id+'" data-name="'+item.name+'" data-status= "'+item.enabled+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
                                 opt+= '</div>';
                             //组装table
                             $("#contractTbody").append(

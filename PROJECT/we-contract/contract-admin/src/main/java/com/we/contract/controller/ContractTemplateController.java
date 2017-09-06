@@ -74,6 +74,19 @@ public class ContractTemplateController {
         return resultEntity;
     }
 
+    @RequestMapping("toSaveOrUpdate.do")
+    public String toSaveOrUpdate(Integer id,Model model)
+    {
+        if (id!=null)
+        {
+            ContractTemplate contractTemplate=contractTemplateService.get(id);
+            model.addAttribute("contractTemplate",contractTemplate);
+        }
+        //模板类型
+        Map<String,String> types=ContractTemplateType.getAllTypes();
+        model.addAttribute("types",types);
+        return "contract/contract_template_edit";
+    }
     @ResponseBody
     @RequestMapping("saveOrUpdate.do")
     public ResultEntity saveOrUpdate(ContractTemplate contractTemplate)
