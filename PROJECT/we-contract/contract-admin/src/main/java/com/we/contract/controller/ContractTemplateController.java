@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +70,7 @@ public class ContractTemplateController {
             }
             pageInfo.setList(voList);
             resultEntity.setData(pageInfo);
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             logger.error(ExceptionUtils.getStackTrace(e));
             resultEntity.withError(BussinessCode.GLOBAL_ERROR.getMsg());
         }
@@ -79,8 +82,12 @@ public class ContractTemplateController {
     {
         if (id!=null)
         {
-            ContractTemplate contractTemplate=contractTemplateService.get(id);
-            model.addAttribute("contractTemplate",contractTemplate);
+            try {
+                ContractTemplate contractTemplate=contractTemplateService.get(id);
+                model.addAttribute("contractTemplate",contractTemplate);
+            } catch (Exception e) {
+                logger.error(ExceptionUtils.getStackTrace(e));
+            }
         }
         //模板类型
         Map<String,String> types=ContractTemplateType.getAllTypes();
@@ -95,9 +102,11 @@ public class ContractTemplateController {
         try {
             if (contractTemplate.getId()!=null)
             {
-                // TODO: 2017-9-5 update
+                // update
+                contractTemplateService.update(contractTemplate);
             }else{
-                // TODO: 2017-9-5 save
+                // save
+                contractTemplateService.save(contractTemplate);
             }
         } catch (Exception e) {
             logger.error(ExceptionUtils.getStackTrace(e));
@@ -132,5 +141,19 @@ public class ContractTemplateController {
         }
         return resultEntity;
     }
+
+    @RequestMapping("to/show.do")
+    public void show(Integer id, HttpServletResponse response)
+    {
+        try {
+            ContractTemplate contractTemplate=contractTemplateService.get(id);
+            response.setContentType("text/html;charset=utf-8");
+            PrintWriter out=response.getWriter();
+            out.println(contractTemplate.getContent());
+        } catch (Exception e) {
+            logger.error(ExceptionUtils.getStackTrace(e));
+        }
+    }
+
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class ContractTemplateService {
     @Autowired
     private ContractTemplateMapper contractTemplateMapper;
 
-    public List<ContractTemplate> list(ContractTemplateType contractTemplateType)
+    public List<ContractTemplate> list(ContractTemplateType contractTemplateType)throws Exception
     {
         ContractTemplateExample example=new ContractTemplateExample();
         example.setOrderByClause("enabled desc,updateTime desc");
@@ -34,13 +35,28 @@ public class ContractTemplateService {
         return list;
     }
 
-    public Integer batchUpdateStatus(Integer[] ids,Boolean enabled)
+    public Integer batchUpdateStatus(Integer[] ids,Boolean enabled)throws Exception
     {
         return contractTemplateMapper.batchUpdateStatus(ids,enabled);
     }
 
-    public ContractTemplate get(Integer id)
+    public ContractTemplate get(Integer id)throws Exception
     {
-        return contractTemplateMapper.selectByPrimaryKey(id);
+        ContractTemplate contractTemplate=contractTemplateMapper.selectByPrimaryKey(id);
+        contractTemplate.setContent(contractTemplate.getContent().replace("<s:","&lt;s:").replace("</s:","&lt;/s:"));
+        return contractTemplate;
+    }
+
+    public void save(ContractTemplate contractTemplate)throws Exception
+    {
+        contractTemplate.setCreatetime(new Date());
+        contractTemplate.setUpdatetime(new Date());
+        contractTemplateMapper.insert(contractTemplate);
+    }
+
+    public Integer update(ContractTemplate contractTemplate)throws Exception
+    {
+        contractTemplate.setUpdatetime(new Date());
+        return contractTemplateMapper.updateByPrimaryKeySelective(contractTemplate);
     }
 }

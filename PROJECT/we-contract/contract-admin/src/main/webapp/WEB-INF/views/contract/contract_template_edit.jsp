@@ -31,17 +31,17 @@
             <label class="layui-form-label">前后台是否同步</label>
             <div class="layui-input-inline">
                 <select name="synced" >
-                    <option value="0">否</option>
-                    <option value="1">是</option>
+                    <option value="0" <c:if test="${contractTemplate.synced}">selected</c:if>>否</option>
+                    <option value="1" <c:if test="${contractTemplate.synced}">selected</c:if>>是</option>
                 </select>
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">是否启用</label>
             <div class="layui-input-inline">
-                <select name="enabled" >
-                    <option value="0">否</option>
-                    <option value="1">是</option>
+                <select name="enabled " >
+                    <option value="0" <c:if test="${contractTemplate.enabled}">selected</c:if>>否</option>
+                    <option value="1" <c:if test="${contractTemplate.enabled}">selected</c:if>>是</option>
                 </select>
             </div>
         </div>
@@ -53,7 +53,7 @@
                 <select name="type" id="type" lay-verify="required">
                     <option value=""></option>
                     <c:forEach var="cell" items="${types}">
-                        <option value="${cell.key}"<c:if test="${cell.key==type}">selected</c:if>>${cell.value}</option>
+                        <option value="${cell.key}"<c:if test="${cell.key==contractTemplate.type}">selected</c:if>>${cell.value}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -69,7 +69,8 @@
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">内容</label>
         <div class="layui-input-block">
-            <textarea name="content" id="content" placeholder="请输入内容" class="layui-textarea" maxlength="50"  value="${contractTemplate.content}" style="height:290px; width:830px;"></textarea>
+            <textarea name="content" id="content" placeholder="请输入内容" class="layui-textarea" maxlength="50" style="height:290px; width:830px;">${contractTemplate.content}</textarea>
+            <%--<textarea name="content" id="content" placeholder="请输入内容" class="layui-textarea" maxlength="50"  value="<c:out value="${contractTemplate.content}" escapeXml="false"/>" style="height:290px; width:830px;"></textarea>--%>
         </div>
     </div>
     <div class="layui-form-item" style="text-align: center;">
@@ -87,10 +88,13 @@
 
 
         CKEDITOR.replace( 'content' ,{
-            startupMode : 'source'
+            startupMode : 'source',
+            extraPlugins: 'colordialog,tableresize'
         });
         //保存
         form.on("submit(_save)",function(data){
+            console.log(data.field);
+            data.field.content=CKEDITOR.instances.content.getData();
             console.log(data.field);
             var saveLoading = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
             $.ajax({
@@ -125,7 +129,6 @@
         });
 
     });
-
 </script>
 </body>
 </html>
