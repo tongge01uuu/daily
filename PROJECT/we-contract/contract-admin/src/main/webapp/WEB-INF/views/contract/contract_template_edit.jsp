@@ -91,6 +91,7 @@
             startupMode : 'source',
             extraPlugins: 'colordialog,tableresize'
         });
+//        CKEDITOR.instances.content.setData()
         //保存
         form.on("submit(_save)",function(data){
             console.log(data.field);

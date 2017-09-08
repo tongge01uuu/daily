@@ -223,7 +223,7 @@
                                     '<tr>'+
                                     '<td><input name="IdCK" lay-skin="primary" type="checkbox"  alt="'+item.enabled+'" value="'+item.id+'"></td>'+
                                     '<td title="'+item.id+'">'+item.id+'</td>'+
-                                    '<td title="'+objNull(item.name)+'"><a  class="_show_content"  data-id="'+item.id+'" >'+formatString(item.name)+'</a></td>'+
+                                    '<td title="'+objNull(item.name)+'"><a  class="_show_content" style="cursor:hand" data-id="'+item.id+'" >'+formatString(item.name)+'</a></td>'+
                                     '<td title="'+objNull(item.filename)+'">'+formatString(item.filename)+'</td>'+
                                     '<td title="'+objNull(item.voType)+'">'+formatString(item.voType)+'</td>'+
                                     '<td>'+templateStatusLable+'</td>'+
