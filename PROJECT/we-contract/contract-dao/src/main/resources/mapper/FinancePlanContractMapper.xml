@@ -11,6 +11,9 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="reserve_amount" property="reserveAmount" jdbcType="DECIMAL" />
     <result column="sub_point_type" property="subPointType" jdbcType="VARCHAR" />
+    <result column="md5_value" property="md5Value" jdbcType="VARCHAR" />
+    <result column="salt_value" property="saltValue" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, code, create_time, finance_plan_id, update_time, user_id, type, reserve_amount, 
-    sub_point_type
+    sub_point_type, md5_value, salt_value, file_path
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.we.contract.entity.FinancePlanContractExample" >
     select
@@ -115,11 +118,13 @@
   <insert id="insert" parameterType="com.we.contract.entity.FinancePlanContract" >
     insert into finance_plan_contract (id, code, create_time, 
       finance_plan_id, update_time, user_id, 
-      type, reserve_amount, sub_point_type
+      type, reserve_amount, sub_point_type, 
+      md5_value, salt_value, file_path
       )
     values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{financePlanId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, 
-      #{type,jdbcType=VARCHAR}, #{reserveAmount,jdbcType=DECIMAL}, #{subPointType,jdbcType=VARCHAR}
+      #{type,jdbcType=VARCHAR}, #{reserveAmount,jdbcType=DECIMAL}, #{subPointType,jdbcType=VARCHAR}, 
+      #{md5Value,jdbcType=VARCHAR}, #{saltValue,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.we.contract.entity.FinancePlanContract" >
@@ -152,6 +157,15 @@
       <if test="subPointType != null" >
         sub_point_type,
       </if>
+      <if test="md5Value != null" >
+        md5_value,
+      </if>
+      <if test="saltValue != null" >
+        salt_value,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -180,6 +194,15 @@
       </if>
       <if test="subPointType != null" >
         #{subPointType,jdbcType=VARCHAR},
+      </if>
+      <if test="md5Value != null" >
+        #{md5Value,jdbcType=VARCHAR},
+      </if>
+      <if test="saltValue != null" >
+        #{saltValue,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -219,6 +242,15 @@
       <if test="record.subPointType != null" >
         sub_point_type = #{record.subPointType,jdbcType=VARCHAR},
       </if>
+      <if test="record.md5Value != null" >
+        md5_value = #{record.md5Value,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saltValue != null" >
+        salt_value = #{record.saltValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null" >
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -234,7 +266,10 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       type = #{record.type,jdbcType=VARCHAR},
       reserve_amount = #{record.reserveAmount,jdbcType=DECIMAL},
-      sub_point_type = #{record.subPointType,jdbcType=VARCHAR}
+      sub_point_type = #{record.subPointType,jdbcType=VARCHAR},
+      md5_value = #{record.md5Value,jdbcType=VARCHAR},
+      salt_value = #{record.saltValue,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -266,6 +301,15 @@
       <if test="subPointType != null" >
         sub_point_type = #{subPointType,jdbcType=VARCHAR},
       </if>
+      <if test="md5Value != null" >
+        md5_value = #{md5Value,jdbcType=VARCHAR},
+      </if>
+      <if test="saltValue != null" >
+        salt_value = #{saltValue,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -278,7 +322,10 @@
       user_id = #{userId,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
       reserve_amount = #{reserveAmount,jdbcType=DECIMAL},
-      sub_point_type = #{subPointType,jdbcType=VARCHAR}
+      sub_point_type = #{subPointType,jdbcType=VARCHAR},
+      md5_value = #{md5Value,jdbcType=VARCHAR},
+      salt_value = #{saltValue,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

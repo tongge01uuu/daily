@@ -13,6 +13,8 @@
     <!-- 使用zookeeper注册中心暴露服务地址 -->
     <dubbo:registry address="${dubbo.registry.address}" file="false"/>
 
-
+    <dubbo:reference interface="com.we.user.service.UserService" id="userRpcService" retries="0" timeout="10000" check="false"/>
+    <dubbo:reference id="autoInvestPlanService" interface="com.we.p2p.service.AutoInvestPlanService" retries="0" timeout="100000" check="false"/>
+    <dubbo:reference id="uPlanService" interface="com.we.p2p.service.UPlanService"  retries="0" timeout="100000" check="false"/>
     <!--<dubbo:reference id="demoService" interface="com.we.contract.service.DemoService" retries="0" timeout="100000"/>-->
 </beans>

@@ -695,6 +695,216 @@ public class FinancePlanContractExample {
             addCriterion("sub_point_type not between", value1, value2, "subPointType");
             return (Criteria) this;
         }
+
+        public Criteria andMd5ValueIsNull() {
+            addCriterion("md5_value is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueIsNotNull() {
+            addCriterion("md5_value is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueEqualTo(String value) {
+            addCriterion("md5_value =", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueNotEqualTo(String value) {
+            addCriterion("md5_value <>", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueGreaterThan(String value) {
+            addCriterion("md5_value >", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueGreaterThanOrEqualTo(String value) {
+            addCriterion("md5_value >=", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueLessThan(String value) {
+            addCriterion("md5_value <", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueLessThanOrEqualTo(String value) {
+            addCriterion("md5_value <=", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueLike(String value) {
+            addCriterion("md5_value like", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueNotLike(String value) {
+            addCriterion("md5_value not like", value, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueIn(List<String> values) {
+            addCriterion("md5_value in", values, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueNotIn(List<String> values) {
+            addCriterion("md5_value not in", values, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueBetween(String value1, String value2) {
+            addCriterion("md5_value between", value1, value2, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andMd5ValueNotBetween(String value1, String value2) {
+            addCriterion("md5_value not between", value1, value2, "md5Value");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueIsNull() {
+            addCriterion("salt_value is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueIsNotNull() {
+            addCriterion("salt_value is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueEqualTo(String value) {
+            addCriterion("salt_value =", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueNotEqualTo(String value) {
+            addCriterion("salt_value <>", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueGreaterThan(String value) {
+            addCriterion("salt_value >", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueGreaterThanOrEqualTo(String value) {
+            addCriterion("salt_value >=", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueLessThan(String value) {
+            addCriterion("salt_value <", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueLessThanOrEqualTo(String value) {
+            addCriterion("salt_value <=", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueLike(String value) {
+            addCriterion("salt_value like", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueNotLike(String value) {
+            addCriterion("salt_value not like", value, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueIn(List<String> values) {
+            addCriterion("salt_value in", values, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueNotIn(List<String> values) {
+            addCriterion("salt_value not in", values, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueBetween(String value1, String value2) {
+            addCriterion("salt_value between", value1, value2, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaltValueNotBetween(String value1, String value2) {
+            addCriterion("salt_value not between", value1, value2, "saltValue");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathIsNull() {
+            addCriterion("file_path is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathIsNotNull() {
+            addCriterion("file_path is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathEqualTo(String value) {
+            addCriterion("file_path =", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathNotEqualTo(String value) {
+            addCriterion("file_path <>", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathGreaterThan(String value) {
+            addCriterion("file_path >", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathGreaterThanOrEqualTo(String value) {
+            addCriterion("file_path >=", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathLessThan(String value) {
+            addCriterion("file_path <", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathLessThanOrEqualTo(String value) {
+            addCriterion("file_path <=", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathLike(String value) {
+            addCriterion("file_path like", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathNotLike(String value) {
+            addCriterion("file_path not like", value, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathIn(List<String> values) {
+            addCriterion("file_path in", values, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathNotIn(List<String> values) {
+            addCriterion("file_path not in", values, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathBetween(String value1, String value2) {
+            addCriterion("file_path between", value1, value2, "filePath");
+            return (Criteria) this;
+        }
+
+        public Criteria andFilePathNotBetween(String value1, String value2) {
+            addCriterion("file_path not between", value1, value2, "filePath");
+            return (Criteria) this;
+        }
     }
 
     /**

@@ -14,6 +14,7 @@
     </modules>
 
     <properties>
+        <p2p-rely.version>0.0.1-DEV-SNAPSHOT</p2p-rely.version>
         <user-rely.version>0.0.1-SNAPSHOT</user-rely.version>
         <paycenter-rely.version>1.1.0</paycenter-rely.version>
         <fund-api.version>1.1.0</fund-api.version>

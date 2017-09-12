@@ -23,6 +23,18 @@
 	</properties>
 
 	<dependencies>
+		<!-- p2p -->
+		<dependency>
+			<groupId>com.we.p2p</groupId>
+			<artifactId>p2p-rely</artifactId>
+			<version>${p2p-rely.version}</version>
+		</dependency>
+		<!-- 用户中心-->
+		<dependency>
+			<groupId>com.we.user</groupId>
+			<artifactId>user-rely</artifactId>
+			<version>${user-rely.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.we.contract</groupId>
 			<artifactId>contract-dao</artifactId>
