@@ -85,19 +85,43 @@
             form.render('checkbox');
         });
 
-        /**修改合同*/
-        $("body").on("click","._edit",function(){
+        /**下载合同*/
+        $("body").on("click","._download",function(){
             var contractId = $(this).attr("data-id");
-            var contractName = $(this).attr("data-name");
-             var index = layui.layer.open({
-                 title : "编辑合同  ID: "+contractId+"  名称: "+contractName,
-                 type : 2,
-                 content : "${ctx}/contract/toSaveOrUpdate.do?id="+contractId,
-                 area: ['950px', '565px'],
-                 success : function(layero, index){
+            var contractFilePath = $(this).attr("data-file-path");
+            <%--location.href="${ctx}/contract/financePlan/download.do?filePath="+contractFilePath;--%>
+            var url="${ctx}/contract/financePlan/download.do";
+            var param={filePath:contractFilePath};
+            $.ajax({
+                url : url,
+                type : 'post',
+                async: false,
+                data : param,
+                success : function(data) {
+                    console.log(data);
+                    if(data.code=="9999")
+                    {
+                        console.log("fail---"+data.message);
+                        layer.msg(data.message);
+                        return false;
+                    }else{
+                        location.href="${ctx}/contract/financePlan/download.do?filePath="+contractFilePath;
+                    }
+                },error:function(data){
+                    console.log("error---"+data.message);
+                    return false;
+                }
+            });
 
-                 }
-             });
+             <%--var index = layui.layer.open({--%>
+                 <%--title : "编辑合同  ID: "+contractId+"  名称: "+contractFilePath,--%>
+                 <%--type : 2,--%>
+                 <%--content : "${ctx}/contract/financePlan/download.do?filePath="+contractFilePath,--%>
+                 <%--area: ['950px', '565px'],--%>
+                 <%--success : function(layero, index){--%>
+
+                 <%--}--%>
+             <%--});--%>
         });
         /**预览*/
         $("body").on("click","._show_content",function(){
@@ -208,8 +232,7 @@
 
                             //操作按钮
                             var opt ='<div class="layui-btn-group">';
-                                opt+=  '<a class="layui-btn layui-btn-mini _edit"  data-id="'+item.id+'" data-file-path= "'+item.filePath+'" ><i class="layui-icon larry-icon larry-bianji2"></i>下载</a>';
-                                opt+=  '<a class="layui-btn layui-btn-mini layui-btn-danger  _fail" data-id="'+item.id+'" data-name="'+item.name+'" data-status= "'+item.enabled+'"><i class="layui-icon larry-icon larry-ttpodicon"></i>失效</a>';
+                                opt+=  '<a class="layui-btn layui-btn-mini _download"  data-id="'+item.id+'" data-file-path= "'+item.filePath+'" ><i class="layui-icon larry-icon larry-bianji2"></i>下载</a>';
                                 opt+= '</div>';
 
                             //组装table

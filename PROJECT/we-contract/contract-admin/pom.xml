@@ -270,7 +270,9 @@
 			<properties>
 				<env>dev</env>
 			</properties>
-
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 		</profile>
 		<!--测试环境 -->
 		<profile>
@@ -278,9 +280,6 @@
 			<properties>
 				<env>qa</env>
 			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 		</profile>
 		<!--生产环境 -->
 		<profile>

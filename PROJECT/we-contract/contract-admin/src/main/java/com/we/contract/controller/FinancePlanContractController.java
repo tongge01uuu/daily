@@ -19,14 +19,20 @@ import com.we.user.vo.UserSecurityInfoVo;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by yukai on 2017-9-11.
@@ -40,6 +46,8 @@ public class FinancePlanContractController extends BasicController {
     private UPlanService uPlanService;
     @Autowired
     private UserService userRpcService;
+    @Value("${file.root.path}")
+    private String fileRootPath;
 
     @RequestMapping("toList.do")
     public String toList(Model model)
@@ -97,6 +105,56 @@ public class FinancePlanContractController extends BasicController {
             return resultEntity.withError(BussinessCode.GLOBAL_ERROR);
         }
 
+        return resultEntity;
+    }
+
+    @RequestMapping(value = "download.do")
+    @ResponseBody
+    public ResultEntity download(String filePath, HttpServletResponse response, HttpServletRequest request)
+    {
+        ResultEntity resultEntity=ResultEntity.build();
+        String fileName=filePath.substring(filePath.lastIndexOf("\\")+1);
+
+        String msg="";
+        if (filePath==null)
+        {
+            request.setAttribute("msg","该合同没有文件");
+            msg="该合同没有文件";
+            resultEntity.withError(msg);
+            return resultEntity;
+        }
+        FileInputStream fileInputStream=null;
+        BufferedInputStream bufferedInputStream=null;
+        try {
+            filePath=fileRootPath+filePath;
+            fileInputStream=new FileInputStream(filePath);
+            bufferedInputStream=new BufferedInputStream(fileInputStream);
+
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("multipart/form-data");
+            response.setHeader("Content-Disposition", "attachment;fileName="
+                    +  URLEncoder.encode(fileName, "UTF-8"));
+
+            OutputStream outputStream=response.getOutputStream();
+            byte[] data=new byte[1024];
+            while(bufferedInputStream.read(data)>-1)
+            {
+                outputStream.write(data,0,data.length);
+            }
+            outputStream.flush();
+            fileInputStream.close();
+            bufferedInputStream.close();
+        } catch (FileNotFoundException e) {
+//            response.setStatus(404);
+           log.warn(ExceptionUtils.getStackTrace(e));
+            msg="合同文件不存在";
+        }catch (IOException e)
+        {
+//            response.setStatus(500);
+            log.error(ExceptionUtils.getStackTrace(e));
+            msg="请求异常";
+        }
+        resultEntity.withError(msg);
         return resultEntity;
     }
 

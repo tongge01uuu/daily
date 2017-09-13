@@ -14,6 +14,7 @@
         http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 >
 
+    <context:property-placeholder location="classpath:config.properties"/>
     <context:component-scan base-package="com.we.contract.**"/>
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:annotation-config/>

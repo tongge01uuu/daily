@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * 登陆Controller
@@ -109,9 +112,4 @@ public class LoginController extends BasicController {
         return "login";
 
     }
-
-
-
-
-
 }

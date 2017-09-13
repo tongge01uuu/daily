@@ -32,6 +32,7 @@ public class ErrorInterceptor implements HandlerInterceptor {
      */
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+        log.warn(httpServletResponse.getStatus()+"---"+httpServletRequest.getRequestURL().toString());
         if(httpServletResponse.getStatus()==500){
             modelAndView.setViewName("error/500");
         }else if(httpServletResponse.getStatus()==404){
