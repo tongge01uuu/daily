@@ -4,9 +4,18 @@ package com.we.contract.param;
  * Created by yukai on 2017-9-12.
  */
 public class BaseParam {
+    private Integer id;
     private Integer pageNum;
     private Integer pageSize;
     private Integer userId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getPageNum() {
         return pageNum;

@@ -160,35 +160,42 @@
             });
 
         });
-        /**批量失效*/
+        /**批量下载*/
         $(".batch_download").click(function(){
             if($("input:checkbox[name='IdCK']:checked").length == 0){
                 layer.msg("请选择要下载的合同");
             }else{
                 var isCreateBy = false;
-                var contractStatus = false;
-                var contractIds = [];
+                var contractHasFile = false;
+                var contractFilePaths = [];
 
                 $("input:checkbox[name='IdCK']:checked").each(function(){
-                    contractIds.push($(this).val());
-                    //已失效
-                    if($(this).attr('alt') == "true"){
-                        contractStatus = true;
+                    if(objNull($(this).attr('data-file-path')) != ""){
+                        contractFilePaths.push($(this).attr('data-file-path'));
+                        contractHasFile = true;
                     }else{
-                        contractStatus = false;
+                        contractHasFile = false;
                         return false;
                     }
 
                 });
-                if(contractStatus==false){
-                    layer.msg("当前选择的合同已失效");
+                if(contractHasFile==false){
+                    layer.msg("当前选择的合同无文件");
                     return false;
                 }
 
-                var url = "${ctx}/contract/fail/batch.do";
-                var param = {ids:contractIds};
+                console.log(JSON.stringify(contractFilePaths));
+                var contractFilePathsStr="";
+                for (var i=0;i<contractFilePaths.length;i++)
+                {
+                    contractFilePathsStr+=contractFilePaths[i]+",";
+                }
+//                contractFilePathsStr=contractFilePathsStr.substring(0,contractFilePathsStr.length);
+                var param = {filePaths:contractFilePathsStr};
+                var url = "${ctx}/contract/financePlan/downloadZip.do";
+                <%--var downloadUrl = "${ctx}/contract/financePlan/downloadZip.do?filePaths="+param.filePaths;--%>
                 console.log( JSON.stringify(param));
-                common.ajaxCmsConfirm('系统提示', '确定失效当前合同吗?',url,param);
+                common.ajaxConfirmDownLoad('系统提示', '确定下载当前合同吗?',url,param);
             }
         });
 
@@ -238,7 +245,7 @@
                             //组装table
                             $("#contractTbody").append(
                                     '<tr>'+
-                                    '<td><input name="IdCK" lay-skin="primary" type="checkbox"  alt="'+item.enabled+'" value="'+item.id+'"></td>'+
+                                    '<td><input name="IdCK" lay-skin="primary" type="checkbox" data-file-path="'+item.filePath+'"  value="'+item.id+'"></td>'+
                                     '<td title="'+item.id+'">'+item.id+'</td>'+
                                     '<td title="'+objNull(item.code)+'"><a  class="_show_content" style="cursor:hand" data-id="'+item.id+'" >'+formatString(item.code)+'</a></td>'+
                                     '<td title="'+objNull(item.financePlanId)+'">'+formatString(item.financePlanName)+'</td>'+

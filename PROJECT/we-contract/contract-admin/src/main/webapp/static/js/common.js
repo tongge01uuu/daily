@@ -84,6 +84,50 @@ layui.define(['layer'], function (exports) {
             })
 
         },
+        ajaxConfirmDownLoad: function (title, text, url,param) {
+            layer.confirm(text, {
+                title: title,
+                resize: false,
+                btn: ['确定', '取消'],
+                btnAlign: 'c',
+                anim:1,
+                icon: 3
+            }, function () {
+                $.ajax({
+                    url : url,
+                    type : 'post',
+                    async: false,
+                    data : param,
+                    success : function(response, status, request) {
+                        var disp = request.getResponseHeader('Content-Disposition');
+                        if (disp && disp.search('attachment') != -1) {  //判断是否为文件
+                            var form = $('<form method="POST" action="' + url + '">');
+                            $.each(param, function(k, v) {
+                                form.append($('<input type="hidden" name="' + k +
+                                    '" value="' + v + '">'));
+                            });
+                            $('body').append(form);
+                            form.submit(); //自动提交
+                        }
+                        return true;
+                    },error:function(data){
+                        console.log("error---"+data.message);
+                        var msg=data.message;
+                        if(msg==null || msg=="")
+                        {
+                            msg="处理异常"
+                        }
+                        layer.msg(msg);
+                        return false;
+                    }
+                });
+
+            }, function () {
+
+            })
+
+        },
+
         logOut: function (title, text, url, type, dataType, data, callback) {
             parent.layer.confirm(text, {
                 title: title,

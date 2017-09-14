@@ -5,6 +5,29 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <script>
+    function post(URL, PARAMS) {
+        console.log(PARAMS);
+        var temp = document.createElement("form");
+        temp.action = URL;
+        temp.method = "post";
+        temp.style.display = "none";
+        var opt = document.createElement("textarea");
+        opt.name = "filePaths";
+        opt.value = PARAMS.filePaths;
+        // alert(opt.name)
+        temp.appendChild(opt);
+//        for (var x in PARAMS.filePaths) {
+//            console.log(x+"---"+ PARAMS.filePaths[x]);
+//            var opt = document.createElement("textarea");
+//            opt.name = "filePaths";
+//            opt.value = PARAMS.filePaths[x];
+//            // alert(opt.name)
+//            temp.appendChild(opt);
+//        }
+        document.body.appendChild(temp);
+        temp.submit();
+        return temp;
+    }
     function formatString(obj,length) {
         if (objNull(length)=="")
         {
