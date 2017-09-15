@@ -99,6 +99,7 @@ layui.define(['layer'], function (exports) {
                     async: false,
                     data : param,
                     success : function(response, status, request) {
+                        var msg="下载成功";
                         var disp = request.getResponseHeader('Content-Disposition');
                         if (disp && disp.search('attachment') != -1) {  //判断是否为文件
                             var form = $('<form method="POST" action="' + url + '">');
@@ -109,6 +110,7 @@ layui.define(['layer'], function (exports) {
                             $('body').append(form);
                             form.submit(); //自动提交
                         }
+                        layer.msg(msg);
                         return true;
                     },error:function(data){
                         console.log("error---"+data.message);

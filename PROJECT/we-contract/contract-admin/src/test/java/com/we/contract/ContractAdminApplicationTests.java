@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,11 +43,15 @@ public class ContractAdminApplicationTests {
 		System.out.println(fileRootPath);
 		byte[] buffer = new byte[1024];
 		String path=fileRootPath+"sql-old/alter-contract-table.sql";
+		File file=new File(path);
 		FileInputStream fis = null;
 		BufferedInputStream bis = null;
 		StringBuffer stringBuffer=new StringBuffer();
+
 		try {
-			fis = new FileInputStream(path);
+//			boolean optResult=file.renameTo(new File(path.replace(".","111.")));
+			System.out.println(file.getAbsolutePath()+"\n"+file.getCanonicalPath());
+			fis = new FileInputStream(file);
 			bis = new BufferedInputStream(fis);
 			int i = bis.read(buffer);
 			while (i != -1) {

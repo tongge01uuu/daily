@@ -116,7 +116,7 @@ public class FinancePlanContractController extends BasicController {
     {
         ResultEntity resultEntity=ResultEntity.build();
 
-        String fileName=filePath.substring(filePath.lastIndexOf("\\")+1);
+//        String fileName=filePath.substring(filePath.lastIndexOf("\\")+1);
         String msg="";
         if (filePath==null)
         {
@@ -129,12 +129,13 @@ public class FinancePlanContractController extends BasicController {
         BufferedInputStream bufferedInputStream=null;
         try {
             filePath=fileRootPath+filePath;
-            fileInputStream=new FileInputStream(filePath);
+            File file=new File(filePath);
+            fileInputStream=new FileInputStream(file);
             bufferedInputStream=new BufferedInputStream(fileInputStream);
             response.setCharacterEncoding("utf-8");
             response.setContentType("multipart/form-data");
             response.setHeader("Content-Disposition", "attachment;fileName="
-                    +  URLEncoder.encode(fileName, "UTF-8"));
+                    +  URLEncoder.encode(file.getName(), "UTF-8"));
 
             OutputStream outputStream=response.getOutputStream();
             byte[] data=new byte[1024];
@@ -188,6 +189,7 @@ public class FinancePlanContractController extends BasicController {
         ZipOutputStream zipOutStream = new ZipOutputStream(outStream);
 
         zipFile(files, zipOutStream);
+        log.info("生成文件：{}",fileZip.getCanonicalPath());
         zipOutStream.close();
         outStream.close();
         this.downloadFile(fileZip, response, true);
@@ -212,6 +214,7 @@ public class FinancePlanContractController extends BasicController {
             if(isDelete)
             {
                 file.delete();        //是否将生成的服务器端文件删除
+                log.info("删除文件：{}",file.getCanonicalPath());
             }
         }
         catch (IOException ex) {
@@ -221,9 +224,17 @@ public class FinancePlanContractController extends BasicController {
     public static void zipFile(List<File> files, ZipOutputStream outputStream) throws IOException, ServletException {
         try {
             int size = files.size();
+            Set<String> tmp=new HashSet<>();
             // 压缩列表中的文件
+            File file=null;
             for (int i = 0; i < size; i++) {
-                File file = (File) files.get(i);
+                file = (File) files.get(i);
+                if (tmp.contains(file.getName()))
+                {
+//                    boolean optResult=file.renameTo(new File(file.getAbsolutePath().replace(".","-"+i+".")));
+                    continue;
+                }
+                tmp.add(file.getName());
                 zipFile(file, outputStream);
             }
         } catch (IOException e) {
