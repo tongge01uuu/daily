@@ -8,10 +8,10 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="p2p-service" logger="slf4j" />
+    <dubbo:application name="contract-service" logger="slf4j" />
 
     <!-- 使用zookeeper注册中心暴露发现服务地址 -->
-    <dubbo:registry address="${dubbo.registry.address}" file="false"/>
+    <dubbo:registry address="${dubbo.registry.address}" file="false" register="false" subscribe="false"/>
 
 <!--    <dubbo:registry address="${dubbo.registry.address.sms}" file="false" id="sms"/>-->
 

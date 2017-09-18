@@ -1,9 +1,10 @@
 package com.we.contract.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class FinancePlanContract {
+public class FinancePlanContract  implements Serializable {
     private Integer id;
 
     /**

@@ -73,7 +73,7 @@
     </appender>
 
     <!-- 项目 级别为 info -->
-    <logger name="com.we.demo" level="debug" additivity="false">
+    <logger name="com.we.contract" level="debug" additivity="false">
         <appender-ref ref="stdout"/>
         <appender-ref ref="infoAppender"/>
         <appender-ref ref="errorAppender"/>

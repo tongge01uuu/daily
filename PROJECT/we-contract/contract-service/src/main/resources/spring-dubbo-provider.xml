@@ -8,5 +8,6 @@
         ">
 
     <!--活期服务暴露接口-->
-    <dubbo:service interface="com.we.contract.service.DemoService" ref="demoServiceImpl"/>
+    <!--<dubbo:service interface="com.we.contract.service.DemoService" ref="demoServiceImpl"/>-->
+    <dubbo:service interface="com.we.contract.service.ContractService" ref="contractService"/>
 </beans>

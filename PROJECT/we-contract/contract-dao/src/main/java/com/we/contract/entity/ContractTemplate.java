@@ -1,8 +1,9 @@
 package com.we.contract.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ContractTemplate {
+public class ContractTemplate implements Serializable{
     private Integer id;
 
     private Date createtime;

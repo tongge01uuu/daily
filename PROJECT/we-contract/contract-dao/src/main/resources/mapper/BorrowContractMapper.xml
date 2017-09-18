@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.we.contract.dao.BorrowContractMapper" >
+  <resultMap id="BaseResultMap" type="com.we.contract.entity.BorrowContract" >
+    <id column="contractId" property="contractid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="loan" property="loan" jdbcType="INTEGER" />
+    <result column="user_" property="user" jdbcType="INTEGER" />
+    <result column="advance_repay_penal_rate" property="advanceRepayPenalRate" jdbcType="VARCHAR" />
+    <result column="bad_debt_days" property="badDebtDays" jdbcType="INTEGER" />
+    <result column="borrow_mgmt_rate" property="borrowMgmtRate" jdbcType="VARCHAR" />
+    <result column="guarantee_rate" property="guaranteeRate" jdbcType="VARCHAR" />
+    <result column="overdue_interest_rate1" property="overdueInterestRate1" jdbcType="VARCHAR" />
+    <result column="overdue_interest_rate2" property="overdueInterestRate2" jdbcType="VARCHAR" />
+    <result column="overdue_mgmt_rate1" property="overdueMgmtRate1" jdbcType="VARCHAR" />
+    <result column="overdue_mgmt_rate2" property="overdueMgmtRate2" jdbcType="VARCHAR" />
+    <result column="svc_rate" property="svcRate" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="legal_repr" property="legalRepr" jdbcType="VARCHAR" />
+    <result column="mortgageRates" property="mortgagerates" jdbcType="DOUBLE" />
+    <result column="mortgageValue" property="mortgagevalue" jdbcType="DOUBLE" />
+    <result column="pledgor" property="pledgor" jdbcType="VARCHAR" />
+    <result column="residence" property="residence" jdbcType="VARCHAR" />
+    <result column="internal_interest_rate" property="internalInterestRate" jdbcType="DECIMAL" />
+    <result column="internal_repay_amount" property="internalRepayAmount" jdbcType="DECIMAL" />
+    <result column="contractInfo" property="contractinfo" jdbcType="VARCHAR" />
+    <result column="loanGuaranteeType" property="loanguaranteetype" jdbcType="VARCHAR" />
+    <result column="contractTemplateId" property="contracttemplateid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    contractId, createTime, loan, user_, advance_repay_penal_rate, bad_debt_days, borrow_mgmt_rate, 
+    guarantee_rate, overdue_interest_rate1, overdue_interest_rate2, overdue_mgmt_rate1, 
+    overdue_mgmt_rate2, svc_rate, code, legal_repr, mortgageRates, mortgageValue, pledgor, 
+    residence, internal_interest_rate, internal_repay_amount, contractInfo, loanGuaranteeType, 
+    contractTemplateId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.we.contract.entity.BorrowContractExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from borrow_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null" >
+      <if test="offset != null" >
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null" >
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrow_contract
+    where contractId = #{contractid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrow_contract
+    where contractId = #{contractid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.we.contract.entity.BorrowContractExample" >
+    delete from borrow_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.we.contract.entity.BorrowContract" >
+    insert into borrow_contract (contractId, createTime, loan, 
+      user_, advance_repay_penal_rate, bad_debt_days, 
+      borrow_mgmt_rate, guarantee_rate, overdue_interest_rate1, 
+      overdue_interest_rate2, overdue_mgmt_rate1, 
+      overdue_mgmt_rate2, svc_rate, code, 
+      legal_repr, mortgageRates, mortgageValue, 
+      pledgor, residence, internal_interest_rate, 
+      internal_repay_amount, contractInfo, loanGuaranteeType, 
+      contractTemplateId)
+    values (#{contractid,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{loan,jdbcType=INTEGER}, 
+      #{user,jdbcType=INTEGER}, #{advanceRepayPenalRate,jdbcType=VARCHAR}, #{badDebtDays,jdbcType=INTEGER}, 
+      #{borrowMgmtRate,jdbcType=VARCHAR}, #{guaranteeRate,jdbcType=VARCHAR}, #{overdueInterestRate1,jdbcType=VARCHAR}, 
+      #{overdueInterestRate2,jdbcType=VARCHAR}, #{overdueMgmtRate1,jdbcType=VARCHAR}, 
+      #{overdueMgmtRate2,jdbcType=VARCHAR}, #{svcRate,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{legalRepr,jdbcType=VARCHAR}, #{mortgagerates,jdbcType=DOUBLE}, #{mortgagevalue,jdbcType=DOUBLE}, 
+      #{pledgor,jdbcType=VARCHAR}, #{residence,jdbcType=VARCHAR}, #{internalInterestRate,jdbcType=DECIMAL}, 
+      #{internalRepayAmount,jdbcType=DECIMAL}, #{contractinfo,jdbcType=VARCHAR}, #{loanguaranteetype,jdbcType=VARCHAR}, 
+      #{contracttemplateid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.we.contract.entity.BorrowContract" >
+    insert into borrow_contract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contractid != null" >
+        contractId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="loan != null" >
+        loan,
+      </if>
+      <if test="user != null" >
+        user_,
+      </if>
+      <if test="advanceRepayPenalRate != null" >
+        advance_repay_penal_rate,
+      </if>
+      <if test="badDebtDays != null" >
+        bad_debt_days,
+      </if>
+      <if test="borrowMgmtRate != null" >
+        borrow_mgmt_rate,
+      </if>
+      <if test="guaranteeRate != null" >
+        guarantee_rate,
+      </if>
+      <if test="overdueInterestRate1 != null" >
+        overdue_interest_rate1,
+      </if>
+      <if test="overdueInterestRate2 != null" >
+        overdue_interest_rate2,
+      </if>
+      <if test="overdueMgmtRate1 != null" >
+        overdue_mgmt_rate1,
+      </if>
+      <if test="overdueMgmtRate2 != null" >
+        overdue_mgmt_rate2,
+      </if>
+      <if test="svcRate != null" >
+        svc_rate,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="legalRepr != null" >
+        legal_repr,
+      </if>
+      <if test="mortgagerates != null" >
+        mortgageRates,
+      </if>
+      <if test="mortgagevalue != null" >
+        mortgageValue,
+      </if>
+      <if test="pledgor != null" >
+        pledgor,
+      </if>
+      <if test="residence != null" >
+        residence,
+      </if>
+      <if test="internalInterestRate != null" >
+        internal_interest_rate,
+      </if>
+      <if test="internalRepayAmount != null" >
+        internal_repay_amount,
+      </if>
+      <if test="contractinfo != null" >
+        contractInfo,
+      </if>
+      <if test="loanguaranteetype != null" >
+        loanGuaranteeType,
+      </if>
+      <if test="contracttemplateid != null" >
+        contractTemplateId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contractid != null" >
+        #{contractid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loan != null" >
+        #{loan,jdbcType=INTEGER},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=INTEGER},
+      </if>
+      <if test="advanceRepayPenalRate != null" >
+        #{advanceRepayPenalRate,jdbcType=VARCHAR},
+      </if>
+      <if test="badDebtDays != null" >
+        #{badDebtDays,jdbcType=INTEGER},
+      </if>
+      <if test="borrowMgmtRate != null" >
+        #{borrowMgmtRate,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeRate != null" >
+        #{guaranteeRate,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueInterestRate1 != null" >
+        #{overdueInterestRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueInterestRate2 != null" >
+        #{overdueInterestRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueMgmtRate1 != null" >
+        #{overdueMgmtRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueMgmtRate2 != null" >
+        #{overdueMgmtRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="svcRate != null" >
+        #{svcRate,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepr != null" >
+        #{legalRepr,jdbcType=VARCHAR},
+      </if>
+      <if test="mortgagerates != null" >
+        #{mortgagerates,jdbcType=DOUBLE},
+      </if>
+      <if test="mortgagevalue != null" >
+        #{mortgagevalue,jdbcType=DOUBLE},
+      </if>
+      <if test="pledgor != null" >
+        #{pledgor,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null" >
+        #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="internalInterestRate != null" >
+        #{internalInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="internalRepayAmount != null" >
+        #{internalRepayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="contractinfo != null" >
+        #{contractinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="loanguaranteetype != null" >
+        #{loanguaranteetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contracttemplateid != null" >
+        #{contracttemplateid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.we.contract.entity.BorrowContractExample" resultType="java.lang.Integer" >
+    select count(*) from borrow_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update borrow_contract
+    <set >
+      <if test="record.contractid != null" >
+        contractId = #{record.contractid,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loan != null" >
+        loan = #{record.loan,jdbcType=INTEGER},
+      </if>
+      <if test="record.user != null" >
+        user_ = #{record.user,jdbcType=INTEGER},
+      </if>
+      <if test="record.advanceRepayPenalRate != null" >
+        advance_repay_penal_rate = #{record.advanceRepayPenalRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.badDebtDays != null" >
+        bad_debt_days = #{record.badDebtDays,jdbcType=INTEGER},
+      </if>
+      <if test="record.borrowMgmtRate != null" >
+        borrow_mgmt_rate = #{record.borrowMgmtRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guaranteeRate != null" >
+        guarantee_rate = #{record.guaranteeRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overdueInterestRate1 != null" >
+        overdue_interest_rate1 = #{record.overdueInterestRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overdueInterestRate2 != null" >
+        overdue_interest_rate2 = #{record.overdueInterestRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overdueMgmtRate1 != null" >
+        overdue_mgmt_rate1 = #{record.overdueMgmtRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overdueMgmtRate2 != null" >
+        overdue_mgmt_rate2 = #{record.overdueMgmtRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.svcRate != null" >
+        svc_rate = #{record.svcRate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepr != null" >
+        legal_repr = #{record.legalRepr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mortgagerates != null" >
+        mortgageRates = #{record.mortgagerates,jdbcType=DOUBLE},
+      </if>
+      <if test="record.mortgagevalue != null" >
+        mortgageValue = #{record.mortgagevalue,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pledgor != null" >
+        pledgor = #{record.pledgor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.residence != null" >
+        residence = #{record.residence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.internalInterestRate != null" >
+        internal_interest_rate = #{record.internalInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.internalRepayAmount != null" >
+        internal_repay_amount = #{record.internalRepayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.contractinfo != null" >
+        contractInfo = #{record.contractinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loanguaranteetype != null" >
+        loanGuaranteeType = #{record.loanguaranteetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contracttemplateid != null" >
+        contractTemplateId = #{record.contracttemplateid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update borrow_contract
+    set contractId = #{record.contractid,jdbcType=INTEGER},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      loan = #{record.loan,jdbcType=INTEGER},
+      user_ = #{record.user,jdbcType=INTEGER},
+      advance_repay_penal_rate = #{record.advanceRepayPenalRate,jdbcType=VARCHAR},
+      bad_debt_days = #{record.badDebtDays,jdbcType=INTEGER},
+      borrow_mgmt_rate = #{record.borrowMgmtRate,jdbcType=VARCHAR},
+      guarantee_rate = #{record.guaranteeRate,jdbcType=VARCHAR},
+      overdue_interest_rate1 = #{record.overdueInterestRate1,jdbcType=VARCHAR},
+      overdue_interest_rate2 = #{record.overdueInterestRate2,jdbcType=VARCHAR},
+      overdue_mgmt_rate1 = #{record.overdueMgmtRate1,jdbcType=VARCHAR},
+      overdue_mgmt_rate2 = #{record.overdueMgmtRate2,jdbcType=VARCHAR},
+      svc_rate = #{record.svcRate,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      legal_repr = #{record.legalRepr,jdbcType=VARCHAR},
+      mortgageRates = #{record.mortgagerates,jdbcType=DOUBLE},
+      mortgageValue = #{record.mortgagevalue,jdbcType=DOUBLE},
+      pledgor = #{record.pledgor,jdbcType=VARCHAR},
+      residence = #{record.residence,jdbcType=VARCHAR},
+      internal_interest_rate = #{record.internalInterestRate,jdbcType=DECIMAL},
+      internal_repay_amount = #{record.internalRepayAmount,jdbcType=DECIMAL},
+      contractInfo = #{record.contractinfo,jdbcType=VARCHAR},
+      loanGuaranteeType = #{record.loanguaranteetype,jdbcType=VARCHAR},
+      contractTemplateId = #{record.contracttemplateid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.we.contract.entity.BorrowContract" >
+    update borrow_contract
+    <set >
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loan != null" >
+        loan = #{loan,jdbcType=INTEGER},
+      </if>
+      <if test="user != null" >
+        user_ = #{user,jdbcType=INTEGER},
+      </if>
+      <if test="advanceRepayPenalRate != null" >
+        advance_repay_penal_rate = #{advanceRepayPenalRate,jdbcType=VARCHAR},
+      </if>
+      <if test="badDebtDays != null" >
+        bad_debt_days = #{badDebtDays,jdbcType=INTEGER},
+      </if>
+      <if test="borrowMgmtRate != null" >
+        borrow_mgmt_rate = #{borrowMgmtRate,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeRate != null" >
+        guarantee_rate = #{guaranteeRate,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueInterestRate1 != null" >
+        overdue_interest_rate1 = #{overdueInterestRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueInterestRate2 != null" >
+        overdue_interest_rate2 = #{overdueInterestRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueMgmtRate1 != null" >
+        overdue_mgmt_rate1 = #{overdueMgmtRate1,jdbcType=VARCHAR},
+      </if>
+      <if test="overdueMgmtRate2 != null" >
+        overdue_mgmt_rate2 = #{overdueMgmtRate2,jdbcType=VARCHAR},
+      </if>
+      <if test="svcRate != null" >
+        svc_rate = #{svcRate,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepr != null" >
+        legal_repr = #{legalRepr,jdbcType=VARCHAR},
+      </if>
+      <if test="mortgagerates != null" >
+        mortgageRates = #{mortgagerates,jdbcType=DOUBLE},
+      </if>
+      <if test="mortgagevalue != null" >
+        mortgageValue = #{mortgagevalue,jdbcType=DOUBLE},
+      </if>
+      <if test="pledgor != null" >
+        pledgor = #{pledgor,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null" >
+        residence = #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="internalInterestRate != null" >
+        internal_interest_rate = #{internalInterestRate,jdbcType=DECIMAL},
+      </if>
+      <if test="internalRepayAmount != null" >
+        internal_repay_amount = #{internalRepayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="contractinfo != null" >
+        contractInfo = #{contractinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="loanguaranteetype != null" >
+        loanGuaranteeType = #{loanguaranteetype,jdbcType=VARCHAR},
+      </if>
+      <if test="contracttemplateid != null" >
+        contractTemplateId = #{contracttemplateid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where contractId = #{contractid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.we.contract.entity.BorrowContract" >
+    update borrow_contract
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      loan = #{loan,jdbcType=INTEGER},
+      user_ = #{user,jdbcType=INTEGER},
+      advance_repay_penal_rate = #{advanceRepayPenalRate,jdbcType=VARCHAR},
+      bad_debt_days = #{badDebtDays,jdbcType=INTEGER},
+      borrow_mgmt_rate = #{borrowMgmtRate,jdbcType=VARCHAR},
+      guarantee_rate = #{guaranteeRate,jdbcType=VARCHAR},
+      overdue_interest_rate1 = #{overdueInterestRate1,jdbcType=VARCHAR},
+      overdue_interest_rate2 = #{overdueInterestRate2,jdbcType=VARCHAR},
+      overdue_mgmt_rate1 = #{overdueMgmtRate1,jdbcType=VARCHAR},
+      overdue_mgmt_rate2 = #{overdueMgmtRate2,jdbcType=VARCHAR},
+      svc_rate = #{svcRate,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      legal_repr = #{legalRepr,jdbcType=VARCHAR},
+      mortgageRates = #{mortgagerates,jdbcType=DOUBLE},
+      mortgageValue = #{mortgagevalue,jdbcType=DOUBLE},
+      pledgor = #{pledgor,jdbcType=VARCHAR},
+      residence = #{residence,jdbcType=VARCHAR},
+      internal_interest_rate = #{internalInterestRate,jdbcType=DECIMAL},
+      internal_repay_amount = #{internalRepayAmount,jdbcType=DECIMAL},
+      contractInfo = #{contractinfo,jdbcType=VARCHAR},
+      loanGuaranteeType = #{loanguaranteetype,jdbcType=VARCHAR},
+      contractTemplateId = #{contracttemplateid,jdbcType=INTEGER}
+    where contractId = #{contractid,jdbcType=INTEGER}
+  </update>
+</mapper>

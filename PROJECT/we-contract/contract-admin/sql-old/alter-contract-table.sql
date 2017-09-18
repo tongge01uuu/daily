@@ -16,4 +16,5 @@ ADD COLUMN
 salt_value VARCHAR(64) DEFAULT NULL ,
 file_path VARCHAR(256) DEFAULT NULL) ;
 
+ALTER TABLE `contract` RENAME  borrow_contract;
 

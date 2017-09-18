@@ -6,8 +6,5 @@
     http://code.alibabatech.com/schema/dubbo        
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- 生成远程服务代理 -->
-<!--
-	<dubbo:reference interface="com.we.paycenter.service.TransferRecordService" id="transferRecordService" retries="0" timeout="10000" check="false"/>
--->
+	<dubbo:reference url="dubbo://localhost:24880" interface="com.we.contract.service.ContractService" id="contractServiceRpc"/>
 </beans>

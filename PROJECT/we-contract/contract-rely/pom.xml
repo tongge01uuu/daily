@@ -11,6 +11,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.we.contract</groupId>
+            <artifactId>contract-dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.plat.framework</groupId>
             <artifactId>plat-framework-bean</artifactId>
         </dependency>
