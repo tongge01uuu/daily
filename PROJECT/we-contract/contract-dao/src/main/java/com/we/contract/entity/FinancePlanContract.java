@@ -1,5 +1,9 @@
 package com.we.contract.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,10 +14,11 @@ public class FinancePlanContract  implements Serializable {
     /**
     * 理财计划编号（页面显示用）
     */
+    @NotBlank
     private String code;
 
     private Date createTime;
-
+    @NotNull
     private Integer financePlanId;
 
     private Date updateTime;
@@ -21,11 +26,13 @@ public class FinancePlanContract  implements Serializable {
     /**
     * 购买人
     */
+    @NotNull
     private Integer userId;
 
     /**
     * 购买或是预定理财计划
     */
+    @NotBlank
     private String type;
 
     /**
@@ -36,12 +43,16 @@ public class FinancePlanContract  implements Serializable {
     /**
     * 子账户类型:FINANCE_PLAN(理财计划), AUTO_INVEST_PLAN(定投计划)
     */
+    @NotBlank
     private String subPointType;
 
+    @NotBlank
     private String md5Value;
 
+    @NotBlank
     private String saltValue;
 
+    @NotBlank
     private String filePath;
 
     public Integer getId() {

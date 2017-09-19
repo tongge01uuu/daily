@@ -121,8 +121,8 @@
       type, reserve_amount, sub_point_type, 
       md5_value, salt_value, file_path
       )
-    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{financePlanId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, NOW(),
+      #{financePlanId,jdbcType=INTEGER}, NOW(), #{userId,jdbcType=INTEGER},
       #{type,jdbcType=VARCHAR}, #{reserveAmount,jdbcType=DECIMAL}, #{subPointType,jdbcType=VARCHAR}, 
       #{md5Value,jdbcType=VARCHAR}, #{saltValue,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}
       )
@@ -174,15 +174,11 @@
       <if test="code != null" >
         #{code,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
+        NOW(),
       <if test="financePlanId != null" >
         #{financePlanId,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
+        NOW(),
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
@@ -227,9 +223,7 @@
       <if test="record.financePlanId != null" >
         finance_plan_id = #{record.financePlanId,jdbcType=INTEGER},
       </if>
-      <if test="record.updateTime != null" >
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
+        update_time = NOW(),
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
@@ -286,9 +280,7 @@
       <if test="financePlanId != null" >
         finance_plan_id = #{financePlanId,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
+        update_time = NOW(),
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
@@ -318,7 +310,7 @@
     set code = #{code,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       finance_plan_id = #{financePlanId,jdbcType=INTEGER},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_time = NOW(),
       user_id = #{userId,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
       reserve_amount = #{reserveAmount,jdbcType=DECIMAL},
