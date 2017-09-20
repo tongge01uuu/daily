@@ -17,4 +17,8 @@ public interface ContractService {
 
     public Result saveContractRecord(Object contract,ContractType contractType);
 
+    public Result updateContractRecord(Object contract,ContractType contractType);
+
+
+
 }

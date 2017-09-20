@@ -10,7 +10,7 @@ import com.we.contract.entity.LoanTransferContract;
 public enum ContractType {
     FINANCE_PLAN("finance_plan_contract", FinancePlanContract.class.getName(),"U计划合同记录"),
     LOAN_TRANSFER("loan_transfer_contract", LoanTransferContract.class.getName(),"标的合同记录"),
-    BORROW("contract", BorrowContract.class.getName(),"借款合同记录")
+    BORROW("borrow_contract", BorrowContract.class.getName(),"借款合同记录")
     ;
 
 

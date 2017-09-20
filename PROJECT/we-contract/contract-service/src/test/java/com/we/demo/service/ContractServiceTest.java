@@ -7,6 +7,7 @@ import com.we.contract.constant.SubPointType;
 import com.we.contract.entity.FinancePlanContract;
 import com.we.contract.enums.ContractType;
 import com.we.contract.service.ContractService;
+import com.we.contract.util.ContractUtil;
 import com.we.demo.BaseTest;
 import com.we.contract.service.DemoService;
 import org.junit.Test;
@@ -20,8 +21,10 @@ import java.util.Set;
  * Created by qibaichao on 2016/9/14.
  */
 public class ContractServiceTest extends BaseTest {
-    @Autowired
+//    @Autowired
     private ContractService contractServiceRpc;
+    @Autowired
+    private ContractService contractService;
     @Test
     public void demo(){
 //        Result result=contractServiceRpc.getTemplate(6);
@@ -49,6 +52,15 @@ public class ContractServiceTest extends BaseTest {
 //            System.out.println(violations);
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void getFilePath()
+    {
+        Result<FinancePlanContract> result =contractService.getContract(723,ContractType.FINANCE_PLAN);
+        FinancePlanContract financePlanContract=result.getValue();
+        String path= ContractUtil.generateFilePath(financePlanContract,ContractType.FINANCE_PLAN);
+        System.out.println(path);
     }
 
 }

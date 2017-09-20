@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("contractService")
 public class ContractServiceImpl implements ContractService{
-    protected Logger logger= LoggerFactory.getLogger(ContractServiceImpl.class);
+    private Logger logger= LoggerFactory.getLogger(ContractServiceImpl.class);
     @Autowired
     private ContractTemplateMapper contractTemplateMapper;
     @Autowired
@@ -79,6 +79,38 @@ public class ContractServiceImpl implements ContractService{
                 case FINANCE_PLAN:{
                     FinancePlanContract financePlanContract=(FinancePlanContract)contract;
                     financePlanContractMapper.insert(financePlanContract);
+                }
+                case LOAN_TRANSFER:{
+
+                }
+                case BORROW:{
+
+                }
+                break;
+
+            }
+        } catch (Exception e) {
+            logger.error(ExceptionUtils.getStackTrace(e));
+            result.withError(MessageConstant.GLOBAL_ERROR);
+        }
+        return result;
+    }
+    @Override
+    public Result updateContractRecord(Object contract, ContractType contractType) {
+        Result result=Result.build();
+        String className=contract.getClass().getName();
+        if (StringUtils.isBlank(className) || !className.equals(contractType.getClassName()))
+        {
+            logger.error("对象类型：{},参数指示类型{}",className,contractType.getClassName());
+            result.withError(MessageConstant.TYPE_ERROR);
+            return result;
+        }
+        try {
+            switch (contractType)
+            {
+                case FINANCE_PLAN:{
+                    FinancePlanContract financePlanContract=(FinancePlanContract)contract;
+                    financePlanContractMapper.updateByPrimaryKeySelective(financePlanContract);
                 }
                 case LOAN_TRANSFER:{
 
