@@ -1,4 +1,4 @@
-package com.we.contract.aspect;
+package com.we.contract.util;
 
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
     private static final Logger logger= LoggerFactory.getLogger(LogAspect.class);
 
-    @Pointcut("execution(* com.we.contract.service.system.*.*(..))")
+    @Pointcut("execution(* com.we.contract.service.impl.*.*(..))")
     public void aspectMethodService(){}
 
     @Before("aspectMethodService()")
