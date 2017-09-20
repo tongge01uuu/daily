@@ -9,8 +9,21 @@
 </head>
 <body>
 <a class="media" href="${ctx}/${result.data}"></a>
+<input type="hidden" name="message" id="message" value="${result.message}" />
+<input type="hidden" name="code" id="code" value="${result.code}" />
 <script type="text/javascript">
-    $('a.media').media({width:950, height:565});
+    $(function(){
+        if ($("#code").val()!="0000")
+        {
+            layui.use(['layer'], function(){
+                var layer = layui.layer;
+                layer.msg($("#message").val());
+            });
+        }else {
+            $('a.media').media({width:950, height:565});
+        }
+    });
+
 </script>
 
 </body>

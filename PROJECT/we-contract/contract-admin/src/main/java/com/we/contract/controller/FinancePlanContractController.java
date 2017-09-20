@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.nio.file.NoSuchFileException;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -51,6 +53,8 @@ public class FinancePlanContractController extends BasicController {
     private UserService userRpcService;
     @Value("${file.root.path}")
     private String fileRootPath;
+    @Value("${file.root.project.path}")
+    private String fileRootProjectPath;
 
     @RequestMapping("toList.do")
     public String toList(Model model)
@@ -125,14 +129,26 @@ public class FinancePlanContractController extends BasicController {
                 resultEntity.withError(msg);
             }
             String filePath=financePlanContract.getFilePath();
-            resultEntity.setData(fileRootPath+filePath);
+            resultEntity.setData(fileRootProjectPath+filePath);
+
+            //COPY FILE
+            String sourceFilePath=fileRootPath+filePath;
+            String targetFilePath=request.getSession().getServletContext().getRealPath("/")+"/"+fileRootProjectPath+filePath;
+            copy(sourceFilePath,targetFilePath);
+
             if (StringUtils.isBlank(filePath))
             {
                 msg="该合同没有文件";
                 request.setAttribute("msg",msg);
                 resultEntity.withError(msg);
             }
-        } catch (Exception e) {
+        } catch (NoSuchFileException e)
+        {
+            log.error(ExceptionUtils.getStackTrace(e));
+            msg="合同文件不存在";
+            resultEntity.withError(msg);
+        }
+        catch (Exception e) {
             log.error(ExceptionUtils.getStackTrace(e));
             msg="系统异常";
             resultEntity.withError(msg);
@@ -318,5 +334,20 @@ public class FinancePlanContractController extends BasicController {
     }
 
 
+    private void copy(String sourcePath,String targetPath)throws Exception
+    {
+        File targetFile=new File(targetPath);
+        File sourceFile=new File(sourcePath);
+        if (!sourceFile.exists())
+        {
+            log.error("源文件路径错误：{}",sourcePath);
+            throw new NoSuchFileException(sourcePath);
+        }
+        if (!targetFile.exists())
+        {
+            FileCopyUtils.copy(sourceFile,targetFile);
+            log.info("文件复制成功：{}--->{}",sourcePath,targetPath);
+        }
+    }
 
 }

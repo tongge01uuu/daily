@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%> 
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="realPath" value="<%=request.getSession().getServletContext().getRealPath(\"/\")%>" />
 
 <script>
     function post(URL, PARAMS) {
