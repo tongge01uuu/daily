@@ -16,6 +16,7 @@ import com.we.p2p.service.UPlanService;
 import com.we.p2p.vo.UplanVo;
 import com.we.user.service.UserService;
 import com.we.user.vo.UserSecurityInfoVo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,6 +109,37 @@ public class FinancePlanContractController extends BasicController {
         }
 
         return resultEntity;
+    }
+    @RequestMapping(value = "/to/show.do")
+    public String show(Integer id, Model model, HttpServletRequest request)
+    {
+        ResultEntity resultEntity=ResultEntity.build();
+        String msg= null;
+        try {
+            FinancePlanContract financePlanContract=financePlanContractService.get(id);
+            msg = "";
+            if (financePlanContract==null)
+            {
+                msg="合同不存在";
+                request.setAttribute("msg",msg);
+                resultEntity.withError(msg);
+            }
+            String filePath=financePlanContract.getFilePath();
+            resultEntity.setData(fileRootPath+filePath);
+            if (StringUtils.isBlank(filePath))
+            {
+                msg="该合同没有文件";
+                request.setAttribute("msg",msg);
+                resultEntity.withError(msg);
+            }
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            msg="系统异常";
+            resultEntity.withError(msg);
+        }
+        model.addAttribute("result",resultEntity);
+
+        return "contract/contract_preview";
     }
 
     @RequestMapping(value = "download.do")

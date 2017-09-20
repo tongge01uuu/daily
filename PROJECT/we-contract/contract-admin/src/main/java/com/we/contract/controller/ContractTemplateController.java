@@ -31,7 +31,7 @@ import java.util.Map;
  * Created by yukai on 2017-9-4.
  */
 @Controller
-@RequestMapping("contract/")
+@RequestMapping("contract/template")
 public class ContractTemplateController {
     private static Logger logger= LoggerFactory.getLogger(ContractTemplateController.class);
     @Autowired

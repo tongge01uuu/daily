@@ -3,9 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="${ctx}/static/js/jquery-1.4.4.min.js"></script>
     <%@include file="/comm/myinc.jsp" %>
+    <script type="text/javascript" src="${ctx}/static/js/jquery.media.js"></script>
+
 </head>
 <body>
+<%--<a class="media" href="\static\file\dubbo-user-book.pdf"></a>--%>
+<%--<a class="media" href="${ctx}/static/dubbo-user-book.pdf"></a>--%>
 <div class="larry-grid larryTheme-A">
     <div class="larry-personal">
         <div class="layui-tab">
@@ -63,6 +68,7 @@
     </div>
 </div>
 <script type="text/javascript">
+    $('a.media').media({width:500, height:400});
     layui.config({
         base : "${ctx}/static/js/"
     }).use(['form', 'laypage', 'layer','common'], function () {
@@ -71,7 +77,6 @@
                 laypage = layui.laypage,
                 layer = layui.layer,
                 common = layui.common;
-
 
         /**加载字典列表信息*/
         pageList(1,{subPointType:$("#subPointType").val()});
@@ -126,10 +131,11 @@
         /**预览*/
         $("body").on("click","._show_content",function(){
             var contractId = $(this).attr("data-id");
+            var filePath="sql-old/contract-old-withdata.sql";
              var index = layui.layer.open({
                  title : "预览合同  ID: "+contractId,
                  type : 2,
-                 content : "${ctx}/contract/to/show.do?id="+contractId,
+                 content : "${ctx}/contract/financePlan/to/show.do?id="+contractId,
                  area: ['950px', '565px'],
                  success : function(layero, index){
 

@@ -84,7 +84,7 @@
             var index = layui.layer.open({
                 title : "新增模板",
                 type : 2,
-                content : "${ctx}/contract/toSaveOrUpdate.do",
+                content : "${ctx}/contract/template/toSaveOrUpdate.do",
                 area: ['950px', '565px'],
                 success : function(layero, index){
 
@@ -98,7 +98,7 @@
              var index = layui.layer.open({
                  title : "编辑模板  ID: "+contractId+"  名称: "+contractName,
                  type : 2,
-                 content : "${ctx}/contract/toSaveOrUpdate.do?id="+contractId,
+                 content : "${ctx}/contract/template/toSaveOrUpdate.do?id="+contractId,
                  area: ['950px', '565px'],
                  success : function(layero, index){
 
@@ -111,7 +111,7 @@
              var index = layui.layer.open({
                  title : "预览模板  ID: "+contractId,
                  type : 2,
-                 content : "${ctx}/contract/to/show.do?id="+contractId,
+                 content : "${ctx}/contract/template/to/show.do?id="+contractId,
                  area: ['950px', '565px'],
                  success : function(layero, index){
 
@@ -128,7 +128,7 @@
                 return false;
             }
 
-            var url = "${ctx}/contract/fail.do";
+            var url = "${ctx}/contract/template/fail.do";
             var param = {id:contractId,enabled:false};
             common.ajaxCmsConfirm('系统提示', '确定失效当前模板吗?',url,param)
 
@@ -167,7 +167,7 @@
                     return false;
                 }
 
-                var url = "${ctx}/contract/fail/batch.do";
+                var url = "${ctx}/contract/template/fail/batch.do";
                 var param = {ids:contractIds};
                 console.log( JSON.stringify(param));
                 common.ajaxCmsConfirm('系统提示', '确定失效当前模板吗?',url,param);
@@ -179,7 +179,7 @@
             console.log("page:"+curr+"   type:"+type);
             var pageLoading = layer.load(2);
             $.ajax({
-                url : '${ctx}/contract/list.do',
+                url : '${ctx}/contract/template/list.do',
                 type : 'post',
                 data :{
                     pageNum: curr || 1 ,   //当前页

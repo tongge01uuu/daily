@@ -11,7 +11,7 @@
     <dubbo:application name="contract-service" logger="slf4j" />
 
     <!-- 使用zookeeper注册中心暴露发现服务地址 -->
-    <dubbo:registry address="${dubbo.registry.address}" file="false" register="false" subscribe="false"/>
+    <dubbo:registry address="${dubbo.registry.address}" file="false" check="false" register="false" subscribe="false"/>
 
 <!--    <dubbo:registry address="${dubbo.registry.address.sms}" file="false" id="sms"/>-->
 
