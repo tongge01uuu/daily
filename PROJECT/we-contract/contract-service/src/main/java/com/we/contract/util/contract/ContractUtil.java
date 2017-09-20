@@ -1,8 +1,8 @@
-package com.we.contract.util;
+package com.we.contract.util.contract;
 
 import com.we.contract.entity.FinancePlanContract;
 import com.we.contract.enums.ContractType;
-import com.we.contract.service.impl.ContractServiceImpl;
+import com.we.contract.util.DateUtil;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

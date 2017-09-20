@@ -1,21 +1,15 @@
 package com.we.demo.service;
 
-import com.alibaba.dubbo.rpc.RpcException;
 import com.alibaba.fastjson.JSON;
 import com.site.bean.resultBean.Result;
 import com.we.contract.constant.SubPointType;
 import com.we.contract.entity.FinancePlanContract;
 import com.we.contract.enums.ContractType;
 import com.we.contract.service.ContractService;
-import com.we.contract.util.ContractUtil;
+import com.we.contract.util.contract.ContractUtil;
 import com.we.demo.BaseTest;
-import com.we.contract.service.DemoService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import java.util.Set;
 
 /**
  * Created by qibaichao on 2016/9/14.
